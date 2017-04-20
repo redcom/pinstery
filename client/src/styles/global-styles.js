@@ -22,23 +22,35 @@ injectGlobal`
     font-family: sans-serif;
   }
   .app-container {
+    padding: 20px;
   }
 
-  .redux-logo {
-    animation: ${rotate360} infinite 20s linear;
-    height: 60px;
-  }
   header {
-    background-color: #222;
-    height: 120px;
-    padding: 20px;
-    color: #fff;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
   }
+  .headerTopRight{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+  }
   .intro {
     font-size: large;
+  }
+  .navBar {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    border: 1px solid;
+    border-radius: 20px;
+  }
+  .navBar a {
+    text-decoration: none;
+  }
+  .navBar a.active {
+    text-decoration: underline;
   }
 `;

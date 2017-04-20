@@ -1,8 +1,17 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AppContainer } from '../containers';
-import { Header } from '../components';
+import {
+  CustomOrdersContainer,
+  ContactContainer,
+  ButtonsContainer,
+  WelcomeContainer,
+  SigninContainer,
+  CartContainer,
+} from '../containers';
+
+import { Header, NavBar } from '../components';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getInitialState, hidrateStoreWithState } from '../actions/AppActions';
 
@@ -24,7 +33,13 @@ class Routes extends Component {
       <Router>
         <div className="app-container">
           <Header />
-          <Route path="/" component={AppContainer} />
+          <NavBar />
+          <Route exact path="/" component={WelcomeContainer} />
+          <Route path="/signin" component={SigninContainer} />
+          <Route path="/cart" component={CartContainer} />
+          <Route path="/shop-buttons" component={ButtonsContainer} />
+          <Route path="/custom-orders" component={CustomOrdersContainer} />
+          <Route  path="/contact" component={ContactContainer} />
         </div>
       </Router>
     );
