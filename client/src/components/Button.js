@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 import {
   defaultFontSize,
-  defaultSpaceBetweenElements,
-  defaultPrimaryActionColor,
+  defaultPrimaryBgColor,
+  defaultPrimaryColor,
+  defaultLineHeight,
 } from '../styles/vars';
 
 const Button = styled.button`
-  margin: ${defaultSpaceBetweenElements};;
   font-size: ${defaultFontSize};
   border: none;
-  background: ${defaultPrimaryActionColor};
+  background: ${defaultPrimaryBgColor};
+  color: ${defaultPrimaryColor};
+  align-self: flex-end;
+  border-radius: 0.3em;
+  line-height: ${defaultLineHeight};
 `;
 
 export default Button;
