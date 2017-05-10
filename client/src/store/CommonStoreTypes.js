@@ -7,6 +7,15 @@ export type Link = {
   shortUrl: string,
 };
 
+export type CartItemType = {
+  id: number,
+  description: string,
+  quantity: string,
+  price: number
+};
+
+export type CartListType = Array<CartItemType>;
+
 export type Links = Array<Link>;
 
 export type ErrorsType = Object;
@@ -14,5 +23,6 @@ export type ErrorsType = Object;
 // State
 export type State = {
   links: Links,
+  cartItems: CartListType,
   error: ErrorsType,
 };
