@@ -1,5 +1,5 @@
 import React from 'react';
-import {ErrorContainer} from '../containers';
+import { ErrorContainer } from '../containers';
 import { Wrapper, Title, ContactForm } from '../components';
 
 const ContactContainer = () => (

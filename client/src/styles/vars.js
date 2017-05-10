@@ -13,7 +13,6 @@ export const defaultPrimaryBgColor = '#cc80b3';
 export const defaultPrimaryColor = '#fff';
 
 
-
 export const slideInAnimation = keyframes`
   0% {
     transform: translateX(-10%);

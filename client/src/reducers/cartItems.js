@@ -11,11 +11,11 @@ import {
 import apiActions from './apiActions';
 
 const initialState = [
-  {id: 1, description: 'some description', quantity: 10, price: 10},
-  {id: 2, description: 'some description', quantity: 10, price: 10},
-  {id: 3, description: 'some description', quantity: 10, price: 10},
-  {id: 4, description: 'some description', quantity: 10, price: 10},
-  {id: 5, description: 'some description', quantity: 10, price: 10},
+  { id: 1, description: 'some description', quantity: 10, price: 10 },
+  { id: 2, description: 'some description', quantity: 10, price: 10 },
+  { id: 3, description: 'some description', quantity: 10, price: 10 },
+  { id: 4, description: 'some description', quantity: 10, price: 10 },
+  { id: 5, description: 'some description', quantity: 10, price: 10 },
 ];
 
 const cartItems = (state: CartListType = initialState, action: Object) => {

@@ -26,7 +26,7 @@ export const addItem = (item: Object): Function =>
         type: ADD_CART_ITEM,
         item: {
           ...item,
-          id
+          id,
         },
       });
     } catch (error) {

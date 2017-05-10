@@ -39,7 +39,7 @@ class Routes extends Component {
           <Route path="/cart" component={CartContainer} />
           <Route path="/shop-buttons" component={ButtonsContainer} />
           <Route path="/custom-orders" component={CustomOrdersContainer} />
-          <Route  path="/contact" component={ContactContainer} />
+          <Route path="/contact" component={ContactContainer} />
         </div>
       </Router>
     );

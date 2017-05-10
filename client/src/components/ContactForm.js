@@ -66,11 +66,11 @@ const ContactFormComponent = (
   };
 
   const onChange = evt => {
-    if(evt.target.type === 'email') {
+    if (evt.target.type === 'email') {
       email = evt.target.value;
     }
-    if (evt.target.type  === 'textarea') {
-      console.log(evt.target.value)
+    if (evt.target.type === 'textarea') {
+      console.log(evt.target.value);
       message = evt.target.value;
     }
   };
@@ -96,8 +96,7 @@ const ContactFormComponent = (
         required="required"
         onChange={onChange}
         placeholder="Write your message here"
-      >
-      </textarea>
+       />
       </div>
       <Button onClick={submitForm}>
        Send

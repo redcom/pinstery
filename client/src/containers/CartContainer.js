@@ -4,7 +4,7 @@ import type { State, CartListType } from '../store/CommonStoreTypes';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Wrapper, CartItem, CartList, Title } from '../components';
-import { ErrorContainer, } from '../containers';
+import { ErrorContainer } from '../containers';
 import { deleteItem } from '../actions/CartActions';
 
 const CartContainer = (
@@ -31,4 +31,4 @@ const CartContainer = (
   );
 };
 
-export default connect((state: State) => ({ cartItems: state.cartItems }))( CartContainer);
+export default connect((state: State) => ({ cartItems: state.cartItems }))(CartContainer);
