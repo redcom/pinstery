@@ -2,13 +2,9 @@
 import type { CartListType } from '../store/CommonStoreTypes';
 
 import {
-	ADD_CART_ITEM,
+  ADD_CART_ITEM,
   REMOVE_CART_ITEM,
-  GET_INITIAL_STATE,
-  HIDRATE_INITIAL_STATE,
 } from '../constants/ActionTypes';
-
-import apiActions from './apiActions';
 
 const initialState = [
   { id: 1, description: 'some description', quantity: 10, price: 10 },
@@ -24,10 +20,6 @@ const cartItems = (state: CartListType = initialState, action: Object) => {
       return [action.item, ...state];
     case REMOVE_CART_ITEM:
       return state.filter(item => item.id !== action.id);
-    case GET_INITIAL_STATE:
-      return apiActions(state, action);
-    case HIDRATE_INITIAL_STATE:
-      return [...state, ...action.cartItems];
     default:
       return state;
   }

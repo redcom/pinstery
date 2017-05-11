@@ -70,7 +70,6 @@ const ContactFormComponent = (
       email = evt.target.value;
     }
     if (evt.target.type === 'textarea') {
-      console.log(evt.target.value);
       message = evt.target.value;
     }
   };

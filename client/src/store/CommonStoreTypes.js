@@ -10,7 +10,7 @@ export type Link = {
 export type CartItemType = {
   id: number,
   description: string,
-  quantity: string,
+  quantity: number,
   price: number
 };
 

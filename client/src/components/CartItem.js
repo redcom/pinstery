@@ -13,8 +13,7 @@ const CartItemLine = styled.div`
   &:nth-child(2n+0) {
     background: #f0f0f0;
   }
-}
-`;
+}`;
 
 const ItemId = styled.div`
   flex-grow: 1;
@@ -23,12 +22,16 @@ const ItemDescription = styled.div`
   flex-grow: 3;
   min-width:300px;
 `;
+const ItemImage = styled.div`
+  flex-grow: 2;
+  max-width:100px;
+`;
 const ItemQuantity = styled.div`
-  flex-grow: 3;
+  flex-grow: 1;
   min-width: 50;
 `;
 const ItemPrice = styled.div`
-  flex-grow: 3;
+  flex-grow: 1;
   min-width: 50;
 `;
 
@@ -49,6 +52,7 @@ const CartItem = (
 ) => (
   <CartItemLine>
     <ItemId>{id}</ItemId>
+    <ItemImage><img src={`../assets/${id}.png`} alt={`img-${id}`} /></ItemImage>
     <ItemDescription>{description}</ItemDescription>
     <ItemQuantity>{quantity}</ItemQuantity>
     <ItemPrice>{price}</ItemPrice>
