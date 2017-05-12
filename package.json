@@ -11,6 +11,7 @@
     "client:eject": "cd client && react-scripts eject",
     "lint": "eslint --fix 'client/src/**/*.js' 'server/**/*.js'",
     "precommit": "yarn run lint; yarn run prettier;",
+    "precomit": "yarn run lint; yarn run prettier;",
     "prettier": "prettier --bracket-spacing --single-quote --tab-width 2 --trailing-comma all --parser babylon --print-width 80  --write \"{{client/src,server,webpack},__{tests,mocks}__}/**/*.js\"",
     "server:watch": "NODE_ENV=dev PORT=8888 nodemon --exec babel-node -- ./server/",
     "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/"
