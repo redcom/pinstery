@@ -15,6 +15,9 @@
     "server:watch": "NODE_ENV=dev PORT=8888 nodemon --exec babel-node -- ./server/",
     "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/"
   },
+  "engines": {
+    "node": "7.2.1"
+  },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
