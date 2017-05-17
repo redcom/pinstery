@@ -1,12 +1,8 @@
 export { default as Button } from './Button';
 export { default as Errors } from './Errors';
 export { default as Header } from './Header';
-export { default as LinkItem } from './LinkItem';
-export { default as LinksList } from './LinksList';
 export { default as CartItem } from './CartItem';
 export { default as CartList } from './CartList';
 export { default as NavBar } from './NavBar';
-export { default as ShortUrl } from './ShortUrl';
-export { default as ContactForm } from './ContactForm';
 export { default as Title } from './Title';
 export { default as Wrapper } from './Wrapper';

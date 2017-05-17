@@ -2,12 +2,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  CustomOrdersContainer,
-  ContactContainer,
-  ButtonsContainer,
-  WelcomeContainer,
-  SigninContainer,
+  AboutContainer,
   CartContainer,
+  JournalContainer,
+  MoreContainer,
 } from '../containers';
 
 import { Header, NavBar } from '../components';
@@ -34,12 +32,11 @@ class Routes extends Component {
         <div className="app-container">
           <Header />
           <NavBar />
-          <Route exact path="/" component={WelcomeContainer} />
-          <Route path="/signin" component={SigninContainer} />
+          <Route exact path="/" component={CartContainer} />
           <Route path="/cart" component={CartContainer} />
-          <Route path="/shop-buttons" component={ButtonsContainer} />
-          <Route path="/custom-orders" component={CustomOrdersContainer} />
-          <Route path="/contact" component={ContactContainer} />
+          <Route path="/journal" component={JournalContainer} />
+          <Route path="/about" component={AboutContainer} />
+          <Route path="/more" component={MoreContainer} />
         </div>
       </Router>
     );

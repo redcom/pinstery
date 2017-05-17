@@ -1,15 +1,15 @@
 import React from 'react';
-// import logo from '../assets/logo.svg';
-import Icons from '../styles/icons';
 import { Link } from 'react-router-dom';
+const Logo = require('../../public/assets/vimcar-logo.svg');
+const Cart = require('../../public/assets/cart.svg');
 
 const Header = () => (
   <header>
     <Link to={'/'}>
-      <img src={Icons.logo} alt="Pinstery Logo" width="100%" />
+      <img src={Logo} alt="Logo" />
     </Link>
-    <Link to={'/signin'} className="headerTopRight">
-      Sign in
+    <Link to={'/cart'} className="headerTopRight">
+      <img src={Cart}  alt="cart" />
     </Link>
   </header>
 );
