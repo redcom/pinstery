@@ -40,17 +40,4 @@ injectGlobal`
   .intro {
     font-size: large;
   }
-  .navBar {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 0;
-    border: 1px solid;
-    border-radius: 20px;
-  }
-  .navBar a {
-    text-decoration: none;
-  }
-  .navBar a.active {
-    text-decoration: underline;
-  }
 `;

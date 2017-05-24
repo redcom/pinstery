@@ -3,7 +3,7 @@ import type { State, CartListType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Wrapper, CartItem, CartList, Title } from '../components';
+import { Wrapper, CartItem, CartList } from '../components';
 import { ErrorContainer } from '../containers';
 import { deleteItem } from '../actions/CartActions';
 
@@ -20,7 +20,6 @@ const CartContainer = (
 
   return (
     <Wrapper>
-      <Title>List of cart items</Title>
       <CartList>
         {cartItems.map(item => (
           <CartItem key={item.id} onDelete={onDelete(item.id)} {...item} />

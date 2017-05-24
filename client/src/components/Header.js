@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 const Logo = require('../../public/assets/vimcar-logo.svg');
 const Cart = require('../../public/assets/cart.svg');
 
@@ -9,7 +10,7 @@ const Header = () => (
       <img src={Logo} alt="Logo" />
     </Link>
     <Link to={'/cart'} className="headerTopRight">
-      <img src={Cart}  alt="cart" />
+      <img src={Cart} alt="cart" />
     </Link>
   </header>
 );

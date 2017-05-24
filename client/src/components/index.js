@@ -5,4 +5,5 @@ export { default as CartItem } from './CartItem';
 export { default as CartList } from './CartList';
 export { default as NavBar } from './NavBar';
 export { default as Title } from './Title';
+export { default as Image } from './Image';
 export { default as Wrapper } from './Wrapper';

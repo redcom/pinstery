@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import {
   defaultFontSize,
-  defaultPrimaryBgColor,
   defaultPrimaryColor,
   defaultLineHeight,
 } from '../styles/vars';
 
 const Button = styled.button`
   font-size: ${defaultFontSize};
-  border: none;
-  background: ${defaultPrimaryBgColor};
+  border: 2px solid ${defaultPrimaryColor};
+  background: transparent;
+  width: 80%;
   color: ${defaultPrimaryColor};
-  align-self: flex-end;
+  align-self: ${props => props.alignSelf || 'flex-end'};
   border-radius: 0.3em;
   line-height: ${defaultLineHeight};
 `;

@@ -5,62 +5,72 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { defaultSpaceInBetween } from '../styles/vars';
-import { Button } from '../components';
+import { Button, Image } from '../components';
 
-const CartItemLine = styled.div`
+const ShopItemBox = styled.div`
+  height: 305px;
   display: flex;
-  padding: ${defaultSpaceInBetween};
-  &:nth-child(2n+0) {
-    background: #f0f0f0;
-  }
+  flex-direction: column;
+  align-items: center;
+  margin: ${defaultSpaceInBetween};
+  padding: 0 30px;
 }`;
 
-const ItemId = styled.div`
-  flex-grow: 1;
+const Description = styled.div`
+  padding: 0 30px;
+  overflow: hiddden;
 `;
-const ItemDescription = styled.div`
-  flex-grow: 3;
-  min-width:300px;
-`;
-const ItemImage = styled.div`
-  flex-grow: 2;
-  max-width:100px;
-`;
-const ItemQuantity = styled.div`
-  flex-grow: 1;
-  min-width: 50;
-`;
-const ItemPrice = styled.div`
-  flex-grow: 1;
-  min-width: 50;
+
+const Price = styled.div`
+  margin-top: 1.2em;
+  color: #84b3eb;
+  font-size: 1.2em;
+  &${':after'} { content: '€'; }
 `;
 
 const ItemActions = styled.div`
-  flex-grow: 2;
 `;
 
-type ExtendedCartItem = CartItemType & {onDelete: Function}
+const AddToCartBox = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  &${'> button'} { display: none; }
+  &${':hover'} {
+    background: rgba(250, 250, 250, 0.9);
+    &${'> button'} { display: block; }
+ }
+`;
 
-const CartItem = (
+type ExtendedShopItem = CartItemType & {onDelete: Function}
+
+const ShopItem = (
   {
     id = 0,
     description = '',
-    quantity = 0,
     price = 0,
     onDelete,
-  }: ExtendedCartItem,
+    image = '',
+  }: ExtendedShopItem,
 ) => (
-  <CartItemLine>
-    <ItemId>{id}</ItemId>
-    <ItemImage><img src={`../assets/${id}.png`} alt={`img-${id}`} /></ItemImage>
-    <ItemDescription>{description}</ItemDescription>
-    <ItemQuantity>{quantity}</ItemQuantity>
-    <ItemPrice>{price}</ItemPrice>
+  <ShopItemBox>
+    <Image image={`../assets/items/${image}`}>
+      <AddToCartBox>
+        <Button alignSelf="center">Add to cart</Button>
+      </AddToCartBox>
+    </Image>
 
+    <Description>{description}</Description>
+
+    <Price>{price}</Price>
+
+      {false &&
     <ItemActions>
       <Button onClick={onDelete}>Delete</Button>
     </ItemActions>
-  </CartItemLine>
+      }
+  </ShopItemBox>
 );
 
-export default CartItem;
+export default ShopItem;

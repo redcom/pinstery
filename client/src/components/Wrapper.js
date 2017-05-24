@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
 import {
-  defaultSectionPadding,
-  defaultSpaceInBetween,
+  defaultSectionMargins,
   defaultSectionBackgroundColor,
 } from '../styles/vars';
 
-// Create a <Wrapper> react component that renders a <section> with a specific backfeound-color
+// Create a <Wrapper> react component that renders a <section> with a specific background-color
 const Wrapper = styled.section`
-  margin: ${defaultSpaceInBetween};
-  padding: ${defaultSectionPadding};
+  margin: ${defaultSectionMargins};
   background: ${defaultSectionBackgroundColor};
 `;
 
