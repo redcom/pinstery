@@ -12,7 +12,7 @@ export type ShopItemType = {
 
 export type CartItemType = {
   id: number,
- quantity: number,
+  quantity: number,
 };
 
 export type ShopListType = Array<ShopItemType>;

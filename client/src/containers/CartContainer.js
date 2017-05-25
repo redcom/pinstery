@@ -1,6 +1,6 @@
 // @flow
 
-import type { State, ShopListType } from '../store/CommonStoreTypes';
+import type { State, ShopListType, CartListType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -10,16 +10,25 @@ import { removeFromCart } from '../actions/CartActions';
 const CartContainer = (
   {
     cartItems = [],
+    shopItems = [],
     dispatch,
   }: {
-    cartItems: ShopListType,
+    cartItems: CartListType,
+    shopItems: ShopListType,
     dispatch: Function,
   },
 ) => {
   const onRemoveFromCart = id => () => { dispatch(removeFromCart(id)); };
 
   return (
-    <CartContent cartItems={cartItems} onRemoveFromCart={onRemoveFromCart} />
+    <CartContent
+      cartItems={cartItems}
+      shopItems={shopItems}
+      onRemoveFromCart={onRemoveFromCart}
+    />
   );
 };
-export default connect((state: State) => ({ cartItems: state.cartItems }))(CartContainer);
+export default connect((state: State) => ({
+  cartItems: state.cartItems,
+  shopItems: state.shopItems,
+}))(CartContainer);

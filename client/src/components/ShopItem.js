@@ -4,8 +4,8 @@ import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
 
 import styled from 'styled-components';
-import { defaultSpaceInBetween } from '../styles/vars';
-import { Button, Image } from '../components';
+import { defaultSpaceInBetween, smallFontSize } from '../styles/vars';
+import { Button, Image, Price } from '../components';
 
 const ShopItemBox = styled.div`
   height: 305px;
@@ -14,26 +14,21 @@ const ShopItemBox = styled.div`
   align-items: center;
   margin: ${defaultSpaceInBetween};
   padding: 0 30px;
+  min-width: 10em;
+  font-size: ${smallFontSize};
 }`;
 
 const Description = styled.div`
-  padding: 0 30px;
-  overflow: hiddden;
+  margin: 0;
 `;
 
-const Price = styled.div`
-  margin-top: 1.2em;
-  color: #84b3eb;
-  font-size: 1.2em;
-  &${':after'} { content: '€'; }
-`;
 
 const AddToCartBox = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
-  &${'> button'} { display: none; }
+  &${'> button'} { display: none; },
   &${':hover'} {
     background: rgba(250, 250, 250, 0.9);
     &${'> button'} { display: block; }
@@ -42,6 +37,15 @@ const AddToCartBox = styled.div`
 
 type ExtendedShopItem = ShopItemType & {onAddToCart: Function}
 
+const renderPriceInformation = (price, discount) => {
+  if (discount > 0) {
+    return [
+      <Price regular>{price}</Price>,
+      <Price discount>{discount}</Price>,
+    ];
+  }
+    return <Price>{price}</Price>;
+};
 const ShopItem = (
   {
     id = 0,
@@ -49,6 +53,8 @@ const ShopItem = (
     price = 0,
     onAddToCart,
     image = '',
+    isNew,
+    discount = 0,
   }: ExtendedShopItem,
 ) => (
   <ShopItemBox>
@@ -58,7 +64,8 @@ const ShopItem = (
       </AddToCartBox>
     </Image>
     <Description>{description} item#{id}</Description>
-    <Price>{price}</Price>
+    {renderPriceInformation(price, discount)}
+
   </ShopItemBox>
 );
 

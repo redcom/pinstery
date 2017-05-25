@@ -24,8 +24,10 @@ export const addToCart = (item: ShopItemType): Function =>
       const { id, quantity } = await apiAddCartItem(item)();
       return dispatch({
         type: ADD_CART_ITEM,
-        id,
-        quantity,
+        item: {
+          id,
+          quantity,
+        },
       });
     } catch (error) {
       return dispatch(addCartItemFailed(error));

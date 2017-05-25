@@ -6,10 +6,10 @@ import {
 } from '../styles/vars';
 
 const Button = styled.button`
-  font-size: ${defaultFontSize};
-  border: 2px solid ${defaultPrimaryColor};
+  font-size: ${props => props.fontSize || defaultFontSize};
+  border: ${props => props.border || `2px solid ${defaultPrimaryColor}`};
   background: transparent;
-  width: 80%;
+  width: ${props => props.width || '80%'};
   color: ${defaultPrimaryColor};
   align-self: ${props => props.alignSelf || 'flex-end'};
   border-radius: 0.3em;

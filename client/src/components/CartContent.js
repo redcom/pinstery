@@ -1,15 +1,16 @@
 // @flow
 
-import type { CartListType } from '../store/CommonStoreTypes';
-import React from 'react';
+import type { CartListType, ShopListType } from '../store/CommonStoreTypes';
 
+import React from 'react';
+import { CartList } from '../components';
+
+import styled from 'styled-components';
 import {
   defaultPrimaryBgColor,
   defaultPrimaryColor,
   smallFontSize,
 } from '../styles/vars';
-import styled from 'styled-components';
-// import { Button, Image } from '../components';
 
 
 // $FlowFixMe define a module for this required
@@ -35,18 +36,33 @@ const CartCounter = styled.div`
   font-size: ${smallFontSize};
 `;
 
-type ExtendedCartListType = { onRemoveFromCart: Function, cartItems: CartListType }
+type ExtendedCartListType = {
+  onRemoveFromCart: Function,
+  cartItems: CartListType,
+  shopItems: ShopListType,
+}
 
 const Cart = (
   {
     cartItems = [],
+    shopItems = [],
     onRemoveFromCart,
   }: ExtendedCartListType,
-) => (
+) => {
+  const cartList = cartItems.map(cartItem => {
+    const shopItem = shopItems.find(shopItem => shopItem.id === cartItem.id);
+    return shopItem && { ...shopItem, ...cartItem };
+  });
+
+  return (
     <CartContent>
       <img src={CartImage} alt="cart" />
-    {cartItems.length > 0 && <CartCounter>{cartItems.length}</CartCounter>}
+      {cartItems.length > 0 && [
+        <CartCounter>{cartItems.length}</CartCounter>,
+        <CartList cartList={cartList} onRemove={onRemoveFromCart} />,
+      ]}
     </CartContent>
-);
+  );
+};
 
 export default Cart;

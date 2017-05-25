@@ -25,13 +25,6 @@ injectGlobal`
     padding: 20px;
   }
 
-  header {
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-  }
   .intro {
     font-size: large;
   }

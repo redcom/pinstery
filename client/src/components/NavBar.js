@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Navigation = styled.div`
     display: flex;
     justify-content: space-around;
-    padding: 20px 0;
+    padding: 20px 20em;
 `;
 
 const NavLinkStyled = styled(NavLink)`
