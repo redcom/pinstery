@@ -1,6 +1,6 @@
 // @flow
 
-import type { ErrorsType } from '../store/CommonStoreTypes';
+import type { ErrorsType, ShopItemType } from '../store/CommonStoreTypes';
 import { apiAddCartItem, apiRemoveCartItem } from '../helpers/api';
 import {
   ADD_CART_ITEM,
@@ -18,23 +18,21 @@ export const removeItemFailed = (error: ErrorsType): Object => ({
   error,
 });
 
-export const addItem = (item: Object): Function =>
+export const addToCart = (item: ShopItemType): Function =>
   async dispatch => {
     try {
-      const { id } = await apiAddCartItem(item)();
+      const { id, quantity } = await apiAddCartItem(item)();
       return dispatch({
         type: ADD_CART_ITEM,
-        item: {
-          ...item,
-          id,
-        },
+        id,
+        quantity,
       });
     } catch (error) {
       return dispatch(addCartItemFailed(error));
     }
   };
 
-export const deleteItem = (id: number): Function =>
+export const removeFromCart = (id: number): Function =>
   async dispatch => {
     if (!id) {
       dispatch(removeItemFailed(new Error('Item can not be removed')));

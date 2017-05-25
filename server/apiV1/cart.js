@@ -3,11 +3,21 @@ export const addCart = (req, res) => {
 
   const item = {
     ...req.body,
-    id: storage.getNextId(),
+    quantity: 1,
   };
+  const existingItem = storage.findById(req.body.id);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    storage.put(item);
+  }
 
-  storage.put(item);
-  res.json(storage.get(0));
+  res.json({
+    id: item.id,
+    quantity: existingItem
+      ? existingItem.quantity
+      : item.quantity,
+  });
 };
 
 export const deleteCart = (req, res) => {

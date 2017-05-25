@@ -1,6 +1,6 @@
 // @flow
 
-import type { CartItemType } from '../store/CommonStoreTypes';
+import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
 
 import styled from 'styled-components';
@@ -28,9 +28,6 @@ const Price = styled.div`
   &${':after'} { content: '€'; }
 `;
 
-const ItemActions = styled.div`
-`;
-
 const AddToCartBox = styled.div`
   display: flex;
   flex: 1;
@@ -43,33 +40,25 @@ const AddToCartBox = styled.div`
  }
 `;
 
-type ExtendedShopItem = CartItemType & {onDelete: Function}
+type ExtendedShopItem = ShopItemType & {onAddToCart: Function}
 
 const ShopItem = (
   {
     id = 0,
     description = '',
     price = 0,
-    onDelete,
+    onAddToCart,
     image = '',
   }: ExtendedShopItem,
 ) => (
   <ShopItemBox>
     <Image image={`../assets/items/${image}`}>
       <AddToCartBox>
-        <Button alignSelf="center">Add to cart</Button>
+        <Button alignSelf="center" onClick={onAddToCart}>Add to cart</Button>
       </AddToCartBox>
     </Image>
-
-    <Description>{description}</Description>
-
+    <Description>{description} item#{id}</Description>
     <Price>{price}</Price>
-
-      {false &&
-    <ItemActions>
-      <Button onClick={onDelete}>Delete</Button>
-    </ItemActions>
-      }
   </ShopItemBox>
 );
 

@@ -1,33 +1,33 @@
 // @flow
-import type { State, CartListType } from '../store/CommonStoreTypes';
+import type { State, ShopListType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Wrapper, CartItem, CartList } from '../components';
+import { Wrapper, ShopItem, ShopList } from '../components';
 import { ErrorContainer } from '../containers';
-import { deleteItem } from '../actions/CartActions';
+import { addToCart } from '../actions/CartActions';
 
-const CartContainer = (
+const ShopContainer = (
   {
-    cartItems = [],
+    shopItems = [],
     dispatch,
   }: {
-    cartItems: CartListType,
+    shopItems: ShopListType,
     dispatch: Function,
   },
 ) => {
-  const onDelete = id => () => { dispatch(deleteItem(id)); };
+  const onAddToCart = item => () => { dispatch(addToCart(item)); };
 
   return (
     <Wrapper>
-      <CartList>
-        {cartItems.map(item => (
-          <CartItem key={item.id} onDelete={onDelete(item.id)} {...item} />
+      <ShopList>
+        {shopItems.map(item => (
+          <ShopItem key={item.id} onAddToCart={onAddToCart(item)} {...item} />
         ))}
-      </CartList>
+      </ShopList>
       <ErrorContainer />
     </Wrapper>
   );
 };
 
-export default connect((state: State) => ({ cartItems: state.cartItems }))(CartContainer);
+export default connect((state: State) => ({ shopItems: state.shopItems }))(ShopContainer);

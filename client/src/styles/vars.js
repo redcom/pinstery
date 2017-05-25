@@ -21,6 +21,7 @@ export const boxShadow = '0px 0px 30px 10px #eeeff0';
 
 // Font style
 export const headerFontSize = '18px';
+export const smallFontSize = '13px';
 
 
 export const slideInAnimation = keyframes`

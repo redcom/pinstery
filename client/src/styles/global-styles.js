@@ -32,11 +32,6 @@ injectGlobal`
     justify-content: center;
     align-content: center;
   }
-  .headerTopRight{
-    position: absolute;
-    right: 1em;
-    top: 1em;
-  }
   .intro {
     font-size: large;
   }
