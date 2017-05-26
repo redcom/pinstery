@@ -4,8 +4,14 @@ import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
 
 import styled from 'styled-components';
-import { defaultSpaceInBetween, smallFontSize } from '../styles/vars';
 import { Button, Image, Price, PriceRegular, PriceDiscounted } from '../components';
+import {
+  defaultSpaceInBetween,
+  smallFontSize,
+  defaultAlertBgColor,
+  defaultBtnBorderColor,
+  white,
+} from '../styles/vars';
 
 
 const ShopItemBox = styled.div`
@@ -17,8 +23,8 @@ const ShopItemBox = styled.div`
 }`;
 
 const Description = styled.div`
-  font-size: ${smallFontSize};
   padding: 0 30px;
+  font-size: ${smallFontSize};
 `;
 
 
@@ -40,10 +46,20 @@ const PriceAndDiscountBox = styled.div`
   &>div+div { margin-left: 0.5em; }
 `;
 
+const SpecialItem = styled.div`
+  background-color: ${defaultAlertBgColor};
+  padding: 0.5em;
+  color: ${white};
+  margin: 0.5em 1em;
+  height: 1em;
+  border: 1px solid ${defaultBtnBorderColor};
+  text-transform: uppercase;
+  line-height: 1;
+  border-radius: 5px;
+  font-size: ${smallFontSize};
+`;
 
-type ExtendedShopItem = ShopItemType & {onAddToCart: Function}
-
-const renderPriceInformation = (price, discount) => {
+const renderPriceInformation = ({ price, discount }) => {
   if (discount > 0) {
     return (
       <PriceAndDiscountBox>
@@ -54,6 +70,19 @@ const renderPriceInformation = (price, discount) => {
   }
   return <Price>{price}</Price>;
 };
+
+const renderSpecialItem = ({ isNew, discount }) => {
+  if (isNew) {
+    return <SpecialItem>New</SpecialItem>;
+  }
+  if (discount) {
+    return <SpecialItem>Sale</SpecialItem>;
+  }
+  return null;
+};
+
+type ExtendedShopItem = ShopItemType & {onAddToCart: Function}
+
 const ShopItem = (
   {
     id = 0,
@@ -67,12 +96,13 @@ const ShopItem = (
 ) => (
   <ShopItemBox>
     <Image image={`../assets/items/${image}`}>
+      {renderSpecialItem({ isNew, discount })}
       <AddToCartBox>
         <Button alignSelf="center" onClick={onAddToCart}>Add to cart</Button>
       </AddToCartBox>
     </Image>
     <Description>{description} item#{id}</Description>
-    {renderPriceInformation(price, discount)}
+    {renderPriceInformation({ price, discount })}
 
   </ShopItemBox>
 );

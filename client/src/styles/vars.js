@@ -20,6 +20,7 @@ export const defaultPrimaryColor = black;
 export const defaultAlertBgColor = '#ff4259';
 export const defaultBorderColor = '#e6e6e6';
 export const defaultNavBorderColor = '#4a90e2';
+export const defaultBtnBorderColor = '#ff9ca7';
 
 export const boxShadow = '0px 0px 30px 10px #eeeff0';
 

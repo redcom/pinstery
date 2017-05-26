@@ -71,7 +71,7 @@ const renderCartItem = onRemove => item => (
     <ListItem key={`item-${item.id}`}>
       <Left>
         <img src={`../assets/items/${item.image}`} alt="" />
-        {item.discount > 0
+        {item.discount && item.discount > 0
           ? <PriceRegular marginTop="0.4em" marginBottom="0">{item.price}</PriceRegular>
           : <Price marginTop="0.4em"> {item.price} </Price>
           }
@@ -79,7 +79,7 @@ const renderCartItem = onRemove => item => (
       <Right>
           <Description>{item.description}</Description>
           <ExtraInfo>
-            {item.discount > 0 &&
+            {item.discount && item.discount > 0 &&
               <PriceDiscounted marginTop="0.4em" marginBottom="0"> {item.discount} </PriceDiscounted>
             }
             <Button
@@ -94,7 +94,7 @@ const renderCartItem = onRemove => item => (
     </ListItem>
   );
 
-type FullCartItemInfo = ShopItemType & CartItemType;
+type FullCartItemInfo = CartItemType & ShopItemType;
 type CartListType = {
   cartList: Array<FullCartItemInfo>,
   onRemove: Function
