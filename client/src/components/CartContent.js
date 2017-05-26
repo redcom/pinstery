@@ -58,8 +58,8 @@ const Cart = (
     <CartContent>
       <img src={CartImage} alt="cart" />
       {cartItems.length > 0 && [
-        <CartCounter>{cartItems.length}</CartCounter>,
-        <CartList cartList={cartList} onRemove={onRemoveFromCart} />,
+        <CartCounter key="cartCounter">{cartItems.length}</CartCounter>,
+        <CartList key="cartList" cartList={cartList} onRemove={onRemoveFromCart} />,
       ]}
     </CartContent>
   );

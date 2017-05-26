@@ -2,7 +2,7 @@
 import type { CartItemType, ShopItemType } from '../store/CommonStoreTypes';
 
 import React from 'react';
-import { Button, Price } from '../components';
+import { Button, Price, PriceRegular, PriceDiscounted } from '../components';
 import styled from 'styled-components';
 import {
   boxShadow,
@@ -37,18 +37,19 @@ const List = styled.ul`
   padding: 0;
   background: ${defaultPrimaryBgColor};
 `;
+
 const ListItem = styled.li`
   margin: ${defaultSpaceBetweenElements};
   padding: 1em 0;
   display: flex;
   border-bottom: 1px solid ${defaultBorderColor};
-  &${':first-of-type'} { margin-top: -1em; },
-  &${':last-of-type'} { border-bottom: none; },
+  &:first-of-type { margin-top: -1em; }
+  &:last-of-type { border-bottom: none; }
 `;
 
 const Left = styled.div`
   flex: 1;
-  &${'>img'} {width: 70% };
+  &>img { width: 70%; }
 `;
 
 const Right = styled.div`
@@ -62,25 +63,25 @@ const Description = styled.div`
 
 const ExtraInfo = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 `;
 
 const renderCartItem = onRemove => item => (
-    <ListItem key={item.id}>
+    <ListItem key={`item-${item.id}`}>
       <Left>
         <img src={`../assets/items/${item.image}`} alt="" />
-        <Price
-          marginTop="0.4em"
-        >
-          {item.price}
-        </Price>
+        {item.discount > 0
+          ? <PriceRegular marginTop="0.4em" marginBottom="0">{item.price}</PriceRegular>
+          : <Price marginTop="0.4em"> {item.price} </Price>
+          }
       </Left>
       <Right>
           <Description>{item.description}</Description>
           <ExtraInfo>
-            <Price marginTop="0.4em" >
-              {item.price}
-            </Price>
+            {item.discount > 0 &&
+              <PriceDiscounted marginTop="0.4em" marginBottom="0"> {item.discount} </PriceDiscounted>
+            }
             <Button
               fontSize={smallFontSize}
               width="auto"

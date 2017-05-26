@@ -9,4 +9,4 @@ export { default as Image } from './Image';
 export { default as Wrapper } from './Wrapper';
 export { default as CartContent } from './CartContent';
 export { default as CartList } from './CartList';
-export { default as Price } from './Price';
+export { Price, PriceRegular, PriceDiscounted } from './Price';
