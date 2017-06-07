@@ -26,7 +26,7 @@ export const apiRemoveCartItem = ({ id }) =>
     }
   };
 
-export const apiAddCartItem = (item) =>
+export const apiAddCartItem = item =>
   async () => {
     const payload = {
       ...opts,
@@ -35,38 +35,6 @@ export const apiAddCartItem = (item) =>
     };
 
     const response = await fetch(`${API_URL}/cart`, payload);
-    const body = await response.json();
-
-    return body;
-  };
-
-export const apiRemoveUrl = ({ id }) =>
-  async () => {
-    const payload = {
-      ...opts,
-      method: 'DELETE',
-      body: JSON.stringify({ id }),
-    };
-
-    try {
-      const response = await fetch(`${API_URL}/links`, payload);
-      if (response.status !== 200) {
-        throw new Error('Can not delete url');
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-
-export const apiAddUrl = ({ url }) =>
-  async () => {
-    const payload = {
-      ...opts,
-      method: 'POST',
-      body: JSON.stringify({ url }),
-    };
-
-    const response = await fetch(`${API_URL}/links`, payload);
     const body = await response.json();
 
     return body;

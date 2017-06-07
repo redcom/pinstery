@@ -1,9 +1,6 @@
 // @flow
 import type { CartListType } from '../store/CommonStoreTypes';
-import {
-  ADD_CART_ITEM,
-  REMOVE_CART_ITEM,
-} from '../constants/ActionTypes';
+import { ADD_CART_ITEM, REMOVE_CART_ITEM } from '../constants/ActionTypes';
 
 const initialState = [];
 

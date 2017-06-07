@@ -1,6 +1,10 @@
 // @flow
 
-import type { State, ShopListType, CartListType } from '../store/CommonStoreTypes';
+import type {
+  State,
+  ShopListType,
+  CartListType,
+} from '../store/CommonStoreTypes';
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -18,7 +22,10 @@ const CartContainer = (
     dispatch: Function,
   },
 ) => {
-  const onRemoveFromCart = id => () => { dispatch(removeFromCart(id)); };
+  const onRemoveFromCart = id =>
+    () => {
+      dispatch(removeFromCart(id));
+    };
 
   return (
     <CartContent

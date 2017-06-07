@@ -1,0 +1,8 @@
+while true
+do
+clear
+echo "Flowtype check: "
+./node_modules/.bin/flow
+sleep 10
+done
+

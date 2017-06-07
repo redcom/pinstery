@@ -5,8 +5,8 @@ export type ShopItemType = {
   id: number,
   description: string,
   price: number,
-  discount?: number, /* percentage discount*/
-  isNew?: Boolean, /* item is new */
+  discount?: number /* percentage discount*/,
+  isNew?: Boolean /* item is new */,
   image: string,
 };
 

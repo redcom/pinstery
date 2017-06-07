@@ -4,7 +4,13 @@ import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
 
 import styled from 'styled-components';
-import { Button, Image, Price, PriceRegular, PriceDiscounted } from '../components';
+import {
+  Button,
+  Image,
+  Price,
+  PriceRegular,
+  PriceDiscounted,
+} from '../components';
 import {
   defaultSpaceInBetween,
   smallFontSize,
@@ -12,7 +18,6 @@ import {
   defaultBtnBorderColor,
   white,
 } from '../styles/vars';
-
 
 const ShopItemBox = styled.div`
   height: 305px;
@@ -26,7 +31,6 @@ const Description = styled.div`
   padding: 0 30px;
   font-size: ${smallFontSize};
 `;
-
 
 const AddToCartBox = styled.div`
   display: flex;
@@ -57,6 +61,7 @@ const SpecialItem = styled.div`
   line-height: 1;
   border-radius: 5px;
   font-size: ${smallFontSize};
+  position: absolute;
 `;
 
 const renderPriceInformation = ({ price, discount }) => {
@@ -81,7 +86,7 @@ const renderSpecialItem = ({ isNew, discount }) => {
   return null;
 };
 
-type ExtendedShopItem = ShopItemType & {onAddToCart: Function}
+type ExtendedShopItem = ShopItemType & { onAddToCart: Function };
 
 const ShopItem = (
   {

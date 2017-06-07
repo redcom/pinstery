@@ -1,6 +1,5 @@
 import cartItems from '../cartItems';
 
-
 import { ADD_CART_ITEM, REMOVE_CART_ITEM } from '../../constants/ActionTypes';
 
 describe('cartItems() -> reducer: ADD_CART_ITEM', () => {

@@ -29,7 +29,6 @@ export const defaultFontSize = '1.2em';
 export const headerFontSize = '18px';
 export const smallFontSize = '13px';
 
-
 export const slideInAnimation = keyframes`
   0% {
     transform: translateX(-10%);

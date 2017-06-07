@@ -14,9 +14,7 @@ export const addCart = (req, res) => {
 
   res.json({
     id: item.id,
-    quantity: existingItem
-      ? existingItem.quantity
-      : item.quantity,
+    quantity: existingItem ? existingItem.quantity : item.quantity,
   });
 };
 

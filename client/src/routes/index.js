@@ -33,12 +33,7 @@ class Routes extends Component {
         <div className="app-container">
           <Header />
           <NavBar />
-          <Route
-            exact path="/"
-            render={
-              () => <Redirect to="/shop" />
-            }
-          />
+          <Route exact path="/" render={() => <Redirect to="/shop" />} />
           <Route path="/shop" component={ShopContainer} />
           <Route path="/cart" component={CartContainer} />
           <Route path="/journal" component={JournalContainer} />

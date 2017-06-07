@@ -16,7 +16,10 @@ const ShopContainer = (
     dispatch: Function,
   },
 ) => {
-  const onAddToCart = item => () => { dispatch(addToCart(item)); };
+  const onAddToCart = item =>
+    () => {
+      dispatch(addToCart(item));
+    };
 
   return (
     <Wrapper>
@@ -30,4 +33,6 @@ const ShopContainer = (
   );
 };
 
-export default connect((state: State) => ({ shopItems: state.shopItems }))(ShopContainer);
+export default connect((state: State) => ({ shopItems: state.shopItems }))(
+  ShopContainer,
+);

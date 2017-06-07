@@ -12,10 +12,8 @@ import {
   smallFontSize,
 } from '../styles/vars';
 
-
 // $FlowFixMe define a module for this required
 const CartImage = require('../../public/assets/cart.svg');
-
 
 const CartContent = styled.div`
   position: absolute;
@@ -40,7 +38,7 @@ type ExtendedCartListType = {
   onRemoveFromCart: Function,
   cartItems: CartListType,
   shopItems: ShopListType,
-}
+};
 
 const Cart = (
   {
@@ -59,7 +57,11 @@ const Cart = (
       <img src={CartImage} alt="cart" />
       {cartItems.length > 0 && [
         <CartCounter key="cartCounter">{cartItems.length}</CartCounter>,
-        <CartList key="cartList" cartList={cartList} onRemove={onRemoveFromCart} />,
+        <CartList
+          key="cartList"
+          cartList={cartList}
+          onRemove={onRemoveFromCart}
+        />,
       ]}
     </CartContent>
   );

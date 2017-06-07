@@ -67,29 +67,33 @@ const ExtraInfo = styled.div`
   justify-content: space-between;
 `;
 
-const renderCartItem = onRemove => item => (
+const renderCartItem = onRemove =>
+  item => (
     <ListItem key={`item-${item.id}`}>
       <Left>
         <img src={`../assets/items/${item.image}`} alt="" />
         {item.discount && item.discount > 0
-          ? <PriceRegular marginTop="0.4em" marginBottom="0">{item.price}</PriceRegular>
-          : <Price marginTop="0.4em"> {item.price} </Price>
-          }
+          ? <PriceRegular marginTop="0.4em" marginBottom="0">
+              {item.price}
+            </PriceRegular>
+          : <Price marginTop="0.4em"> {item.price} </Price>}
       </Left>
       <Right>
-          <Description>{item.description}</Description>
-          <ExtraInfo>
-            {item.discount && item.discount > 0 &&
-              <PriceDiscounted marginTop="0.4em" marginBottom="0"> {item.discount} </PriceDiscounted>
-            }
-            <Button
-              fontSize={smallFontSize}
-              width="auto"
-              onClick={onRemove(item.id)}
-            >
-              Remove
-            </Button>
-          </ExtraInfo>
+        <Description>{item.description}</Description>
+        <ExtraInfo>
+          {item.discount &&
+            item.discount > 0 &&
+            <PriceDiscounted marginTop="0.4em" marginBottom="0">
+              {' '}{item.discount}{' '}
+            </PriceDiscounted>}
+          <Button
+            fontSize={smallFontSize}
+            width="auto"
+            onClick={onRemove(item.id)}
+          >
+            Remove
+          </Button>
+        </ExtraInfo>
       </Right>
     </ListItem>
   );
@@ -97,7 +101,7 @@ const renderCartItem = onRemove => item => (
 type FullCartItemInfo = CartItemType & ShopItemType;
 type CartListType = {
   cartList: Array<FullCartItemInfo>,
-  onRemove: Function
+  onRemove: Function,
 };
 
 const CartList = (
@@ -109,7 +113,7 @@ const CartList = (
   <CartItems>
     <ArrowUp />
     <List>
-      { cartList.map(renderCartItem(onRemove)) }
+      {cartList.map(renderCartItem(onRemove))}
     </List>
   </CartItems>
 );

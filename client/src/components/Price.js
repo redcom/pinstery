@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import {
-  smallFontSize,
-} from '../styles/vars';
+import { smallFontSize } from '../styles/vars';
 
 export const Price = styled.div`
   margin-top: ${props => props.marginTop || '1em'};
