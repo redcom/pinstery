@@ -1,15 +1,15 @@
 // @flow
 import type { ErrorsType } from '../store/CommonStoreTypes';
 
-import { ADD_URL_FAILED, REMOVE_URL_FAILED } from '../constants/ActionTypes';
+import { ADD_CART_ITEM_FAILED, REMOVE_CART_ITEM_FAILED } from '../constants/ActionTypes';
 
 const initialState = {};
 
 const links = (state: ErrorsType = initialState, action: Object) => {
   switch (action.type) {
-    case ADD_URL_FAILED:
+    case ADD_CART_ITEM_FAILED:
       return { error: action.error };
-    case REMOVE_URL_FAILED:
+    case REMOVE_CART_ITEM_FAILED:
       return { error: action.error };
     default:
       return state;

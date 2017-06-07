@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartContainer } from '../containers';
 
-const Logo = require('../../public/assets/vimcar-logo.svg');
 
 const HeaderBox = styled.header`
     height: 3em;
@@ -17,7 +16,7 @@ const HeaderBox = styled.header`
 const Header = () => (
   <HeaderBox>
     <Link to={'/'}>
-      <img src={Logo} alt="Logo" />
+      <img src={'../assets/pinstery.svg'} alt="Logo" />
     </Link>
     <CartContainer />
   </HeaderBox>
