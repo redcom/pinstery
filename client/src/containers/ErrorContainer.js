@@ -5,11 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Errors } from '../components';
 
-const ErrorContainer = (
-  {
-    error,
-  }: ErrorsType,
-) => {
+const ErrorContainer = ({ error }: ErrorsType) => {
   if (!error.error) return null;
   return (
     <Errors>

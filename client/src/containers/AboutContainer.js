@@ -1,10 +1,9 @@
 import React from 'react';
 import { Wrapper } from '../components';
 
-const Container = () => (
+const Container = () =>
   <Wrapper>
     About Container
-  </Wrapper>
-);
+  </Wrapper>;
 
 export default Container;

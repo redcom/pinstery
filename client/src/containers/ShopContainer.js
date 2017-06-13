@@ -7,26 +7,23 @@ import { Wrapper, ShopItem, ShopList } from '../components';
 import { ErrorContainer } from '../containers';
 import { addToCart } from '../actions/CartActions';
 
-const ShopContainer = (
-  {
-    shopItems = [],
-    dispatch,
-  }: {
-    shopItems: ShopListType,
-    dispatch: Function,
-  },
-) => {
-  const onAddToCart = item =>
-    () => {
-      dispatch(addToCart(item));
-    };
+const ShopContainer = ({
+  shopItems = [],
+  dispatch,
+}: {
+  shopItems: ShopListType,
+  dispatch: Function,
+}) => {
+  const onAddToCart = item => () => {
+    dispatch(addToCart(item));
+  };
 
   return (
     <Wrapper>
       <ShopList>
-        {shopItems.map(item => (
-          <ShopItem key={item.id} onAddToCart={onAddToCart(item)} {...item} />
-        ))}
+        {shopItems.map(item =>
+          <ShopItem key={item.id} onAddToCart={onAddToCart(item)} {...item} />,
+        )}
       </ShopList>
       <ErrorContainer />
     </Wrapper>

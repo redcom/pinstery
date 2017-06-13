@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parallelshell 'yarn run client:watch' 'yarn run server:watch'",
     "client:watch": "cd client && ../node_modules/.bin/react-scripts start",
-    "client:build": "cd client && ../node_modules/.bin/rreact-scripts build",
+    "client:build": "cd client && ../node_modules/.bin/react-scripts build",
     "client:test": "cd client && ../node_modules/.bin/react-scripts test --env=jsdom",
     "client:eject": "cd client ../node_modules/.bin/react-scripts eject",
     "lint": "eslint --fix 'client/src/**/*.js' 'server/**/*.js'",
@@ -14,7 +14,8 @@
     "precomit": "yarn run lint; yarn run prettier;",
     "prettier": "prettier --bracket-spacing --single-quote --tab-width 2 --trailing-comma all --parser babylon --print-width 80  --write \"{{client/src,server,webpack},__{tests,mocks}__}/**/*.js\"",
     "server:watch": "NODE_ENV=dev PORT=8888 nodemon --exec babel-node -- ./server/",
-    "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/"
+    "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/",
+    "postinstall": "./scripts/linkDevDependencies.sh"
   },
   "engines": {
     "node": "7.2.1"
@@ -31,6 +32,7 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.0.0"
   },
@@ -52,7 +54,6 @@
     "nodemon": "^1.11.0",
     "parallelshell": "^2.0.0",
     "prettier": "^1.4.2",
-    "react-scripts": "^1.0.7",
-    "redux-devtools-extension": "^2.13.2"
+    "react-scripts": "^1.0.7"
   }
 }

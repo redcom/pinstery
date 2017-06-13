@@ -67,36 +67,34 @@ const ExtraInfo = styled.div`
   justify-content: space-between;
 `;
 
-const renderCartItem = onRemove =>
-  item => (
-    <ListItem key={`item-${item.id}`}>
-      <Left>
-        <img src={`../assets/items/${item.image}`} alt="" />
-        {item.discount && item.discount > 0
-          ? <PriceRegular marginTop="0.4em" marginBottom="0">
-              {item.price}
-            </PriceRegular>
-          : <Price marginTop="0.4em"> {item.price} </Price>}
-      </Left>
-      <Right>
-        <Description>{item.description}</Description>
-        <ExtraInfo>
-          {item.discount &&
-            item.discount > 0 &&
-            <PriceDiscounted marginTop="0.4em" marginBottom="0">
-              {' '}{item.discount}{' '}
-            </PriceDiscounted>}
-          <Button
-            fontSize={smallFontSize}
-            width="auto"
-            onClick={onRemove(item.id)}
-          >
-            Remove
-          </Button>
-        </ExtraInfo>
-      </Right>
-    </ListItem>
-  );
+const renderCartItem = onRemove => item =>
+  <ListItem key={`item-${item.id}`}>
+    <Left>
+      <img src={`../assets/items/${item.image}`} alt="" />
+      {item.discount && item.discount > 0
+        ? <PriceRegular marginTop="0.4em" marginBottom="0">
+            {item.price}
+          </PriceRegular>
+        : <Price marginTop="0.4em"> {item.price} </Price>}
+    </Left>
+    <Right>
+      <Description>{item.description}</Description>
+      <ExtraInfo>
+        {item.discount &&
+          item.discount > 0 &&
+          <PriceDiscounted marginTop="0.4em" marginBottom="0">
+            {' '}{item.discount}{' '}
+          </PriceDiscounted>}
+        <Button
+          fontSize={smallFontSize}
+          width="auto"
+          onClick={onRemove(item.id)}
+        >
+          Remove
+        </Button>
+      </ExtraInfo>
+    </Right>
+  </ListItem>;
 
 type FullCartItemInfo = CartItemType & ShopItemType;
 type CartListType = {
@@ -104,18 +102,12 @@ type CartListType = {
   onRemove: Function,
 };
 
-const CartList = (
-  {
-    cartList = [],
-    onRemove,
-  }: CartListType,
-) => (
+const CartList = ({ cartList = [], onRemove }: CartListType) =>
   <CartItems>
     <ArrowUp />
     <List>
       {cartList.map(renderCartItem(onRemove))}
     </List>
-  </CartItems>
-);
+  </CartItems>;
 
 export default CartList;

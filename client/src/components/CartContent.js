@@ -37,13 +37,11 @@ type ExtendedCartListType = {
   shopItems: ShopListType,
 };
 
-const Cart = (
-  {
-    cartItems = [],
-    shopItems = [],
-    onRemoveFromCart,
-  }: ExtendedCartListType,
-) => {
+const Cart = ({
+  cartItems = [],
+  shopItems = [],
+  onRemoveFromCart,
+}: ExtendedCartListType) => {
   const cartList = cartItems.map(cartItem => {
     const shopItem = shopItems.find(shopItem => shopItem.id === cartItem.id);
     return shopItem && { ...shopItem, ...cartItem };

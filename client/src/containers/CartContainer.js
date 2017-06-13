@@ -11,21 +11,18 @@ import { connect } from 'react-redux';
 import { CartContent } from '../components';
 import { removeFromCart } from '../actions/CartActions';
 
-const CartContainer = (
-  {
-    cartItems = [],
-    shopItems = [],
-    dispatch,
-  }: {
-    cartItems: CartListType,
-    shopItems: ShopListType,
-    dispatch: Function,
-  },
-) => {
-  const onRemoveFromCart = id =>
-    () => {
-      dispatch(removeFromCart(id));
-    };
+const CartContainer = ({
+  cartItems = [],
+  shopItems = [],
+  dispatch,
+}: {
+  cartItems: CartListType,
+  shopItems: ShopListType,
+  dispatch: Function,
+}) => {
+  const onRemoveFromCart = id => () => {
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <CartContent

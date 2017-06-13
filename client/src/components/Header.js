@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartContainer } from '../containers';
 
-
 const HeaderBox = styled.header`
     height: 3em;
     display: flex;
@@ -13,13 +12,12 @@ const HeaderBox = styled.header`
     margin-bottom: 2em;
 `;
 
-const Header = () => (
+const Header = () =>
   <HeaderBox>
     <Link to={'/'}>
       <img src={'../assets/pinstery.svg'} alt="Logo" />
     </Link>
     <CartContainer />
-  </HeaderBox>
-);
+  </HeaderBox>;
 
 export default Header;

@@ -3372,11 +3372,11 @@ iconv-lite@0.4.13:
   version "0.4.13"
   resolved "http://nexus-fe.dev.searchmetrics.space:8081/repository/npm-all/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
-iconv-lite@0.4.15, iconv-lite@~0.4.13:
+iconv-lite@0.4.15:
   version "0.4.15"
   resolved "http://nexus-fe.dev.searchmetrics.space:8081/repository/npm-all/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
-iconv-lite@^0.4.17:
+iconv-lite@^0.4.17, iconv-lite@~0.4.13:
   version "0.4.17"
   resolved "http://nexus-fe.dev.searchmetrics.space:8081/repository/npm-all/iconv-lite/-/iconv-lite-0.4.17.tgz#4fdaa3b38acbc2c031b045d0edcdfe1ecab18c8d"
 

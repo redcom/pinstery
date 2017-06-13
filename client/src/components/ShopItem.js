@@ -88,17 +88,15 @@ const renderSpecialItem = ({ isNew, discount }) => {
 
 type ExtendedShopItem = ShopItemType & { onAddToCart: Function };
 
-const ShopItem = (
-  {
-    id = 0,
-    description = '',
-    price = 0,
-    onAddToCart,
-    image = '',
-    isNew,
-    discount = 0,
-  }: ExtendedShopItem,
-) => (
+const ShopItem = ({
+  id = 0,
+  description = '',
+  price = 0,
+  onAddToCart,
+  image = '',
+  isNew,
+  discount = 0,
+}: ExtendedShopItem) =>
   <ShopItemBox>
     <Image image={`../assets/items/${image}`}>
       {renderSpecialItem({ isNew, discount })}
@@ -109,7 +107,6 @@ const ShopItem = (
     <Description>{description} item#{id}</Description>
     {renderPriceInformation({ price, discount })}
 
-  </ShopItemBox>
-);
+  </ShopItemBox>;
 
 export default ShopItem;
