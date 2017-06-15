@@ -22,7 +22,7 @@ export const defaultBorderColor = '#e6e6e6';
 export const defaultNavBorderColor = '#4a90e2';
 export const defaultBtnBorderColor = '#ff9ca7';
 
-export const boxShadow = '0px 0px 30px 10px #eeeff0';
+export const boxShadow = '0px 0px 30px 10px rgba(238, 239, 240, 0.6)';
 
 // Font style
 export const defaultFontSize = '1.2em';

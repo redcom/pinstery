@@ -12,7 +12,6 @@ import {
   PriceDiscounted,
 } from '../components';
 import {
-  defaultSpaceInBetween,
   smallFontSize,
   defaultAlertBgColor,
   defaultBtnBorderColor,
@@ -22,13 +21,24 @@ import {
 const ShopItemBox = styled.div`
   height: 305px;
   display: flex;
+  width: 250px;
   flex-direction: column;
   align-items: center;
-  margin: ${defaultSpaceInBetween};
-}`;
+
+  @media (max-width: 400px) {
+  width: 100%;
+  }
+  @media (min-width: 400px) and (max-width: 700px) {
+    column-count: 2;
+  }
+  @media (min-width: 700px) and (max-width: 1024px) {
+    column-count: 3;
+    column-gap: 3em;
+  }
+`;
 
 const Description = styled.div`
-  padding: 0 30px;
+  padding: 0 1em;
   font-size: ${smallFontSize};
 `;
 
@@ -39,9 +49,10 @@ const AddToCartBox = styled.div`
   justify-content: center;
   &>button { display: none; }
   &:hover {
-    background: rgba(250, 250, 250, 0.9);
+    background: rgba(250, 250, 250, 0.8);
+    transition: background 0.3s ease;
     &>button { display: block; }
- }
+  }
 `;
 
 const PriceAndDiscountBox = styled.div`

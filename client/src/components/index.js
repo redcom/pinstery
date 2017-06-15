@@ -1,8 +1,10 @@
 export { default as Button } from './Button';
 export { default as Errors } from './Errors';
 export { default as Header } from './Header';
+export { default as Footer } from './Footer';
 export { default as ShopItem } from './ShopItem';
 export { default as ShopList } from './ShopList';
+export { default as ShopMenu } from './ShopMenu';
 export { default as NavBar } from './NavBar';
 export { default as Title } from './Title';
 export { default as Image } from './Image';

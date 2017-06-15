@@ -10,7 +10,7 @@ import {
   MoreContainer,
 } from '../containers';
 
-import { Header, NavBar } from '../components';
+import { Header, NavBar, Footer } from '../components';
 
 import { getInitialState, hidrateStoreWithState } from '../actions/AppActions';
 
@@ -39,6 +39,7 @@ class Routes extends Component {
           <Route path="/journal" component={JournalContainer} />
           <Route path="/about" component={AboutContainer} />
           <Route path="/more" component={MoreContainer} />
+          <Footer />
         </div>
       </Router>
     );
