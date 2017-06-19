@@ -2,14 +2,15 @@
 
 import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import {
-  Button,
   Image,
   Price,
   PriceRegular,
   PriceDiscounted,
+  Button,
 } from '../components';
 import {
   smallFontSize,
@@ -42,16 +43,16 @@ const Description = styled.div`
   font-size: ${smallFontSize};
 `;
 
-const AddToCartBox = styled.div`
+const ViewDetailBox = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
-  &>button { display: none; }
+  &>a { display: none; }
   &:hover {
     background: rgba(250, 250, 250, 0.8);
     transition: background 0.3s ease;
-    &>button { display: block; }
+    &>a { display: block; }
   }
 `;
 
@@ -97,13 +98,16 @@ const renderSpecialItem = ({ isNew, discount }) => {
   return null;
 };
 
-type ExtendedShopItem = ShopItemType & { onAddToCart: Function };
+const LinkStyled = Button.withComponent(Link).extend`
+  text-decoration: none;
+`;
+
+type ExtendedShopItem = ShopItemType;
 
 const ShopItem = ({
   id = 0,
   description = '',
   price = 0,
-  onAddToCart,
   image = '',
   isNew,
   discount = 0,
@@ -111,9 +115,9 @@ const ShopItem = ({
   <ShopItemBox>
     <Image image={`../assets/items/${image}`}>
       {renderSpecialItem({ isNew, discount })}
-      <AddToCartBox>
-        <Button alignSelf="center" onClick={onAddToCart}>Add to cart</Button>
-      </AddToCartBox>
+      <ViewDetailBox>
+        <LinkStyled to={`/shop/${id}/`}>View more</LinkStyled>
+      </ViewDetailBox>
     </Image>
     <Description>{description} item#{id}</Description>
     {renderPriceInformation({ price, discount })}

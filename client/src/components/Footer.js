@@ -12,8 +12,8 @@ const FooterBox = styled.footer`
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(250,250,250, 0.8);
-    box-shadow: 0 0 40px 0 #f3f;
+    background: rgba(250,250,250, 0.6);
+    box-shadow: 0 40px 0 rgba(153, 0, 102, 0.26);
 
 `;
 
