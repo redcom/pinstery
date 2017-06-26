@@ -15,7 +15,7 @@
     "prettier": "prettier --bracket-spacing --single-quote --tab-width 2 --trailing-comma all --parser flow --print-width 80  --write \"{{client/src,server,webpack},__{tests,mocks}__}/**/*.js\"",
     "server:watch": "NODE_ENV=dev PORT=8888 nodemon --exec babel-node -- ./server/",
     "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/",
-    "postinstall": "./scripts/linkDevDependencies.sh"
+    "postinstall": "./scripts/linkDependencies.sh"
   },
   "engines": {
     "node": "7.2.1"
