@@ -1,4 +1,4 @@
-Vimcarshop
+Simple Shop With admin interface to manage products and users
 ====
 
 ## Setup
