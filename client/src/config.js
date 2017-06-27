@@ -4,4 +4,3 @@
 export const API_PORT = 8889;
 const { protocol, hostname } = window.location;
 export const API_URL = `${protocol}//${hostname}:${API_PORT}/v1`;
-

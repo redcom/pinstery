@@ -102,7 +102,7 @@ const LinkStyled = Button.withComponent(Link).extend`
   text-decoration: none;
 `;
 
-type ExtendedShopItem = ShopItemType & {addToCart: Function};
+type ExtendedShopItem = ShopItemType & { addToCart: Function };
 
 const ShopItem = ({
   id = 0,
@@ -117,8 +117,8 @@ const ShopItem = ({
     <Image image={`../assets/items/${image}`}>
       {renderSpecialItem({ isNew, discount })}
       <ViewDetailBox>
-      <Button alignSelf="center" onClick={onAddToCart}>Add to cart</Button>
-      <LinkStyled to={`/shop/${id}/`}>View more</LinkStyled>
+        <Button alignSelf="center" onClick={onAddToCart}>Add to cart</Button>
+        <LinkStyled to={`/shop/${id}/`}>View more</LinkStyled>
       </ViewDetailBox>
     </Image>
     <Description>{description} item#{id}</Description>

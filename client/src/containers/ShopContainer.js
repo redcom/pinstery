@@ -7,7 +7,6 @@ import { Wrapper, ShopItem, ShopList, ShopMenu } from '../components';
 import { ErrorContainer } from '../containers';
 import { addToCart } from '../actions/CartActions';
 
-
 const ShopContainer = ({
   shopItems = [],
   dispatch,
@@ -38,6 +37,4 @@ const ShopContainer = ({
 
 export default connect((state: State) => ({
   shopItems: state.shopItems,
-}))(
-  ShopContainer,
-);
+}))(ShopContainer);

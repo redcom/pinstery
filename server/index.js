@@ -14,7 +14,7 @@ const baseDir = path.dirname(__dirname);
 
 const app = express();
 
-app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1); // trust first proxy
 // protect api from various hacking techniques
 app.use(helmet.frameguard());
 app.use(helmet.xssFilter());
