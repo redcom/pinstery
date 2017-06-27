@@ -22,11 +22,11 @@ const Img = styled.img.attrs({
 `;
 
 const Header = () =>
-  <HeaderBox>
+  (<HeaderBox>
     <Link to={'/'}>
       <Img src={Icons.logo} alt="Logo" />
     </Link>
     <CartContainer />
-  </HeaderBox>;
+  </HeaderBox>);
 
 export default Header;

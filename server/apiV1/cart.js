@@ -17,12 +17,12 @@ export const addCart = (req, res) => {
     } else {
       const itemAlreadyInCart = existingItems.find(i => i.id === item.id);
       if (itemAlreadyInCart) {
-        itemAlreadyInCart.quantity++;
+        itemAlreadyInCart.quantity += 1;
       } else {
         existingItems.push(item);
       }
       const updateItemRef = storage.put(existingItems);
-      updateItemRef.once('value', snapshot => {
+      updateItemRef.once('value', () => {
         res.json(itemAlreadyInCart || item);
       });
     }

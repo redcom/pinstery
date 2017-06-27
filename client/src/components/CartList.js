@@ -68,7 +68,7 @@ const ExtraInfo = styled.div`
 `;
 
 const renderCartItem = onRemove => item =>
-  <ListItem key={`item-${item.id}`}>
+  (<ListItem key={`item-${item.id}`}>
     <Left>
       <img src={`../assets/items/${item.image}`} alt="" />
       {item.discount && item.discount > 0
@@ -94,7 +94,7 @@ const renderCartItem = onRemove => item =>
         </Button>
       </ExtraInfo>
     </Right>
-  </ListItem>;
+  </ListItem>);
 
 type FullCartItemInfo = CartItemType & ShopItemType;
 type CartListType = {
@@ -103,11 +103,11 @@ type CartListType = {
 };
 
 const CartList = ({ cartList = [], onRemove }: CartListType) =>
-  <CartItems>
+  (<CartItems>
     <ArrowUp />
     <List>
       {cartList.map(renderCartItem(onRemove))}
     </List>
-  </CartItems>;
+  </CartItems>);
 
 export default CartList;

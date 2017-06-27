@@ -14,7 +14,7 @@ const WrapperMenu = styled.div`
   width: 20%;
 `;
 const ShopMenu = () =>
-  <WrapperMenu>
+  (<WrapperMenu>
     <ul>
       <li> all</li>
       <li> fashionista</li>
@@ -28,6 +28,6 @@ const ShopMenu = () =>
       <li> tv series/tv shows</li>
     </ul>
 
-  </WrapperMenu>;
+  </WrapperMenu>);
 
 export default ShopMenu;

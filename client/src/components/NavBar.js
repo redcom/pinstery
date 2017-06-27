@@ -25,13 +25,13 @@ const NavLinkStyled = styled(NavLink)`
  `;
 
 const NavBar = () =>
-  <Navigation>
+  (<Navigation>
     <NavLinkStyled to="/shop" activeClassName="active">Shop</NavLinkStyled>
     <NavLinkStyled to="/journal" activeClassName="active">
       Journal
     </NavLinkStyled>
     <NavLinkStyled to="/about" activeClassName="active">About</NavLinkStyled>
     <NavLinkStyled to="/more" activeClassName="active">More</NavLinkStyled>
-  </Navigation>;
+  </Navigation>);
 
 export default NavBar;

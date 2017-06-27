@@ -30,7 +30,7 @@ const Copy = styled.p`
 `;
 
 const Footer = () =>
-  <FooterBox>
+  (<FooterBox>
     <Link to={'/'}>
       <Img src={'../assets/instagram.png'} alt="pinstery_instagram" />
     </Link>
@@ -41,6 +41,6 @@ const Footer = () =>
       <Img src={'../assets/facebook.png'} alt="pinstery_facebook" />
     </Link>
     <Copy>&copy; Pinstery.com</Copy>
-  </FooterBox>;
+  </FooterBox>);
 
 export default Footer;
