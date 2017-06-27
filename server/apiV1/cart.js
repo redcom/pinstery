@@ -1,21 +1,33 @@
-export const addCart = (req, res) => {
-  const storage = req.app.get('storage');
+
+export const addCart = (req, res) =>  {
+  // initialize cart bucket for this specific user
+  const storage = req.app.get('storage')({bucket:'cart'});
 
   const item = {
     ...req.body,
     quantity: 1,
   };
-  const existingItem = storage.findById(req.body.id);
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
-    storage.put(item);
-  }
-
-  res.json({
-    id: item.id,
-    quantity: existingItem ? existingItem.quantity : item.quantity,
-  });
+  const existingItemRef = storage.findById();
+    existingItemRef.once('value', (snapshot) => {
+      const existingItems = snapshot.val();
+      if (!existingItems || !existingItems.length) {
+        const newItemRef = storage.put([item]);
+        newItemRef.once('value', snapshot => {
+          res.json(snapshot.val());
+        });
+      } else {
+        const itemAlreadyInCart = existingItems.find(i => i.id === item.id);
+        if (itemAlreadyInCart) {
+          itemAlreadyInCart.quantity++;
+        } else {
+          existingItems.push(item);
+        }
+        const updateItemRef = storage.put(existingItems);
+        updateItemRef.once('value', snapshot => {
+          res.json(itemAlreadyInCart || item);
+        });
+      }
+    });
 };
 
 export const deleteCart = (req, res) => {

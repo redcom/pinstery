@@ -12,10 +12,10 @@
     "lint": "eslint --fix 'client/src/**/*.js' 'server/**/*.js'",
     "precommit": "yarn run lint; yarn run prettier;",
     "precomit": "yarn run lint; yarn run prettier;",
-    "prettier": "prettier --bracket-spacing --single-quote --tab-width 2 --trailing-comma all --parser babylon --print-width 80  --write \"{{client/src,server,webpack},__{tests,mocks}__}/**/*.js\"",
+    "prettier": "prettier --bracket-spacing --single-quote --tab-width 2 --trailing-comma all --parser flow --print-width 80  --write \"{{client/src,server,webpack},__{tests,mocks}__}/**/*.js\"",
     "server:watch": "NODE_ENV=dev PORT=8888 nodemon --exec babel-node -- ./server/",
     "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/",
-    "postinstall": "./scripts/linkDevDependencies.sh"
+    "postinstall": "./scripts/linkDependencies.sh"
   },
   "engines": {
     "node": "7.2.1"
@@ -26,6 +26,8 @@
     "body-parser": "^1.17.2",
     "cors": "^2.8.3",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "firebase": "^4.1.3",
     "helmet": "^3.6.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -34,7 +36,8 @@
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
-    "styled-components": "^2.0.0"
+    "styled-components": "^2.0.0",
+    "uid-safe": "^2.1.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -47,6 +50,8 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
+    "firebase-bolt": "^0.8.2",
+    "firebase-tools": "^3.9.1",
     "flow": "^0.2.3",
     "flow-bin": "^0.47.0",
     "flow-typed": "^2.1.2",
