@@ -33,9 +33,7 @@ export const apiAddCartItem = item => async () => {
   };
 
   const response = await fetch(`${API_URL}/cart`, payload);
-  const body = await response.json();
-
-  return body;
+  return response.json();
 };
 
 export const fetchStateFromServer = cb =>

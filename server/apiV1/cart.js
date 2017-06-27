@@ -12,7 +12,7 @@ export const addCart = (req, res) => {
     if (!existingItems || !existingItems.length) {
       const newItemRef = storage.put([item]);
       newItemRef.once('value', snapshot => {
-        res.json(snapshot.val());
+        res.json(snapshot.val()[0]);
       });
     } else {
       const itemAlreadyInCart = existingItems.find(i => i.id === item.id);
