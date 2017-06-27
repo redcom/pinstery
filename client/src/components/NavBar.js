@@ -27,11 +27,13 @@ const NavLinkStyled = styled(NavLink)`
 const NavBar = () =>
   (<Navigation>
     <NavLinkStyled to="/shop" activeClassName="active">Shop</NavLinkStyled>
-    <NavLinkStyled to="/journal" activeClassName="active">
-      Journal
+    <NavLinkStyled to="/customize" activeClassName="active">
+      {' '}Customize{' '}
     </NavLinkStyled>
     <NavLinkStyled to="/about" activeClassName="active">About</NavLinkStyled>
-    <NavLinkStyled to="/more" activeClassName="active">More</NavLinkStyled>
+    <NavLinkStyled to="/contact" activeClassName="active">
+      Contact
+    </NavLinkStyled>
   </Navigation>);
 
 export default NavBar;

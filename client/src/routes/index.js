@@ -1,13 +1,14 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
   AboutContainer,
   CartContainer,
+  ContactContainer,
+  CustomizeContainer,
   ShopContainer,
-  JournalContainer,
-  MoreContainer,
+  WelcomeContainer,
 } from '../containers';
 
 import { Header, NavBar, Footer } from '../components';
@@ -33,12 +34,12 @@ class Routes extends Component {
         <div className="app-container">
           <Header />
           <NavBar />
-          <Route exact path="/" render={() => <Redirect to="/shop" />} />
-          <Route path="/shop" component={ShopContainer} />
-          <Route path="/cart" component={CartContainer} />
-          <Route path="/journal" component={JournalContainer} />
+          <Route exact path="/" component={WelcomeContainer} />
           <Route path="/about" component={AboutContainer} />
-          <Route path="/more" component={MoreContainer} />
+          <Route path="/cart" component={CartContainer} />
+          <Route path="/contact" component={ContactContainer} />
+          <Route path="/customize" component={CustomizeContainer} />
+          <Route path="/shop" component={ShopContainer} />
           <Footer />
         </div>
       </Router>
