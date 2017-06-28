@@ -2,8 +2,8 @@ import React from 'react';
 import { Wrapper } from '../components';
 
 const Container = () =>
-  (<Wrapper>
+  <Wrapper>
     WelcomeContainer
-  </Wrapper>);
+  </Wrapper>;
 
 export default Container;

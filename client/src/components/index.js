@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { Price, PriceRegular, PriceDiscounted } from './Price';
 export { default as Errors } from './Errors';
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';
@@ -11,4 +12,4 @@ export { default as Image } from './Image';
 export { default as Wrapper } from './Wrapper';
 export { default as CartContent } from './CartContent';
 export { default as CartList } from './CartList';
-export { Price, PriceRegular, PriceDiscounted } from './Price';
+export { default as ContactForm } from './ContactForm';

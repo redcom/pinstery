@@ -25,7 +25,7 @@ const NavLinkStyled = styled(NavLink)`
  `;
 
 const NavBar = () =>
-  (<Navigation>
+  <Navigation>
     <NavLinkStyled to="/shop" activeClassName="active">Shop</NavLinkStyled>
     <NavLinkStyled to="/customize" activeClassName="active">
       {' '}Customize{' '}
@@ -34,6 +34,6 @@ const NavBar = () =>
     <NavLinkStyled to="/contact" activeClassName="active">
       Contact
     </NavLinkStyled>
-  </Navigation>);
+  </Navigation>;
 
 export default NavBar;

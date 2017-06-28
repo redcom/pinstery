@@ -113,7 +113,7 @@ const ShopItem = ({
   discount = 0,
   onAddToCart,
 }: ExtendedShopItem) =>
-  (<ShopItemBox>
+  <ShopItemBox>
     <Image image={`../assets/items/${image}`}>
       {renderSpecialItem({ isNew, discount })}
       <ViewDetailBox>
@@ -124,6 +124,6 @@ const ShopItem = ({
     <Description>{description} item#{id}</Description>
     {renderPriceInformation({ price, discount })}
 
-  </ShopItemBox>);
+  </ShopItemBox>;
 
 export default ShopItem;

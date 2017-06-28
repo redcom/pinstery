@@ -1,9 +1,14 @@
 import React from 'react';
-import { Wrapper } from '../components';
+import { ErrorContainer } from '../containers';
+import { Wrapper, Title, ContactForm } from '../components';
 
-const Container = () =>
-  (<Wrapper>
-    About Container
-  </Wrapper>);
+const ContactContainer = () =>
+  <div className="contact">
+    <Wrapper>
+      <Title>Contact</Title>
+      <ContactForm />
+      <ErrorContainer />
+    </Wrapper>
+  </div>;
 
-export default Container;
+export default ContactContainer;
