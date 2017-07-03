@@ -13,14 +13,15 @@
     "precommit": "yarn run lint; yarn run prettier;",
     "precomit": "yarn run lint; yarn run prettier;",
     "prettier": "prettier --bracket-spacing --single-quote --tab-width 2 --trailing-comma all --parser flow --print-width 80  --write \"{{client/src,server,webpack},__{tests,mocks}__}/**/*.js\"",
-    "server:watch": "NODE_ENV=dev PORT=8888 nodemon --exec babel-node -- ./server/",
-    "server:start": "NODE_ENV=production PORT=8888 babel-node ./server/",
+    "server:watch": "NODE_ENV=dev PORT=9999 nodemon --exec babel-node -- ./server/",
+    "server:start": "NODE_ENV=production PORT=9999 babel-node ./server/",
     "postinstall": "./scripts/linkDependencies.sh"
   },
   "engines": {
     "node": "7.2.1"
   },
   "dependencies": {
+    "axios-es6": "^0.11.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.17.2",

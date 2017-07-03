@@ -8,6 +8,7 @@ import {
   ContactContainer,
   CustomizeContainer,
   ShopContainer,
+  ItemDetails,
   WelcomeContainer,
 } from '../containers';
 
@@ -40,6 +41,7 @@ class Routes extends Component {
           <Route path="/contact" component={ContactContainer} />
           <Route path="/customize" component={CustomizeContainer} />
           <Route path="/shop" component={ShopContainer} />
+          <Route path="/itemDetails/:id/:title" component={ItemDetails} />
           <Footer />
         </div>
       </Router>

@@ -107,6 +107,7 @@ type ExtendedShopItem = ShopItemType & { addToCart: Function };
 const ShopItem = ({
   id = 0,
   description = '',
+  title='title',
   price = 0,
   image = '',
   isNew,
@@ -117,8 +118,7 @@ const ShopItem = ({
     <Image image={`../assets/items/${image}`}>
       {renderSpecialItem({ isNew, discount })}
       <ViewDetailBox>
-        <Button alignSelf="center" onClick={onAddToCart}>Add to cart</Button>
-        <LinkStyled to={`/shop/${id}/`}>View more</LinkStyled>
+        <LinkStyled to={`/ItemDetails/${id}/${title}`}>View more</LinkStyled>
       </ViewDetailBox>
     </Image>
     <Description>{description} item#{id}</Description>

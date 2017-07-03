@@ -1,3 +1,4 @@
+import axios from 'axios-es6';
 import { API_URL } from '../config';
 
 const opts = {
@@ -6,6 +7,19 @@ const opts = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   }),
+};
+
+export const apiLoadItemDetails = ( id ) => async () => {
+  try {
+    const response = await axios.get(`${API_URL}/item/${id}`);
+    if (response.status !== 200) {
+      throw new Error('Can not get item details');
+    }
+    console.log(response)
+    return response.data.item;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const apiRemoveCartItem = ({ id }) => async () => {

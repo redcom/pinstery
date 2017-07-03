@@ -3,6 +3,7 @@
 // Stores
 export type ShopItemType = {
   id: number,
+  title: string,
   description: string,
   price: number,
   discount?: number,

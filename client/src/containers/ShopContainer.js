@@ -4,20 +4,13 @@ import type { State, ShopListType } from '../store/CommonStoreTypes';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Wrapper, ShopItem, ShopList, ShopMenu } from '../components';
-import { ErrorContainer } from '../containers';
-import { addToCart } from '../actions/CartActions';
 
 const ShopContainer = ({
   shopItems = [],
   dispatch,
 }: {
   shopItems: ShopListType,
-  dispatch: Function,
 }) => {
-  const onAddToCart = item => () => {
-    dispatch(addToCart(item));
-  };
-
   const GridWrapper = Wrapper.extend`
   display: flex;
 `;
@@ -27,10 +20,9 @@ const ShopContainer = ({
       <ShopMenu />
       <ShopList>
         {shopItems.map(item =>
-          <ShopItem key={item.id} onAddToCart={onAddToCart(item)} {...item} />,
+          <ShopItem key={item.id} {...item} />,
         )}
       </ShopList>
-      <ErrorContainer />
     </GridWrapper>
   );
 };
