@@ -12,6 +12,7 @@ export const defaultLineHeight = 1.5;
 // Colors variables
 export const white = '#fff';
 export const black = '#000';
+export const grey = '#d9dadc';
 
 export const defaultSectionBackgroundColor = white; // #f6f8fa
 export const defaultTextColor = '#5a5a5a';

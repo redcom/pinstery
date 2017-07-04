@@ -51,7 +51,9 @@ const Cart = ({
     <CartContent>
       <img src={'../assets/cart.svg'} alt="cart" />
       {cartItems.length > 0 && [
-        <CartCounter key="cartCounter">{cartItems.length}</CartCounter>,
+        <CartCounter key="cartCounter">
+          {cartItems.length}
+        </CartCounter>,
         <CartList
           key="cartList"
           cartList={cartList}

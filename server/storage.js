@@ -15,19 +15,36 @@ const storage = () => ({ bucket }) => {
 
   return {
     get: id => bucket[id],
+    /* put updates value at a single location*/
     put: items => {
       const updates = {};
       updates[`/${bucket}/${buckets[0]}`] = items;
       rootRef.update(updates);
       return rootRef.child(`/${bucket}/${buckets[0]}`);
     },
+    /* POST creates multiple entries */
+    post: items => {
+      const updates = {};
+      items.reduce((acc, item) => {
+        acc[`/${bucket}/${item.id}`] = item;
+        return acc;
+      }, updates);
+      rootRef.update(updates);
+      return rootRef.child(`/${bucket}`);
+    },
     delete: id => bucket.filter(i => i.id !== id),
     getAll: () => bucket,
-    findById: () => {
+    findById: ({ id = 0 }) => {
       if (!buckets.length) {
         return false;
       }
-      return rootRef.child(`/${bucket}/${buckets[0]}`);
+      if (!id) {
+        return rootRef.child(`/${bucket}/${buckets[0]}`);
+      }
+      if (id) {
+        return rootRef.child(`/${bucket}/${id}`);
+      }
+      return false;
     },
   };
 };

@@ -64,7 +64,6 @@ const ContactFormComponent = ({ onAddUrl }: { onAddUrl: Function }) => {
       email = evt.target.value;
     }
     if (evt.target.type === 'textarea') {
-      console.log(evt.target.value);
       message = evt.target.value;
     }
   };
@@ -92,9 +91,7 @@ const ContactFormComponent = ({ onAddUrl }: { onAddUrl: Function }) => {
           placeholder="Write your message here"
         />
       </div>
-      <Button onClick={submitForm}>
-        Send
-      </Button>
+      <Button onClick={submitForm}>Send</Button>
     </ContactForm>
   );
 };

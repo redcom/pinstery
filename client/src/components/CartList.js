@@ -18,7 +18,7 @@ const CartItems = styled.div`
   right: -1em;
   width: 250px;
   box-shadow: ${boxShadow};
-  font-size: ${smallFontSize}
+  font-size: ${smallFontSize};
 `;
 
 const ArrowUp = styled.div`
@@ -43,18 +43,22 @@ const ListItem = styled.li`
   padding: 1em 0;
   display: flex;
   border-bottom: 1px solid ${defaultBorderColor};
-  &:first-of-type { margin-top: -1em; }
-  &:last-of-type { border-bottom: none; }
+  &:first-of-type {
+    margin-top: -1em;
+  }
+  &:last-of-type {
+    border-bottom: none;
+  }
 `;
 
 const Left = styled.div`
   flex: 1;
-  &>img { width: 70%; }
+  & > img {
+    width: 70%;
+  }
 `;
 
-const Right = styled.div`
-  flex: 3;
-`;
+const Right = styled.div`flex: 3;`;
 
 const Description = styled.div`
   min-height: 3.7em;
@@ -75,10 +79,14 @@ const renderCartItem = onRemove => item =>
         ? <PriceRegular marginTop="0.4em" marginBottom="0">
             {item.price}
           </PriceRegular>
-        : <Price marginTop="0.4em"> {item.price} </Price>}
+        : <Price marginTop="0.4em">
+            {' '}{item.price}{' '}
+          </Price>}
     </Left>
     <Right>
-      <Description>{item.description}</Description>
+      <Description>
+        {item.description}
+      </Description>
       <ExtraInfo>
         {item.discount &&
           item.discount > 0 &&

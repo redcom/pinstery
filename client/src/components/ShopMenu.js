@@ -10,9 +10,7 @@ import styled from 'styled-components';
 //   smallFontSize,
 // } from '../styles/vars';
 
-const WrapperMenu = styled.div`
-  width: 20%;
-`;
+const WrapperMenu = styled.div`width: 20%;`;
 const ShopMenu = () =>
   <WrapperMenu>
     <ul>
@@ -27,7 +25,6 @@ const ShopMenu = () =>
       <li> cartoon</li>
       <li> tv series/tv shows</li>
     </ul>
-
   </WrapperMenu>;
 
 export default ShopMenu;

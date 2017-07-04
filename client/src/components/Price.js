@@ -5,7 +5,9 @@ export const Price = styled.div`
   margin-top: ${props => props.marginTop || '1em'};
   font-size: ${props => props.fontSize || smallFontSize};
   color: ${props => props.color || '#84b3eb'};
-  &:after { content: '€'; }
+  &:after {
+    content: '€';
+  }
   margin-bottom: 2.5em;
 `;
 export const PriceRegular = styled(Price)`

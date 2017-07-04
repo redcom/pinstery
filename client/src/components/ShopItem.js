@@ -27,7 +27,7 @@ const ShopItemBox = styled.div`
   align-items: center;
 
   @media (max-width: 400px) {
-  width: 100%;
+    width: 100%;
   }
   @media (min-width: 400px) and (max-width: 700px) {
     column-count: 2;
@@ -48,18 +48,24 @@ const ViewDetailBox = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  &>a { display: none; }
+  & > a {
+    display: none;
+  }
   &:hover {
     background: rgba(250, 250, 250, 0.8);
     transition: background 0.3s ease;
-    &>a { display: block; }
+    & > a {
+      display: block;
+    }
   }
 `;
 
 const PriceAndDiscountBox = styled.div`
   display: flex;
   justify-content: center;
-  &>div+div { margin-left: 0.5em; }
+  & > div + div {
+    margin-left: 0.5em;
+  }
 `;
 
 const SpecialItem = styled.div`
@@ -80,12 +86,20 @@ const renderPriceInformation = ({ price, discount }) => {
   if (discount > 0) {
     return (
       <PriceAndDiscountBox>
-        <PriceRegular>{price}</PriceRegular>
-        <PriceDiscounted>{discount}</PriceDiscounted>
+        <PriceRegular>
+          {price}
+        </PriceRegular>
+        <PriceDiscounted>
+          {discount}
+        </PriceDiscounted>
       </PriceAndDiscountBox>
     );
   }
-  return <Price>{price}</Price>;
+  return (
+    <Price>
+      {price}
+    </Price>
+  );
 };
 
 const renderSpecialItem = ({ isNew, discount }) => {
@@ -107,12 +121,11 @@ type ExtendedShopItem = ShopItemType & { addToCart: Function };
 const ShopItem = ({
   id = 0,
   description = '',
-  title='title',
+  title = 'title',
   price = 0,
   image = '',
   isNew,
   discount = 0,
-  onAddToCart,
 }: ExtendedShopItem) =>
   <ShopItemBox>
     <Image image={`../assets/items/${image}`}>
@@ -121,9 +134,10 @@ const ShopItem = ({
         <LinkStyled to={`/ItemDetails/${id}/${title}`}>View more</LinkStyled>
       </ViewDetailBox>
     </Image>
-    <Description>{description} item#{id}</Description>
+    <Description>
+      {description} item#{id}
+    </Description>
     {renderPriceInformation({ price, discount })}
-
   </ShopItemBox>;
 
 export default ShopItem;

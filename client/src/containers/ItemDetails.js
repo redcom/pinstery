@@ -3,37 +3,39 @@ import type { State, ShopItemType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Wrapper, Title } from '../components';
+import { Wrapper, Title, ItemDetails } from '../components';
 import { loadItemDetails } from '../actions/ItemDetailsActions';
 
-let fetched = false;
-const ItemDetails = ({
+const ItemDetailsContainer = ({
   dispatch,
   itemDetails,
   match,
 }: {
-  match: Object,
-  itemDetails: ShopItemType,
+  match: {
+    params: {
+      id: string,
+      title: string,
+    },
+  },
+  itemDetails: ?ShopItemType,
   dispatch: Function,
 }) => {
+  const { id, title } = match.params;
 
-
-  const {id, title} = match.params;
-  if (!itemDetails.id && !fetched) {
-    console.log(fetched)
+  if (!itemDetails) {
     dispatch(loadItemDetails(id));
-    fetched = true;
   }
 
   return (
     <Wrapper>
-    <Title>{title}</Title>
-    {id}
-    {JSON.stringify(itemDetails)}
+      <Title>
+        {title}
+      </Title>
+      <ItemDetails {...itemDetails} />
     </Wrapper>
   );
 };
 
 export default connect((state: State) => ({
-  itemDetails: state.itemDetails,
-}))(ItemDetails);
+  itemDetails: state.itemDetails || null,
+}))(ItemDetailsContainer);

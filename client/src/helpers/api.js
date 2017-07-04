@@ -9,13 +9,12 @@ const opts = {
   }),
 };
 
-export const apiLoadItemDetails = ( id ) => async () => {
+export const apiLoadItemDetails = id => async () => {
   try {
     const response = await axios.get(`${API_URL}/item/${id}`);
     if (response.status !== 200) {
       throw new Error('Can not get item details');
     }
-    console.log(response)
     return response.data.item;
   } catch (error) {
     throw error;

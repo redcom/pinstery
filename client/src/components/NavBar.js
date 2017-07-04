@@ -8,9 +8,9 @@ import {
 import styled from 'styled-components';
 
 const Navigation = styled.div`
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 10%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 10%;
 `;
 
 const NavLinkStyled = styled(NavLink)`
@@ -26,11 +26,15 @@ const NavLinkStyled = styled(NavLink)`
 
 const NavBar = () =>
   <Navigation>
-    <NavLinkStyled to="/shop" activeClassName="active">Shop</NavLinkStyled>
+    <NavLinkStyled to="/shop" activeClassName="active">
+      Shop
+    </NavLinkStyled>
     <NavLinkStyled to="/customize" activeClassName="active">
       {' '}Customize{' '}
     </NavLinkStyled>
-    <NavLinkStyled to="/about" activeClassName="active">About</NavLinkStyled>
+    <NavLinkStyled to="/about" activeClassName="active">
+      About
+    </NavLinkStyled>
     <NavLinkStyled to="/contact" activeClassName="active">
       Contact
     </NavLinkStyled>

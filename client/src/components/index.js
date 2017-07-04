@@ -13,3 +13,7 @@ export { default as Wrapper } from './Wrapper';
 export { default as CartContent } from './CartContent';
 export { default as CartList } from './CartList';
 export { default as ContactForm } from './ContactForm';
+export { default as ItemDetails } from './ItemDetails';
+export { default as Separator } from './Separator';
+export { default as ImageGallery } from './ImageGallery';
+export { default as OrderBox } from './OrderBox';

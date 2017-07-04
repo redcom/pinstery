@@ -1,18 +1,18 @@
 // @flow
 import type { ShopItemType } from '../store/CommonStoreTypes';
-import {GET_ITEM} from '../constants/ActionTypes';
+import { GET_ITEM } from '../constants/ActionTypes';
 
-const initialState = {};
+const initialState = null;
 
-const cartItems = (state: ShopItemType = initialState, action: Object) => {
+const itemDetails = (state: ?ShopItemType = initialState, action: Object) => {
   switch (action.type) {
     case GET_ITEM:
       return {
-          ...action.item,
-      }
+        ...action.item,
+      };
     default:
       return state;
   }
 };
 
-export default cartItems;
+export default itemDetails;

@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FooterBox = styled.footer`
-    height: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(250,250,250, 0.6);
-    box-shadow: 0 40px 0 rgba(153, 0, 102, 0.26);
-
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(250, 250, 250, 0.6);
+  box-shadow: 0 40px 0 rgba(153, 0, 102, 0.26);
 `;
 
 const Img = styled.img.attrs({
@@ -25,9 +24,7 @@ const Img = styled.img.attrs({
   max-width: 2em;
   margin: 0 1em;
 `;
-const Copy = styled.p`
-  display: block;
-`;
+const Copy = styled.p`display: block;`;
 
 const Footer = () =>
   <FooterBox>

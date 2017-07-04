@@ -52,6 +52,18 @@ export const items = [
     image: 's42si-nssb-sel-201603@2x.png',
   },
   {
+    id: 9,
+    description: 'some description for a watch in different color',
+    price: 15,
+    image: 's42si-nssb-sel-201603@2x.png',
+  },
+  {
+    id: 10,
+    description: 'some description for a watch in different color',
+    price: 15,
+    image: 's42si-nssb-sel-201603@2x.png',
+  },
+  {
     id: 11,
     description: 'some description for a watch in different color',
     price: 10,
