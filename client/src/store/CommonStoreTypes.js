@@ -19,7 +19,7 @@ export type CartItemType = {
 export type ShopListType = Array<ShopItemType>;
 export type CartListType = Array<CartItemType>;
 
-export type ErrorsType = Object;
+export type ErrorsType = ?Object;
 
 // State
 export type State = {

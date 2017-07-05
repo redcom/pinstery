@@ -1,19 +1,29 @@
-import React from 'react';
-import { ErrorContainer } from '../containers';
-import { Wrapper, Title, ContactForm } from '../components';
+// @flow
 
-const WrapperFlex = Wrapper.extend`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const ContactContainer = () =>
-  <div className="contact">
+import type { State, ErrorsType } from '../store/CommonStoreTypes';
+import React from 'react';
+import { connect } from 'react-redux';
+import { WrapperFlex, Title, ContactForm } from '../components';
+import { sendContactMessage } from '../actions/ContactActions';
+
+const ContactContainer = ({
+  error = null,
+  dispatch,
+}: {
+  error: ErrorsType,
+  dispatch: Function,
+}) => {
+  const onSubmit = ({ email, message }) =>
+    dispatch(sendContactMessage({ email, message }));
+
+  return (
     <WrapperFlex>
       <Title>Contact</Title>
-      <ContactForm />
-      <ErrorContainer />
+      <ContactForm onSubmit={onSubmit} hasErrors={error} />
     </WrapperFlex>
-  </div>;
+  );
+};
 
-export default ContactContainer;
+export default connect((state: State) => ({
+  error: state.error,
+}))(ContactContainer);

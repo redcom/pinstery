@@ -13,7 +13,7 @@ import {
   ImageGallery,
   OrderBox,
   Title,
-  Wrapper,
+  WrapperFlex,
   // Button,
 } from '../components';
 import {
@@ -112,11 +112,9 @@ const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px dashed ${grey};
+  width: 100%;
 `;
-const WrapContent = Wrapper.extend`
-  width: 70%;
-  margin: 1em 15%;
-`;
+const WrapContent = WrapperFlex.extend`margin: 0 15%;`;
 
 type ExtendedShopItem = ShopItemType & { addToCart: Function };
 

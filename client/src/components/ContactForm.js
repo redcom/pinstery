@@ -1,5 +1,7 @@
 // @flow
 
+import { ErrorsType } from '../store/CommonStoreTypes';
+
 import React from 'react';
 import {
   defaultBorderStyle,
@@ -10,7 +12,7 @@ import {
 } from '../styles/vars';
 
 import styled from 'styled-components';
-import { Button } from '../components';
+import { Button, Errors } from '../components';
 
 // Styled component used bellow
 const ContactForm = styled.form`
@@ -35,9 +37,6 @@ const ContactForm = styled.form`
       height: 10em;
     }
   }
-  > button {
-    align-self: flex-end;
-  }
 `;
 
 const Label = styled.label`
@@ -52,15 +51,22 @@ const Label = styled.label`
     font-size: ${defaultFontLabel};
   }
 `;
-
+const WrapActions = styled.div`
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > button {
+    align-self: flex-end;
+  }
+`;
 type Props = {
   onSubmit: Function,
+  hasErrors: ErrorsType,
 };
 
 class ContactFormComponent extends React.Component {
   props: Props;
-  email = undefined;
-  message = undefined;
 
   state = {
     focusEmail: false,
@@ -71,7 +77,10 @@ class ContactFormComponent extends React.Component {
 
   submitForm = evt => {
     evt.preventDefault();
-    this.props.onSubmit({ email: this.email, message: this.message });
+    this.props.onSubmit({
+      email: this.state.email,
+      message: this.state.message,
+    });
   };
 
   onChange = evt => {
@@ -109,7 +118,7 @@ class ContactFormComponent extends React.Component {
 
   render() {
     const { email, message } = this.state;
-
+    const { hasErrors: { error } } = this.props;
     return (
       <ContactForm onSubmit={this.submitForm}>
         <div>
@@ -145,9 +154,16 @@ class ContactFormComponent extends React.Component {
             onBlur={this.onBlur}
           />
         </div>
-        <Button onClick={this.submitForm} width="auto">
-          Send
-        </Button>
+        <WrapActions>
+          {error
+            ? <Errors>
+                {' '}{error.message}{' '}
+              </Errors>
+            : <div />}
+          <Button onClick={this.submitForm} width="auto">
+            {' '}Send{' '}
+          </Button>
+        </WrapActions>
       </ContactForm>
     );
   }

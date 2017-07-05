@@ -9,6 +9,18 @@ const opts = {
   }),
 };
 
+export const apiSendContact = ({ email, message }) => async () => {
+  try {
+    const response = await axios.post(`${API_URL}/contact`, { email, message });
+    if (response.status !== 200) {
+      throw new Error('Can not send message');
+    }
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const apiLoadItemDetails = id => async () => {
   try {
     const response = await axios.get(`${API_URL}/item/${id}`);

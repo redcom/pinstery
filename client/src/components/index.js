@@ -9,7 +9,7 @@ export { default as ShopMenu } from './ShopMenu';
 export { default as NavBar } from './NavBar';
 export { default as Title } from './Title';
 export { default as Image } from './Image';
-export { default as Wrapper } from './Wrapper';
+export { Wrapper, WrapperFlex } from './Wrapper';
 export { default as CartContent } from './CartContent';
 export { default as CartList } from './CartList';
 export { default as ContactForm } from './ContactForm';

@@ -8,3 +8,7 @@ export const HIDRATE_INITIAL_STATE = 'HIDRATE_INITIAL_STATE';
 // item details
 export const GET_ITEM = 'GET_ITEM';
 export const GET_ITEM_FAILED = 'GET_ITEM_FAILED';
+
+// contact form
+export const SEND_CONTACT_MSG_FAILED = 'SEND_CONTACT_MSG_FAILED';
+export const SEND_CONTACT_MSG = 'SEND_CONTACT_MSG';
