@@ -29,6 +29,7 @@ export const boxShadow = '0px 0px 30px 10px rgba(238, 239, 240, 0.6)';
 export const defaultFontSize = '1.2em';
 export const headerFontSize = '18px';
 export const smallFontSize = '13px';
+export const defaultFontLabel = '14px';
 
 export const slideInAnimation = keyframes`
   0% {

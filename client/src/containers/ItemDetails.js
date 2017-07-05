@@ -3,7 +3,7 @@ import type { State, ShopItemType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Wrapper, Title, ItemDetails } from '../components';
+import { ItemDetails, Loader } from '../components';
 import { loadItemDetails } from '../actions/ItemDetailsActions';
 
 const ItemDetailsContainer = ({
@@ -20,19 +20,20 @@ const ItemDetailsContainer = ({
   itemDetails: ?ShopItemType,
   dispatch: Function,
 }) => {
-  const { id, title } = match.params;
+  const { id } = match.params;
 
   if (!itemDetails) {
     dispatch(loadItemDetails(id));
   }
 
+  const displayItemDetails = () => <ItemDetails {...itemDetails} />;
+
   return (
-    <Wrapper>
-      <Title>
-        {title}
-      </Title>
-      <ItemDetails {...itemDetails} />
-    </Wrapper>
+    <Loader
+      type={'small'}
+      loading={!itemDetails}
+      onLoaded={itemDetails ? displayItemDetails : null}
+    />
   );
 };
 

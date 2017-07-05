@@ -6,13 +6,15 @@ TODO
 - [ ] Show detail shopping cart
 - [ ] Landing page
 - [ ] Product navigation
-- [ ] Integrate database
-- [ ] Create admin page to create products
-- [ ] Contact page]
+- [x] Integrate database
+- [x] Create admin page to create products
+- [x] Contact page
 - [ ] FAQ page
 - [ ] SSR for application
 - [ ] Payment system integration
 - [ ] SEO and analytics
+- [ ] Contact Form Logic
+- [ ] Order button logic
 
 
 Inspiration

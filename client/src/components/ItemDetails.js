@@ -8,21 +8,24 @@ import {
   Price,
   PriceRegular,
   PriceDiscounted,
-  Separator,
+  VerticalSeparator,
+  HorizontalSeparator,
   ImageGallery,
   OrderBox,
+  Title,
+  Wrapper,
   // Button,
 } from '../components';
 import {
   smallFontSize,
+  defaultFontSize,
   // defaultAlertBgColor,
   // defaultBtnBorderColor,
-  // white,
+  grey,
 } from '../styles/vars';
 
 const ItemBox = styled.div`
   display: flex;
-  border: 1px solid blue;
   justify-content: space-between;
 
   @media (max-width: 400px) {
@@ -47,11 +50,13 @@ const Description = styled.div`
 const ViewDetailBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60%;
-  flex: 2;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid yellow;
+  flex: 1;
+  padding: 1em;
+`;
+
+const TitleDetails = Title.extend`
+  margin: 0;
+  text-align: justify;
 `;
 
 const PriceAndDiscountBox = styled.div`
@@ -61,6 +66,13 @@ const PriceAndDiscountBox = styled.div`
     margin-left: 0.5em;
   }
 `;
+
+const PriceAsTitle = Price.withComponent(Title);
+const TitlePrice = PriceAsTitle.extend`
+  margin: 0;
+  font-size: ${defaultFontSize};
+`;
+
 //
 // const SpecialItem = styled.div`
 //   background-color: ${defaultAlertBgColor};
@@ -90,11 +102,21 @@ const renderPriceInformation = ({ price, discount }) => {
     );
   }
   return (
-    <Price>
+    <TitlePrice>
       {price}
-    </Price>
+    </TitlePrice>
   );
 };
+
+const HeaderBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed ${grey};
+`;
+const WrapContent = Wrapper.extend`
+  width: 70%;
+  margin: 1em 15%;
+`;
 
 type ExtendedShopItem = ShopItemType & { addToCart: Function };
 
@@ -108,22 +130,30 @@ const ItemDetailsComponent = ({
   discount = 0,
   addToCart = Function,
 }: ExtendedShopItem) =>
-  <ItemBox>
-    <ImageGallery>
-      <img src={`../../assets/items/${image}`} alt="" />
-    </ImageGallery>
-    <ViewDetailBox>
-      <div>
-        {title} {isNew}
-      </div>
-      <Description>
-        {description} item#{id}
-      </Description>
-      <Separator />
+  <WrapContent>
+    <HeaderBox>
+      <Title>
+        {' '}{title}{' '}
+      </Title>
       {renderPriceInformation({ price, discount })}
-      <Separator />
-      <OrderBox id={id} addToCart={addToCart} />
-    </ViewDetailBox>
-  </ItemBox>;
+    </HeaderBox>
+    <ItemBox>
+      <ImageGallery>
+        <img src={`../../assets/items/${image}`} alt="" />
+      </ImageGallery>
+      <VerticalSeparator />
+      <ViewDetailBox>
+        <div>
+          {isNew}
+        </div>
+        <TitleDetails>Description</TitleDetails>
+        <Description>
+          {description} item#{id}
+        </Description>
+        <HorizontalSeparator />
+        <OrderBox id={id} addToCart={addToCart} />
+      </ViewDetailBox>
+    </ItemBox>
+  </WrapContent>;
 
 export default ItemDetailsComponent;

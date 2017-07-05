@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 import { grey } from '../styles/vars';
 
-// Create a <Wrapper> react component that renders a <section> with a specific background-color
-const Separator = styled.div`
-  width: 100%;
-  border-top: 1px dashed ${grey};
+export const HorizontalSeparator = styled.div`
+  border-bottom: 1px dashed ${grey};
 `;
-
-export default Separator;
+export const VerticalSeparator = styled.div`border-left: 1px dashed ${grey};`;
