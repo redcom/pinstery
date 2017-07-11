@@ -11,15 +11,13 @@ import {
   // grey,
 } from '../styles/vars';
 
-const Box = styled.div`
-  width: 300px;
-`;
+const Box = styled.div`width: 300px;`;
 const OrderDetails = styled.div`
   display: flex;
   align-items: center;
   margin: 1em 0;
-  margin-top: ${props => props.marginTop? props.marginTop: '1em'};
-  margin-bottom: ${props => props.marginBottom? props.marginBottom: '1em'};
+  margin-top: ${props => (props.marginTop ? props.marginTop : '1em')};
+  margin-bottom: ${props => (props.marginBottom ? props.marginBottom : '1em')};
 `;
 
 const InputNumber = styled.input`
@@ -59,13 +57,13 @@ class OrderBox extends React.Component {
   componentWillMount() {
     this.setState({
       quantity: 1,
-      size:1,
+      size: 1,
       totalPrice: this.props.price,
     });
   }
 
   onChange = evt => {
-    const {type, value} = evt.target;
+    const { type, value } = evt.target;
     let quantity, size, totalPrice;
 
     if (type === 'number') {
@@ -79,45 +77,53 @@ class OrderBox extends React.Component {
       size,
       quantity,
       totalPrice,
-    })
+    });
   };
 
   sendOrder = () => {
-    this.props.addToCart({ id: this.props.id, quantity:this.state.quantity, size:this.state.size });
+    this.props.addToCart({
+      id: this.props.id,
+      quantity: this.state.quantity,
+      size: this.state.size,
+    });
   };
 
   render() {
-  return (
-    <Box>
-      <OrderDetails>
-        <TitleItem htmlFor="quantity">Quantity</TitleItem>
-        <InputNumber
-          type="number"
-          required="true"
-          max="100"
-          onChange={this.onChange}
-          value={this.state.quantity}
-          id="quantity"
-        />
-      </OrderDetails>
-      <OrderDetails>
-        <TitleItem htmlFor="size">Size</TitleItem>
-        <SizeOptions onChange={this.onChange}>
-          <option value="1">1 inch</option>
-          <option value="2">1 inch</option>
-          <option value="3">1 inch</option>
-        </SizeOptions>
-      </OrderDetails>
-      <OrderDetails>
-        <TitleItem htmlFor="totalPrice">Total</TitleItem>
-        <p>{this.state.totalPrice}</p>
-      </OrderDetails>
-      <OrderDetails marginTop="3em" marginBottom="0">
-        <Button onClick={this.sendOrder} width="100%"> Order </Button>
-      </OrderDetails>
-    </Box>
-  );
+    return (
+      <Box>
+        <OrderDetails>
+          <TitleItem htmlFor="quantity">Quantity</TitleItem>
+          <InputNumber
+            type="number"
+            required="true"
+            max="100"
+            onChange={this.onChange}
+            value={this.state.quantity}
+            id="quantity"
+          />
+        </OrderDetails>
+        <OrderDetails>
+          <TitleItem htmlFor="size">Size</TitleItem>
+          <SizeOptions onChange={this.onChange}>
+            <option value="1">1 inch</option>
+            <option value="2">1 inch</option>
+            <option value="3">1 inch</option>
+          </SizeOptions>
+        </OrderDetails>
+        <OrderDetails>
+          <TitleItem htmlFor="totalPrice">Total</TitleItem>
+          <p>
+            {this.state.totalPrice}
+          </p>
+        </OrderDetails>
+        <OrderDetails marginTop="3em" marginBottom="0">
+          <Button onClick={this.sendOrder} width="100%">
+            {' '}Order{' '}
+          </Button>
+        </OrderDetails>
+      </Box>
+    );
   }
-};
+}
 
 export default OrderBox;

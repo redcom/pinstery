@@ -42,7 +42,6 @@ const ViewDetailBox = styled.div`
   padding: 1em;
 `;
 
-
 const PriceAndDiscountBox = styled.div`
   display: flex;
   justify-content: center;
@@ -97,9 +96,7 @@ const HeaderBox = styled.div`
   border-bottom: 1px dashed ${grey};
   width: 100%;
 `;
-const WrapContent = WrapperFlex.extend`
-  margin: 0 15%;
-`;
+const WrapContent = WrapperFlex.extend`margin: 0 15%;`;
 
 type ExtendedShopItem = ShopItemType & { addToCart: Function };
 
@@ -116,7 +113,7 @@ const ItemDetailsComponent = ({
   <WrapContent>
     <HeaderBox>
       <TitleProduct>
-        { title }
+        {title}
       </TitleProduct>
       {renderPriceInformation({ price, discount })}
     </HeaderBox>
