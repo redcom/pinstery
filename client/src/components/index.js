@@ -7,7 +7,7 @@ export { default as ShopItem } from './ShopItem';
 export { default as ShopList } from './ShopList';
 export { default as ShopMenu } from './ShopMenu';
 export { default as NavBar } from './NavBar';
-export { default as Title } from './Title';
+export { Title, TitleItem } from './Title';
 export { default as Image } from './Image';
 export { Wrapper, WrapperFlex } from './Wrapper';
 export { default as CartContent } from './CartContent';

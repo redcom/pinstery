@@ -9,16 +9,16 @@ import {
   PriceRegular,
   PriceDiscounted,
   VerticalSeparator,
-  HorizontalSeparator,
   ImageGallery,
   OrderBox,
   Title,
+  TitleItem,
   WrapperFlex,
   // Button,
 } from '../components';
 import {
   smallFontSize,
-  defaultFontSize,
+  greyText,
   // defaultAlertBgColor,
   // defaultBtnBorderColor,
   grey,
@@ -27,37 +27,21 @@ import {
 const ItemBox = styled.div`
   display: flex;
   justify-content: space-between;
-
-  @media (max-width: 400px) {
-    width: 100%;
-  }
-  @media (min-width: 400px) and (max-width: 700px) {
-    column-count: 2;
-    :A: ;
-  }
-  @media (min-width: 700px) and (max-width: 1024px) {
-    column-count: 3;
-    column-gap: 3em;
-  }
 `;
 
 const Description = styled.div`
-  padding: 0 1em;
   font-size: ${smallFontSize};
-  border: 1px solid red;
+  padding: 1em 0;
+  color: ${greyText};
+  height: 18em;
+  min-width: 300px;
 `;
 
 const ViewDetailBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  width: 30%;
   padding: 1em;
 `;
 
-const TitleDetails = Title.extend`
-  margin: 0;
-  text-align: justify;
-`;
 
 const PriceAndDiscountBox = styled.div`
   display: flex;
@@ -67,13 +51,12 @@ const PriceAndDiscountBox = styled.div`
   }
 `;
 
-const PriceAsTitle = Price.withComponent(Title);
-const TitlePrice = PriceAsTitle.extend`
+const TitleProduct = Title.extend`
+  font-size: 2em;
   margin: 0;
-  font-size: ${defaultFontSize};
 `;
+const PriceAsTitle = TitleProduct.withComponent(Price);
 
-//
 // const SpecialItem = styled.div`
 //   background-color: ${defaultAlertBgColor};
 //   padding: 0.5em;
@@ -102,9 +85,9 @@ const renderPriceInformation = ({ price, discount }) => {
     );
   }
   return (
-    <TitlePrice>
+    <PriceAsTitle>
       {price}
-    </TitlePrice>
+    </PriceAsTitle>
   );
 };
 
@@ -114,7 +97,9 @@ const HeaderBox = styled.div`
   border-bottom: 1px dashed ${grey};
   width: 100%;
 `;
-const WrapContent = WrapperFlex.extend`margin: 0 15%;`;
+const WrapContent = WrapperFlex.extend`
+  margin: 0 15%;
+`;
 
 type ExtendedShopItem = ShopItemType & { addToCart: Function };
 
@@ -130,9 +115,9 @@ const ItemDetailsComponent = ({
 }: ExtendedShopItem) =>
   <WrapContent>
     <HeaderBox>
-      <Title>
-        {' '}{title}{' '}
-      </Title>
+      <TitleProduct>
+        { title }
+      </TitleProduct>
       {renderPriceInformation({ price, discount })}
     </HeaderBox>
     <ItemBox>
@@ -144,12 +129,11 @@ const ItemDetailsComponent = ({
         <div>
           {isNew}
         </div>
-        <TitleDetails>Description</TitleDetails>
+        <TitleItem>Description</TitleItem>
         <Description>
           {description} item#{id}
         </Description>
-        <HorizontalSeparator />
-        <OrderBox id={id} addToCart={addToCart} />
+        <OrderBox id={id} price={price} addToCart={addToCart} />
       </ViewDetailBox>
     </ItemBox>
   </WrapContent>;

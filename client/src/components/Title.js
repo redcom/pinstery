@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-import { defaultFontSize } from '../styles/vars';
+import { defaultFontSize, smallFontSize } from '../styles/vars';
 
-const Title = styled.h4`
+export const Title = styled.h4`
   text-align: center;
   font-size: ${defaultFontSize};
 `;
-
-export default Title;
+export const TitleItem = Title.extend`
+  margin: 0;
+  text-align: justify;
+  font-size: ${smallFontSize};
+  width: 8em;
+`;

@@ -13,6 +13,7 @@ export const defaultLineHeight = 1.5;
 export const white = '#fff';
 export const black = '#000';
 export const grey = '#d9dadc';
+export const greyText = '#969696';
 
 export const defaultSectionBackgroundColor = white; // #f6f8fa
 export const defaultTextColor = '#5a5a5a';
@@ -24,6 +25,7 @@ export const defaultNavBorderColor = '#4a90e2';
 export const defaultBtnBorderColor = '#ff9ca7';
 
 export const boxShadow = '0px 0px 30px 10px rgba(238, 239, 240, 0.6)';
+export const boxShadowBottom = '0px 1px 0 0 rgba(0, 0, 0, 0.07), 0px 1px 4px 0 rgba(0, 0, 0, 0.1)';
 
 // Font style
 export const defaultFontSize = '1.2em';
