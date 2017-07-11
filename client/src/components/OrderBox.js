@@ -64,7 +64,8 @@ class OrderBox extends React.Component {
 
   onChange = evt => {
     const { type, value } = evt.target;
-    let quantity, size, totalPrice;
+    let quantity;
+    let size;
 
     if (type === 'number') {
       quantity = value;
@@ -72,7 +73,7 @@ class OrderBox extends React.Component {
     if (type === 'select-one') {
       size = value;
     }
-    totalPrice = quantity * this.props.price;
+    const totalPrice = quantity * this.props.price;
     this.setState({
       size,
       quantity,
