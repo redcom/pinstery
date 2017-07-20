@@ -18,6 +18,11 @@ export type CartItemType = {
   size: number,
 };
 
+export type AdminType = {
+  isAdmin: boolean,
+  isAuth: boolean,
+};
+
 export type ShopListType = Array<ShopItemType>;
 export type CartListType = Array<CartItemType>;
 
@@ -27,5 +32,6 @@ export type ErrorsType = ?Object;
 export type State = {
   shopItems: ShopListType,
   cartItems: CartListType,
+  admin: AdminType,
   error: ErrorsType,
 };

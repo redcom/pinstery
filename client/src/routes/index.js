@@ -10,6 +10,7 @@ import {
   ShopContainer,
   ItemDetails,
   WelcomeContainer,
+  AdminContainer,
 } from '../containers';
 
 import { Header, NavBar, Footer } from '../components';
@@ -42,6 +43,8 @@ class Routes extends Component {
           <Route path="/customize" component={CustomizeContainer} />
           <Route path="/shop" component={ShopContainer} />
           <Route path="/itemDetails/:id/:title" component={ItemDetails} />
+
+          <Route path="/admin" component={AdminContainer} />
           <Footer />
         </div>
       </Router>

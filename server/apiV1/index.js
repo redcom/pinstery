@@ -10,7 +10,7 @@ import { getItemDetails } from './items';
 const Router = express.Router();
 
 const ApiV1 = () => {
-  Router.post('/adm', admin)
+  Router.post('/admin', admin)
     .post('/contact', sendContactMessage)
     .post('/cart', addCart)
     .delete('/cart', deleteCart)

@@ -12,3 +12,9 @@ export const GET_ITEM_FAILED = 'GET_ITEM_FAILED';
 // contact form
 export const SEND_CONTACT_MSG_FAILED = 'SEND_CONTACT_MSG_FAILED';
 export const SEND_CONTACT_MSG = 'SEND_CONTACT_MSG';
+
+// admin
+export const ADMIN_LOGIN = 'ADMIN_LOGIN';
+export const ADMIN_LOGIN_FAILED = 'ADMIN_LOGIN_FAILED';
+export const ADMIN_AUTH = 'ADMIN_AUTH';
+export const ADMIN_AUTH_FAILED = 'ADMIN_AUTH_FAILED';

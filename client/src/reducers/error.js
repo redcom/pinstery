@@ -5,6 +5,8 @@ import {
   ADD_CART_ITEM_FAILED,
   REMOVE_CART_ITEM_FAILED,
   SEND_CONTACT_MSG_FAILED,
+  ADMIN_LOGIN_FAILED,
+  ADMIN_AUTH_FAILED,
 } from '../constants/ActionTypes';
 
 const initialState = {};
@@ -16,6 +18,10 @@ const links = (state: ErrorsType = initialState, action: Object) => {
     case REMOVE_CART_ITEM_FAILED:
       return { error: action.error };
     case SEND_CONTACT_MSG_FAILED:
+      return { error: action.error };
+    case ADMIN_LOGIN_FAILED:
+      return { error: action.error };
+    case ADMIN_AUTH_FAILED:
       return { error: action.error };
     default:
       return state;

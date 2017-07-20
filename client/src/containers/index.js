@@ -7,3 +7,4 @@ export { default as CustomizeContainer } from './CustomizeContainer';
 export { default as AboutContainer } from './AboutContainer';
 export { default as ContactContainer } from './ContactContainer';
 export { default as WelcomeContainer } from './WelcomeContainer';
+export { default as AdminContainer } from './AdminContainer';
