@@ -5,8 +5,9 @@ export const addCart = (req, res) => {
   const item = {
     ...req.body,
     quantity: 1,
+    size: 1,
   };
-  const existingItemRef = storage.findById();
+  const existingItemRef = storage.findById({});
   existingItemRef.once('value', snapshot => {
     const existingItems = snapshot.val();
     if (!existingItems || !existingItems.length) {

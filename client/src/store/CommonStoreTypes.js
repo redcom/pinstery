@@ -9,11 +9,13 @@ export type ShopItemType = {
   discount?: number,
   isNew?: Boolean,
   image: string,
+  size?: number,
 };
 
 export type CartItemType = {
   id: number,
   quantity: number,
+  size: number,
 };
 
 export type ShopListType = Array<ShopItemType>;

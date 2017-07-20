@@ -128,7 +128,7 @@ const ShopItem = ({
   discount = 0,
 }: ExtendedShopItem) =>
   <ShopItemBox>
-    <Image image={`../assets/items/${image}`}>
+    <Image image={require(`../assets/items/${image}`)}>
       {renderSpecialItem({ isNew, discount })}
       <ViewDetailBox>
         <LinkStyled to={`/ItemDetails/${id}/${title}`}>View more</LinkStyled>

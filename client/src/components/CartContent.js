@@ -47,9 +47,10 @@ const Cart = ({
     return shopItem && { ...shopItem, ...cartItem };
   });
 
+  const cartImg = require('../assets/cart.svg');
   return (
     <CartContent>
-      <img src={'../assets/cart.svg'} alt="cart" />
+      <img src={cartImg} alt="cart" />
       {cartItems.length > 0 && [
         <CartCounter key="cartCounter">
           {cartItems.length}

@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ItemDetails, Loader } from '../components';
 import { loadItemDetails } from '../actions/ItemDetailsActions';
+import { addToCart } from '../actions/CartActions';
 
 const ItemDetailsContainer = ({
   dispatch,
@@ -26,7 +27,9 @@ const ItemDetailsContainer = ({
     dispatch(loadItemDetails(id));
   }
 
-  const displayItemDetails = () => <ItemDetails {...itemDetails} />;
+  const addItemToCart = order => dispatch(addToCart(order));
+  const displayItemDetails = () =>
+    <ItemDetails {...itemDetails} addToCart={addItemToCart} />;
 
   return (
     <Loader

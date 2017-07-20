@@ -29,13 +29,13 @@ const Copy = styled.p`display: block;`;
 const Footer = () =>
   <FooterBox>
     <Link to={'/'}>
-      <Img src={'../assets/instagram.png'} alt="pinstery_instagram" />
+      <Img src={require('../assets/instagram.png')} alt="pinstery_instagram" />
     </Link>
     <Link to={'/'}>
-      <Img src={'../assets/pinterest.png'} alt="pinstery_pinterest" />
+      <Img src={require('../assets/pinterest.png')} alt="pinstery_pinterest" />
     </Link>
     <Link to={'/'}>
-      <Img src={'../assets/facebook.png'} alt="pinstery_facebook" />
+      <Img src={require('../assets/facebook.png')} alt="pinstery_facebook" />
     </Link>
     <Copy>&copy; Pinstery.com</Copy>
   </FooterBox>;

@@ -4,12 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button, TitleItem } from '../components';
 
-import {
-  defaultFontSize,
-  boxShadowBottom,
-  // defaultSpaceBetweenElements,
-  // grey,
-} from '../styles/vars';
+import { defaultFontSize, boxShadowBottom } from '../styles/vars';
 
 const Box = styled.div`width: 300px;`;
 const OrderDetails = styled.div`
@@ -29,10 +24,8 @@ const InputNumber = styled.input`
   box-shadow: ${boxShadowBottom};
   border: none;
 `;
-const SizeOptions = styled.select.attrs({
-  id: 'size',
-  name: 'size1',
-})`
+
+const SizeOptions = styled.select`
   font-size: ${defaultFontSize};
   font-weight: bold;
   padding: 0.2em 1em;
@@ -41,6 +34,7 @@ const SizeOptions = styled.select.attrs({
   box-shadow: ${boxShadowBottom};
   border: none;
 `;
+
 type Props = {
   id: number,
   price: number,
@@ -81,7 +75,8 @@ class OrderBox extends React.Component {
     });
   };
 
-  sendOrder = () => {
+  sendOrder = evt => {
+    evt.preventDefault();
     this.props.addToCart({
       id: this.props.id,
       quantity: this.state.quantity,

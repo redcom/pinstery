@@ -74,7 +74,7 @@ const ExtraInfo = styled.div`
 const renderCartItem = onRemove => item =>
   <ListItem key={`item-${item.id}`}>
     <Left>
-      <img src={`../assets/items/${item.image}`} alt="" />
+      <img src={require(`../assets/items/${item.image}`)} alt="" />
       {item.discount && item.discount > 0
         ? <PriceRegular marginTop="0.4em" marginBottom="0">
             {item.price}

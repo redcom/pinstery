@@ -24,7 +24,7 @@ const Img = styled.img.attrs({
 const Header = () =>
   <HeaderBox>
     <Link to={'/'}>
-      <Img src={Icons.logo1} alt="Logo" />
+      <Img src={Icons.logo} alt="Pinstery Logo" />
     </Link>
     <CartContainer />
   </HeaderBox>;

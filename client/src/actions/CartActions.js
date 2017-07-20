@@ -20,12 +20,13 @@ export const removeItemFailed = (error: ErrorsType): Object => ({
 
 export const addToCart = (item: ShopItemType): Function => async dispatch => {
   try {
-    const { id, quantity } = await apiAddCartItem(item)();
+    const { id, quantity, size } = await apiAddCartItem(item)();
     return dispatch({
       type: ADD_CART_ITEM,
       item: {
         id,
         quantity,
+        size,
       },
     });
   } catch (error) {
