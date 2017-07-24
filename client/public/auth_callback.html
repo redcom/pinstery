@@ -1,0 +1,23 @@
+<script>
+  function getAuthInfoFromUrl() {
+    if (window.location.hash) {
+      var authResponse = window.location.hash.substring(1);
+      var authInfo = JSON.parse(
+        '{' + authResponse.replace(/([^=]+)=([^&]+)&?/g, '"$1":"$2",').slice(0,-1) + '}',
+        function(key, value) { return key === "" ? value : decodeURIComponent(value);  });
+      return authInfo;
+    }
+    else {
+      alert("failed to receive auth token");
+    }
+  }
+const access_token = getAuthInfoFromUrl()['access_token'];
+if (access_token) {
+  window.localStorage.setItem('access_token', access_token);
+  setTimeout(() => {
+    window.close();
+  }, 2000);
+} else {
+  alert('no accessToken');
+}
+</script>

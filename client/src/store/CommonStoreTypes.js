@@ -21,6 +21,7 @@ export type CartItemType = {
 export type AdminType = {
   isAdmin: boolean,
   isAuth: boolean,
+  url: string,
 };
 
 export type ShopListType = Array<ShopItemType>;

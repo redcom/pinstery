@@ -1,9 +1,21 @@
 import axios from 'axios-es6';
 import { API_URL } from '../config';
 
+const opts = {
+  mode: 'cors',
+  headers: new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }),
+};
+
 export const apiAuth = () => async () => {
   try {
-    const response = await axios.post(`${API_URL}/admin`, { action: 'auth' });
+    const response = await axios.post(
+      `${API_URL}/admin`,
+      { action: 'auth' },
+      opts,
+    );
     if (response.status !== 200) {
       throw new Error('Can not login');
     }

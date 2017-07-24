@@ -1,7 +1,6 @@
 // @flow
 
 import { ErrorsType } from '../store/CommonStoreTypes';
-
 import React from 'react';
 import { Button, Errors } from '../components';
 
@@ -16,7 +15,6 @@ class AdminComponent extends React.Component {
 
   render() {
     const { admin, onAdminAuth, hasErrors: error } = this.props;
-    console.log(admin);
     return (
       <div>
         {!admin.isAuth &&

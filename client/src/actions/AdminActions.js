@@ -28,7 +28,7 @@ export const login = ({
     const loginResponse = await apiLogin({ email, password })();
     return dispatch({
       type: ADMIN_LOGIN,
-      loginResponse,
+      ...loginResponse,
     });
   } catch (error) {
     return dispatch(adminLoginFailed(error));
