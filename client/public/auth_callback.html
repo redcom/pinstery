@@ -13,10 +13,22 @@
   }
 const access_token = getAuthInfoFromUrl()['access_token'];
 if (access_token) {
-  window.localStorage.setItem('access_token', access_token);
-  setTimeout(() => {
-    window.close();
-  }, 2000);
+const opts = {
+  mode: 'cors',
+  headers: new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }),
+  method: 'POST',
+  body: JSON.stringify({token: access_token})
+};
+
+fetch('/v1/admin/token', opts)
+.then(() => {
+  window.location.href='/auth_done.html';
+})
+.catch(err => { alert(err); });
+
 } else {
   alert('no accessToken');
 }

@@ -22,6 +22,8 @@ export type AdminType = {
   isAdmin: boolean,
   isAuth: boolean,
   url: string,
+  token: string,
+  images: Object,
 };
 
 export type ShopListType = Array<ShopItemType>;

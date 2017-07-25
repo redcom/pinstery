@@ -10,7 +10,7 @@ type Props = {
   onAdminAuth: Function,
 };
 
-class AdminComponent extends React.Component {
+class AdminComponent extends React.PureComponent {
   props: Props;
 
   render() {

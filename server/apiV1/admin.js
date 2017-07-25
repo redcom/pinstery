@@ -1,8 +1,9 @@
-import url from 'url';
+import axios from 'axios-es6';
 import { azureConfig } from '../../config';
 
 const updateProducts = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'products' });
+  const items = {};
   const newItemsRef = storage.post(items);
   newItemsRef.once('value', snapshot => {
     const itemsCreated = Object.keys(snapshot.val()).length;
@@ -15,7 +16,7 @@ const updateProducts = (req, res) => {
   });
 };
 
-const getAuthdUrl = () => {
+const getAuthUrl = () => {
   const { clientId, redirectUri, authServiceUri, scopes } = azureConfig;
   const rUri = redirectUri;
   const scope = escape(scopes);
@@ -24,52 +25,82 @@ const getAuthdUrl = () => {
   return redirectUrl;
 };
 
+const getImages = token =>
+  (async () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    };
+    try {
+      const response = await axios.get(azureConfig.imagesUrl, config);
+      if (response.status !== 200) {
+        throw new Error('Can not get images');
+      }
+      return response.data;
+    } catch (error) {
+      console.log('Error getting image'); // eslint-disable-line no-console
+      return null;
+    }
+  })();
+
+const getToken = token =>
+  (async () => {
+    const images = await getImages(token);
+    return images ? token : null;
+  })();
+
 const login = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'admin' });
   const { email, password } = req.body;
-  const existingItemRef = storage.findById({});
-  existingItemRef.once('value', snapshot => {
-    const existingItems = snapshot.val();
-    if (!existingItems || !existingItems.length) {
-      const newItemRef = storage.put([{ email, password }]);
-      newItemRef.once('value', snapshot => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.json({
-          email: snapshot.val()[0].email,
-          url: getAuthdUrl(),
-        });
-      });
-    } else {
-      const itemExists = existingItems.find(
-        i => i.email === email && i.password === password,
-      );
+  storage.getAll().once('value', s => {
+    const admins = s.val();
+    if (admins) {
+      const admin = Object.values(admins)[0];
+      const itemExists = admin.email === email && admin.password === password;
       if (itemExists) {
-        // TODO update login date
-        res.json({ email });
+        (async () => {
+          const token = await getToken(admin.token);
+          res.json({
+            email,
+            token,
+            url: getAuthUrl(),
+          });
+        })();
       } else {
         res.sendStatus(403).end('Login with email and password');
       }
+    } else {
+      const existingItemRef = storage.findById({});
+      existingItemRef.once('value', snapshot => {
+        const existingItems = snapshot.val();
+        if (!existingItems || !existingItems.length) {
+          const newItemRef = storage.put({ email, password });
+          newItemRef.once('value', snapshot => {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.json({
+              email: snapshot.val().email,
+              url: getAuthUrl(),
+            });
+          });
+        }
+      });
     }
   });
 };
 
-const auth = (req, res) => {
-  // const storage = req.app.get('storage')({ bucket: 'admin' });
-  // const existingItemRef = storage.findById({});
-  // existingItemRef.once('value', snapshot => {
-  //   const existingItems = snapshot.val();
-  //   if (!existingItems || !existingItems.length) {
-  //     res.sendStatus(403).end('User is not logged in');
-  //   } else {
-  //     const itemExists = existingItems[0];
-  //     console.log(itemExists);
-  //     if (itemExists.authToken) {
-  //       res.json({ tocken: itemExists.authToken });
-  //     } else {
-  //       doOneDriveAuth(req, res);
-  //     }
-  //   }
-  // });
+const getAdminImages = (req, res) => {
+  (async () => {
+    try {
+      const token = req.body.token;
+      const images = await getImages(token);
+      res.json(images);
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  })();
 };
 
 export const admin = (req, res) => {
@@ -79,8 +110,8 @@ export const admin = (req, res) => {
     case 'login':
       login(req, res);
       break;
-    case 'auth':
-      auth(req, res);
+    case 'getImages':
+      getAdminImages(req, res);
       break;
     case 'updateProducts':
       updateProducts(req, res);
@@ -92,5 +123,35 @@ export const admin = (req, res) => {
 };
 
 export const authCallback = (req, res) => {
-  res.redirect(301, 'http://localhost:3000/admin');
+  const storage = req.app.get('storage')({ bucket: 'admin' });
+  const token = req.body.token;
+  storage.getAll().once('value', s => {
+    const admins = s.val();
+    if (admins) {
+      const admin = Object.values(admins)[0];
+      const key = Object.keys(admins)[0];
+      const update = [
+        {
+          id: key,
+          ...admin,
+          token,
+        },
+      ];
+      if (key && admin) {
+        const updateUser = storage.post(update);
+        updateUser.once('value', snapshot => {
+          const item = snapshot.val();
+          if (item) {
+            res.sendStatus(200);
+          } else {
+            res.sendStatus(403).end('Login with email and password');
+          }
+        });
+      } else {
+        res.sendStatus(403).end('Can not find any admin');
+      }
+    } else {
+      res.redirect(301, 'http://localhost:3000/admin');
+    }
+  });
 };

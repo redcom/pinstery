@@ -33,7 +33,7 @@ const storage = () => ({ bucket }) => {
       return rootRef.child(`/${bucket}`);
     },
     delete: id => bucket.filter(i => i.id !== id),
-    getAll: () => bucket,
+    getAll: () => rootRef.child(`/${bucket}`),
     findById: ({ id = 0 }) => {
       if (!buckets.length) {
         return false;

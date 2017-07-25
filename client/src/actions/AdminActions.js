@@ -1,15 +1,15 @@
 // @flow
 
-import { apiLogin, apiAuth } from '../helpers/adminApi';
+import { apiLogin, apiLoadImages } from '../helpers/adminApi';
 import {
   ADMIN_LOGIN,
   ADMIN_LOGIN_FAILED,
-  ADMIN_AUTH,
-  ADMIN_AUTH_FAILED,
+  ADMIN_GET_IMAGES,
+  ADMIN_GET_IMAGES_FAILED,
 } from '../constants/ActionTypes';
 
-export const adminAuthFailed = (error: ErrorsType): Object => ({
-  type: ADMIN_AUTH_FAILED,
+export const adminGetImageFailed = (error: ErrorsType): Object => ({
+  type: ADMIN_GET_IMAGES_FAILED,
   error,
 });
 export const adminLoginFailed = (error: ErrorsType): Object => ({
@@ -35,14 +35,20 @@ export const login = ({
   }
 };
 
-export const auth = (): Function => async dispatch => {
+export const loadImages = ({
+  email,
+  token,
+}: {
+  email: string,
+  token: string,
+}): Function => async dispatch => {
   try {
-    const authResponse = await apiAuth()();
+    const loadImagesResponse = await apiLoadImages({ email, token })();
     return dispatch({
-      type: ADMIN_AUTH,
-      authResponse,
+      type: ADMIN_GET_IMAGES,
+      images: loadImagesResponse,
     });
   } catch (error) {
-    return dispatch(adminAuthFailed(error));
+    return dispatch(adminGetImageFailed(error));
   }
 };

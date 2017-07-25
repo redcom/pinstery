@@ -1,3 +1,4 @@
+/* eslint-disable no-console*/
 import express from 'express';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
@@ -44,20 +45,19 @@ const PORT = process.env.PORT || 8888;
 
 const server = http.createServer(app);
 server.listen(PORT);
-const secureServer = https
-  .createServer(
-    {
-      key: fs.readFileSync('./server/keys/server.key'),
-      cert: fs.readFileSync('./server/keys/server.crt'),
-      ca: fs.readFileSync('./server/keys/ca.crt'),
-      requestCert: true,
-      rejectUnauthorized: false,
-    },
-    app,
-  )
-  .listen('8443', () => {
-    console.log('Secure Express server listening on port 8443');
-  });
+const secureServer = https.createServer(
+  {
+    key: fs.readFileSync('./server/keys/server.key'),
+    cert: fs.readFileSync('./server/keys/server.crt'),
+    ca: fs.readFileSync('./server/keys/ca.crt'),
+    requestCert: true,
+    rejectUnauthorized: false,
+  },
+  app,
+);
+secureServer.listen('8443', () => {
+  console.log('Secure Express server listening on port 8443');
+});
 if (isDevEnv) {
   console.log(`Server is listening on port ${PORT}`); // eslint-disable-line no-console
 }

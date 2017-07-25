@@ -22,3 +22,4 @@ export { default as Loader } from './Loader';
 // admin
 export { default as AdminLogin } from './AdminLogin';
 export { default as Admin } from './Admin';
+export { default as AdminImageGallery } from './AdminImageGallery';

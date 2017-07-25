@@ -10,5 +10,6 @@ export const azureConfig = {
   "clientId": "27679c88-3561-49bb-9391-79eb9cb80e11",
   "redirectUri": "https://127.0.0.1:8443/auth_callback.html",
   "scopes": "files.read.all",
-  "authServiceUri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+  "authServiceUri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+  "imagesUrl": 'https://graph.microsoft.com/v1.0/me/drive/root:/2.%20PINStery/Button%20badges/png:?expand=thumbnails,children(expand=thumbnails(select=large))',
 };

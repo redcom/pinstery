@@ -12,6 +12,7 @@ const Router = express.Router();
 const ApiV1 = () => {
   Router.get('/admin', authCallback)
     .post('/admin', admin)
+    .post('/admin/token', authCallback)
     .post('/contact', sendContactMessage)
     .post('/cart', addCart)
     .delete('/cart', deleteCart)

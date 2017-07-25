@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable import/no-dynamic-require*/
 
 import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
