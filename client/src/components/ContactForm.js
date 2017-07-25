@@ -8,11 +8,10 @@ import {
   defaultFontSize,
   defaultSpaceBetweenElements,
   defaultSpaceAroundElements,
-  defaultFontLabel,
 } from '../styles/vars';
 
 import styled from 'styled-components';
-import { Button, Errors } from '../components';
+import { Button, Errors, Label, WrapActions } from '../components';
 
 // Styled component used bellow
 const ContactForm = styled.form`
@@ -39,27 +38,6 @@ const ContactForm = styled.form`
   }
 `;
 
-const Label = styled.label`
-  padding: ${defaultSpaceBetweenElements};
-  font-size: ${defaultFontSize};
-  font-weight: bold;
-  width: 15%;
-  transition: 0.3s;
-  position: absolute;
-  &.focus {
-    margin-left: -100px;
-    font-size: ${defaultFontLabel};
-  }
-`;
-const WrapActions = styled.div`
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  > button {
-    align-self: flex-end;
-  }
-`;
 type Props = {
   onSubmit: Function,
   hasErrors: ErrorsType,

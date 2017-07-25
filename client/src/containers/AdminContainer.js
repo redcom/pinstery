@@ -3,7 +3,13 @@
 import type { State, ErrorsType } from '../store/CommonStoreTypes';
 import React from 'react';
 import { connect } from 'react-redux';
-import { WrapperFlex, Title, Admin, AdminLogin } from '../components';
+import {
+  WrapperFlex,
+  Title,
+  Admin,
+  AdminLogin,
+  AdminImageGallery,
+} from '../components';
 import { login, loadImages } from '../actions/AdminActions';
 
 const AdminContainer = ({
@@ -19,6 +25,9 @@ const AdminContainer = ({
   const onAuth = () => {
     window.open(admin.url, 'Auth', 'top=100,left=100,width=700,height=500');
   };
+  const onImageSelect = img => {
+    // console.log(img);
+  };
 
   let content = null;
   if (!admin.isAdmin) {
@@ -26,6 +35,15 @@ const AdminContainer = ({
   }
   if (admin.isAdmin && !admin.token) {
     content = <Admin admin={admin} onAdminAuth={onAuth} hasErrors={error} />;
+  }
+  if (admin.isAdmin && admin.token && admin.images) {
+    content = (
+      <AdminImageGallery
+        admin={admin}
+        onImageSelect={onImageSelect}
+        hasErrors={error}
+      />
+    );
   }
 
   if (!content) {

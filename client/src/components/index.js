@@ -18,8 +18,11 @@ export { HorizontalSeparator, VerticalSeparator } from './Separator';
 export { default as ImageGallery } from './ImageGallery';
 export { default as OrderBox } from './OrderBox';
 export { default as Loader } from './Loader';
+export { default as Label } from './Label';
+export { default as WrapActions } from './WrapActions';
 
 // admin
 export { default as AdminLogin } from './AdminLogin';
 export { default as Admin } from './Admin';
 export { default as AdminImageGallery } from './AdminImageGallery';
+export { default as AdminImage } from './AdminImage';
