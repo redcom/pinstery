@@ -1,6 +1,22 @@
 import axios from 'axios-es6';
 import { API_URL } from '../config';
 
+export const apiAddProduct = product => async () => {
+  try {
+    const response = await axios.post(`${API_URL}/admin`, {
+      ...product,
+      published: true,
+      action: 'addProduct',
+    });
+    if (response.status !== 200) {
+      throw new Error('Can not add new product');
+    }
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const apiLoadImages = ({ email, token }) => async () => {
   try {
     const response = await axios.post(`${API_URL}/admin`, {

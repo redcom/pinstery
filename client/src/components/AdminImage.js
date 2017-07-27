@@ -8,6 +8,7 @@ type Props = {
   onSubmit: Function,
   hasErrors: ErrorsType,
   image: Object,
+  isPublished: boolen,
 };
 
 const Img = styled.img`width: auto;`;
@@ -82,7 +83,7 @@ class AdminImage extends React.Component {
 
   render() {
     const { title, description, price } = this.state;
-    const { hasErrors: { error }, image } = this.props;
+    const { hasErrors: { error }, image, isPublished } = this.props;
     return (
       <Li>
         <div>
@@ -103,6 +104,7 @@ class AdminImage extends React.Component {
             <option value="">Select Size</option>
             <option value="cat1">Size 1</option>
           </select>
+          {`Status: ${isPublished ? 'YES' : 'NO'}`}
         </div>
         <div className="itemDetails">
           <div>
@@ -117,14 +119,13 @@ class AdminImage extends React.Component {
             <textarea
               cols="4"
               rows="10"
+              value={description}
               placeholder="Description"
               id="descrription"
               name="description"
               required="required"
               onChange={this.onChange}
-            >
-              {description}
-            </textarea>
+            />
             <input
               type="number"
               value={price}

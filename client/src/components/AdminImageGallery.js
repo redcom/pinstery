@@ -20,6 +20,9 @@ type ExtendedAdminImageGallery = AdminType & {
   onImageSelect: Function,
 };
 
+const isProductPublished = (admin, id) =>
+  !!admin.publishProducts.find(item => item.id === id);
+
 const AdminImageGallery = ({
   admin,
   onImageSelect,
@@ -32,8 +35,8 @@ const AdminImageGallery = ({
         onSubmit={onImageSelect}
         key={image.id}
         hasErrors={hasErrors}
+        isPublished={isProductPublished(admin, image.id)}
       />,
     )}
   </AdminImageGalleryLine>;
-
 export default AdminImageGallery;

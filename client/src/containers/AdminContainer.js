@@ -10,7 +10,7 @@ import {
   AdminLogin,
   AdminImageGallery,
 } from '../components';
-import { login, loadImages } from '../actions/AdminActions';
+import { login, loadImages, addProduct } from '../actions/AdminActions';
 
 const AdminContainer = ({
   error = null,
@@ -25,9 +25,7 @@ const AdminContainer = ({
   const onAuth = () => {
     window.open(admin.url, 'Auth', 'top=100,left=100,width=700,height=500');
   };
-  const onImageSelect = img => {
-    // console.log(img);
-  };
+  const onImageSelect = product => dispatch(addProduct(product));
 
   let content = null;
   if (!admin.isAdmin) {
@@ -36,7 +34,7 @@ const AdminContainer = ({
   if (admin.isAdmin && !admin.token) {
     content = <Admin admin={admin} onAdminAuth={onAuth} hasErrors={error} />;
   }
-  if (admin.isAdmin && admin.token && admin.images) {
+  if (admin.isAdmin && admin.token && admin.images.thumbnails) {
     content = (
       <AdminImageGallery
         admin={admin}

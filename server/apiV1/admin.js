@@ -1,15 +1,37 @@
 import axios from 'axios-es6';
 import { azureConfig } from '../../config';
 
-const updateProducts = (req, res) => {
+const addProduct = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'products' });
-  const items = {};
+  const {
+    title,
+    description,
+    price,
+    size,
+    category,
+    url,
+    id,
+    published,
+  } = req.body;
+  const items = [
+    {
+      title,
+      description,
+      price,
+      size,
+      category,
+      url,
+      id,
+      published,
+      publishDate: Date.now(),
+    },
+  ];
   const newItemsRef = storage.post(items);
   newItemsRef.once('value', snapshot => {
     const itemsCreated = Object.keys(snapshot.val()).length;
-    const success = itemsCreated === items.length;
+    const success = itemsCreated > 0;
     if (success) {
-      res.send(`Created: ${itemsCreated} items`);
+      res.json({ product: items[0] });
     } else {
       res.sendStatus(500).end('Error Creating products');
     }
@@ -113,8 +135,8 @@ export const admin = (req, res) => {
     case 'getImages':
       getAdminImages(req, res);
       break;
-    case 'updateProducts':
-      updateProducts(req, res);
+    case 'addProduct':
+      addProduct(req, res);
       break;
     default:
       res.sendStatus(403).end('What do you want me to do?');
