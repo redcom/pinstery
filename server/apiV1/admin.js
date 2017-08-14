@@ -1,6 +1,19 @@
 import axios from 'axios-es6';
 import { azureConfig } from '../../config';
 
+const getCategories = (req, res) => {
+  const storage = req.app.get('storage')({ bucket: 'categories' });
+  newItemsRef.once('value', snapshot => {
+    const categories = snapshot.val();
+    console.log(categories, 'categs');
+    if (categories) {
+      res.json(categories);
+    } else {
+      res.sendStatus(500).end('Errong categoriersr ');
+    }
+  });
+};
+
 const addProduct = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'products' });
   const {
@@ -125,24 +138,6 @@ const getAdminImages = (req, res) => {
   })();
 };
 
-export const admin = (req, res) => {
-  const { action } = req.body;
-
-  switch (action) {
-    case 'login':
-      login(req, res);
-      break;
-    case 'getImages':
-      getAdminImages(req, res);
-      break;
-    case 'addProduct':
-      addProduct(req, res);
-      break;
-    default:
-      res.sendStatus(403).end('What do you want me to do?');
-      break;
-  }
-};
 
 export const authCallback = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'admin' });
@@ -176,4 +171,26 @@ export const authCallback = (req, res) => {
       res.redirect(301, 'http://localhost:3000/admin');
     }
   });
+};
+
+export const admin = (req, res) => {
+  const { action } = req.body;
+
+  switch (action) {
+    case 'login':
+      login(req, res);
+      break;
+    case 'getCategories':
+      getAdminCategories(req, res);
+      break;
+    case 'getImages':
+      getAdminImages(req, res);
+      break;
+    case 'addProduct':
+      addProduct(req, res);
+      break;
+    default:
+      res.sendStatus(403).end('What do you want me to do?');
+      break;
+  }
 };

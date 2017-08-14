@@ -7,6 +7,7 @@ import {
   SEND_CONTACT_MSG_FAILED,
   ADMIN_LOGIN_FAILED,
   ADMIN_GET_IMAGES_FAILED,
+  ADMIN_GET_CATEGORIES_FAILED,
   ADMIN_ADD_PRODUCT_FAILED,
 } from '../constants/ActionTypes';
 
@@ -25,6 +26,8 @@ const links = (state: ErrorsType = initialState, action: Object) => {
     case ADMIN_GET_IMAGES_FAILED:
       return { error: action.error };
     case ADMIN_ADD_PRODUCT_FAILED:
+      return { error: action.error };
+    case ADMIN_GET_CATEGORIES_FAILED:
       return { error: action.error };
     default:
       return state;

@@ -25,6 +25,7 @@ export type AdminType = {
   token: string,
   images: Object,
   publishProducts: Array<Object>,
+  categories: Array<Object>,
 };
 
 export type ShopListType = Array<ShopItemType>;

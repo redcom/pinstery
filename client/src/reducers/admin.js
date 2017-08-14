@@ -4,6 +4,7 @@ import type { AdminType } from '../store/CommonStoreTypes';
 import {
   ADMIN_LOGIN,
   ADMIN_GET_IMAGES,
+  ADMIN_GET_CATEGORIES,
   ADMIN_ADD_PRODUCT,
 } from '../constants/ActionTypes';
 
@@ -14,6 +15,7 @@ const initialState = {
   token: null,
   publishProducts: [],
   images: {},
+  categories: [],
 };
 
 const admin = (state: AdminType = initialState, action: Object) => {
@@ -43,6 +45,8 @@ const admin = (state: AdminType = initialState, action: Object) => {
         publishProducts.push(action.product);
       }
       return { ...state, publishProducts };
+    case ADMIN_GET_CATEGORIES:
+      return { ...state, categories: action.categories};
     default:
       return state;
   }

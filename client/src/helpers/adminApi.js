@@ -17,6 +17,21 @@ export const apiAddProduct = product => async () => {
   }
 };
 
+export const apiLoadCategories = ({ email, token }) => async () => {
+  try {
+    const response = await axios.post(`${API_URL}/admin`, {
+      email,
+      token,
+      action: 'getCategories',
+    });
+    if (response.status !== 200) {
+      throw new Error('Can get categories');
+    }
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 export const apiLoadImages = ({ email, token }) => async () => {
   try {
     const response = await axios.post(`${API_URL}/admin`, {

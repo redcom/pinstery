@@ -9,6 +9,8 @@ import {
   Admin,
   AdminLogin,
   AdminImageGallery,
+  AdminImageGalleryEdit,
+  AdminCategories,
   AdminTabs,
 } from '../components';
 import { login, loadImages, addProduct } from '../actions/AdminActions';
@@ -27,6 +29,8 @@ const AdminContainer = ({
     window.open(admin.url, 'Auth', 'top=100,left=100,width=700,height=500');
   };
   const onImageSelect = product => dispatch(addProduct(product));
+  const onEditCategory = category => dispatch((category) => console.log(category));
+  //const onEditCategory = category => dispatch(onEditCategory(category))
 
   let content = null;
   if (!admin.isAdmin) {
@@ -38,13 +42,24 @@ const AdminContainer = ({
   if (admin.isAdmin && admin.token && admin.images.thumbnails) {
     content = (
       <AdminTabs>
-        [<AdminImageGallery
+      {[<AdminImageGallery
           admin={admin}
           onImageSelect={onImageSelect}
           hasErrors={error}
-          index="1"
+          key={`AdminTab1`}
+       />,
+        <AdminImageGalleryEdit
+          admin={admin}
+          onImageSelect={onImageSelect}
+          hasErrors={error}
+          key={`AdminTabEditProduct`}
+       />,
+        <AdminCategories
+          key={`AdminTabCategories`}
+          admin={admin}
+          onEditCategory={onEditCategory}
         />
-        ]
+      ]}
       </AdminTabs>
     );
   }
