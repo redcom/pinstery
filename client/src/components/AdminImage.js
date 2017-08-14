@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Errors, WrapActions } from '../components';
 import { defaultSpaceInBetween } from '../styles/vars';
 
-import Button from 'material-ui/Button'
-import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
 
 type Props = {
   onSubmit: Function,
@@ -140,7 +140,12 @@ class AdminImage extends React.Component {
                   {error.message}
                 </Errors>
               : <div />}
-            <Button  raised color="primary" onClick={this.onFormSubmit} width="auto">
+            <Button
+              raised
+              color="primary"
+              onClick={this.onFormSubmit}
+              width="auto"
+            >
               Send
             </Button>
           </WrapActions>

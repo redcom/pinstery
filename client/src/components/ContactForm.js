@@ -12,7 +12,6 @@ import styled from 'styled-components';
 import { Errors, WrapActions, Button } from '../components';
 import TextField from 'material-ui/TextField';
 
-
 // Styled component used bellow
 const ContactForm = styled.form`
   display: flex;
@@ -86,27 +85,27 @@ class ContactFormComponent extends React.Component {
     return (
       <ContactForm onSubmit={this.submitForm}>
         <div>
-        <TextField
-          required
-          id="email"
-          label="Email"
-          value={email}
-          onChange={this.onChange}
-          onFocus={this.onFocus}
-          margin="normal"
-        />
+          <TextField
+            required
+            id="email"
+            label="Email"
+            value={email}
+            onChange={this.onChange}
+            onFocus={this.onFocus}
+            margin="normal"
+          />
         </div>
         <div>
-        <TextField
-          label="Message"
-          required
-          multiline
-          rowsMax="4"
-          value={message}
-          id="message"
-          onChange={this.onChange}
-          margin="normal"
-        />
+          <TextField
+            label="Message"
+            required
+            multiline
+            rowsMax="4"
+            value={message}
+            id="message"
+            onChange={this.onChange}
+            margin="normal"
+          />
         </div>
         <WrapActions>
           {error
@@ -114,7 +113,9 @@ class ContactFormComponent extends React.Component {
                 {' '}{error.message}{' '}
               </Errors>
             : <div />}
-          <Button raised onClick={this.submitForm}>Send</Button>
+          <Button raised onClick={this.submitForm}>
+            Send
+          </Button>
         </WrapActions>
       </ContactForm>
     );

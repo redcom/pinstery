@@ -71,25 +71,25 @@ class AdminLoginComponent extends React.Component {
     return (
       <Form onSubmit={this.submitForm}>
         <div>
-        <TextField
-          required
-          id="email"
+          <TextField
+            required
+            id="email"
             type="email"
-          label="Email"
-          value={email}
-          onChange={this.onChange}
-          margin="normal"
-      />
+            label="Email"
+            value={email}
+            onChange={this.onChange}
+            margin="normal"
+          />
         </div>
         <div>
-        <TextField
-          required
-          id="password"
-          type="password"
-          label="Password"
-          value={password}
-          onChange={this.onChange}
-        />
+          <TextField
+            required
+            id="password"
+            type="password"
+            label="Password"
+            value={password}
+            onChange={this.onChange}
+          />
         </div>
         <WrapActions>
           {error
@@ -97,7 +97,9 @@ class AdminLoginComponent extends React.Component {
                 {' '}{error.message}{' '}
               </Errors>
             : <div />}
-          <Button raised color="primary" onClick={this.submitForm} width="auto">Send</Button>
+          <Button raised color="primary" onClick={this.submitForm} width="auto">
+            Send
+          </Button>
         </WrapActions>
       </Form>
     );

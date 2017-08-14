@@ -32,7 +32,7 @@ class AdminTabs extends Component {
   };
 
   render() {
-    const {classes, children} = this.props;
+    const { classes, children } = this.props;
 
     return (
       <div className={classes.root}>
