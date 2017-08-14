@@ -28,15 +28,15 @@ const AdminImageGallery = ({
   onImageSelect,
   hasErrors,
 }: ExtendedAdminImageGallery) =>
-  <AdminImageGalleryLine>
+  (<AdminImageGalleryLine>
     {admin.images.children.map(image =>
-      <AdminImage
+      (<AdminImage
         image={image}
         onSubmit={onImageSelect}
         key={image.id}
         hasErrors={hasErrors}
         isPublished={isProductPublished(admin, image.id)}
-      />,
+      />),
     )}
-  </AdminImageGalleryLine>;
+  </AdminImageGalleryLine>);
 export default AdminImageGallery;

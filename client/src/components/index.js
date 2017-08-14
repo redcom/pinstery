@@ -26,3 +26,4 @@ export { default as AdminLogin } from './AdminLogin';
 export { default as Admin } from './Admin';
 export { default as AdminImageGallery } from './AdminImageGallery';
 export { default as AdminImage } from './AdminImage';
+export { default as AdminTabs } from './AdminTabs';

@@ -4,10 +4,10 @@ import { ErrorsType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Errors } from '../components';
+import { Errors } from '../components';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
 import {
-  defaultBorderStyle,
-  defaultFontSize,
   defaultSpaceBetweenElements,
   defaultSpaceAroundElements,
 } from '../styles/vars';
@@ -29,13 +29,6 @@ const Form = styled.form`
   margin: ${defaultSpaceBetweenElements};
   > div {
     padding: ${defaultSpaceAroundElements};
-
-    > input {
-      padding: ${defaultSpaceBetweenElements};
-      font-size: ${defaultFontSize};
-      border: ${defaultBorderStyle};
-      width: 100%;
-    }
   }
 `;
 
@@ -78,22 +71,25 @@ class AdminLoginComponent extends React.Component {
     return (
       <Form onSubmit={this.submitForm}>
         <div>
-          Email:
-          <input
+        <TextField
+          required
+          id="email"
             type="email"
-            value={email}
-            onChange={this.onChange}
-            required="required"
-          />
+          label="Email"
+          value={email}
+          onChange={this.onChange}
+          margin="normal"
+      />
         </div>
         <div>
-          Password:
-          <input
-            value={password}
-            type="password"
-            onChange={this.onChange}
-            required="required"
-          />
+        <TextField
+          required
+          id="password"
+          type="password"
+          label="Password"
+          value={password}
+          onChange={this.onChange}
+        />
         </div>
         <WrapActions>
           {error
@@ -101,9 +97,7 @@ class AdminLoginComponent extends React.Component {
                 {' '}{error.message}{' '}
               </Errors>
             : <div />}
-          <Button onClick={this.submitForm} width="auto">
-            {' '}Send{' '}
-          </Button>
+          <Button raised color="primary" onClick={this.submitForm} width="auto">Send</Button>
         </WrapActions>
       </Form>
     );

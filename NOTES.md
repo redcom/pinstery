@@ -13,8 +13,9 @@ TODO
 - [ ] SSR for application
 - [ ] Payment system integration
 - [ ] SEO and analytics
-- [ ] Contact Form Logic
+- [ ] Contact Form Logic/ Cleanup
 - [ ] Order button logic
+- [x] User materia-ui
 
 
 Inspiration

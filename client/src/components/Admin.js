@@ -2,7 +2,8 @@
 
 import { ErrorsType } from '../store/CommonStoreTypes';
 import React from 'react';
-import { Button, Errors } from '../components';
+import { Errors } from '../components';
+import Button from 'material-ui/Button';
 
 type Props = {
   admin: Object,
@@ -18,7 +19,7 @@ class AdminComponent extends React.PureComponent {
     return (
       <div>
         {!admin.isAuth &&
-          <Button onClick={onAdminAuth} width="200px">
+          <Button raised color="primary" onClick={onAdminAuth} width="200px">
             Authorize
           </Button>}
         {error &&

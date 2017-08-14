@@ -110,7 +110,7 @@ const ItemDetailsComponent = ({
   discount = 0,
   addToCart = Function,
 }: ExtendedShopItem) =>
-  <WrapContent>
+  (<WrapContent>
     <HeaderBox>
       <TitleProduct>
         {title}
@@ -133,6 +133,6 @@ const ItemDetailsComponent = ({
         <OrderBox id={id} price={price} addToCart={addToCart} />
       </ViewDetailBox>
     </ItemBox>
-  </WrapContent>;
+  </WrapContent>);
 
 export default ItemDetailsComponent;

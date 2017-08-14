@@ -32,7 +32,6 @@ const admin = (state: AdminType = initialState, action: Object) => {
       let publishProducts = [];
       if (state.publishProducts.length) {
         publishProducts = state.publishProducts.reduce((acc, item) => {
-          console.log(item, action.product);
           if (item && item.id !== action.product.id) {
             acc.push(item);
           } else {

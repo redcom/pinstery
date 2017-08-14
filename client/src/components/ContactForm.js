@@ -4,14 +4,14 @@ import { ErrorsType } from '../store/CommonStoreTypes';
 
 import React from 'react';
 import {
-  defaultBorderStyle,
-  defaultFontSize,
   defaultSpaceBetweenElements,
   defaultSpaceAroundElements,
 } from '../styles/vars';
 
 import styled from 'styled-components';
-import { Button, Errors, Label, WrapActions } from '../components';
+import { Errors, WrapActions, Button } from '../components';
+import TextField from 'material-ui/TextField';
+
 
 // Styled component used bellow
 const ContactForm = styled.form`
@@ -21,20 +21,6 @@ const ContactForm = styled.form`
   margin: ${defaultSpaceBetweenElements};
   > div {
     padding: ${defaultSpaceAroundElements};
-
-    > input[type='email'] {
-      padding: ${defaultSpaceBetweenElements};
-      font-size: ${defaultFontSize};
-      border: ${defaultBorderStyle};
-      width: 100%;
-    }
-    > textarea {
-      padding: ${defaultSpaceBetweenElements};
-      font-size: ${defaultFontSize};
-      border: ${defaultBorderStyle};
-      width: 100%;
-      height: 10em;
-    }
   }
 `;
 
@@ -69,7 +55,7 @@ class ContactFormComponent extends React.Component {
     }
     if (evt.target.type === 'textarea') {
       this.setState({
-        message: evt.target.value.trim(),
+        message: evt.target.value,
       });
     }
   };
@@ -100,37 +86,27 @@ class ContactFormComponent extends React.Component {
     return (
       <ContactForm onSubmit={this.submitForm}>
         <div>
-          <Label
-            htmlFor="email"
-            className={`${this.state.focusEmail ? 'focus' : ''}`}
-          >
-            Email:
-          </Label>
-          <input
-            value={email}
-            id="email"
-            type="email"
-            required="required"
-            onChange={this.onChange}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-          />
+        <TextField
+          required
+          id="email"
+          label="Email"
+          value={email}
+          onChange={this.onChange}
+          onFocus={this.onFocus}
+          margin="normal"
+        />
         </div>
         <div>
-          <Label
-            htmlFor="message"
-            className={`${this.state.focusMessage ? 'focus' : ''}`}
-          >
-            Message:
-          </Label>
-          <textarea
-            value={message}
-            id="message"
-            required="required"
-            onChange={this.onChange}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-          />
+        <TextField
+          label="Message"
+          required
+          multiline
+          rowsMax="4"
+          value={message}
+          id="message"
+          onChange={this.onChange}
+          margin="normal"
+        />
         </div>
         <WrapActions>
           {error
@@ -138,9 +114,7 @@ class ContactFormComponent extends React.Component {
                 {' '}{error.message}{' '}
               </Errors>
             : <div />}
-          <Button onClick={this.submitForm} width="auto">
-            {' '}Send{' '}
-          </Button>
+          <Button raised onClick={this.submitForm}>Send</Button>
         </WrapActions>
       </ContactForm>
     );

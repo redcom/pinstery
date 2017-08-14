@@ -1,8 +1,11 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Errors, WrapActions } from '../components';
+import { Errors, WrapActions } from '../components';
 import { defaultSpaceInBetween } from '../styles/vars';
+
+import Button from 'material-ui/Button'
+import TextField from 'material-ui/TextField'
 
 type Props = {
   onSubmit: Function,
@@ -37,13 +40,6 @@ const Li = styled.li`
       flex-direction: column;
       > * {
         margin: ${defaultSpaceInBetween};
-      }
-      > input {
-        padding: 1em;
-        border: 1px solid grey;
-      }
-      > textarea {
-        height: 5em;
       }
     }
   }
@@ -108,30 +104,31 @@ class AdminImage extends React.Component {
         </div>
         <div className="itemDetails">
           <div>
-            <input
-              type="text"
-              value={title}
-              placeholder="Title"
+            <TextField
+              required
+              id="title"
+              label="Title"
               name="title"
-              required="required"
+              value={title}
               onChange={this.onChange}
             />
-            <textarea
-              cols="4"
-              rows="10"
-              value={description}
-              placeholder="Description"
-              id="descrription"
+            <TextField
+              required
+              id="description"
+              label="Description"
               name="description"
-              required="required"
+              value={description}
               onChange={this.onChange}
+              multiline
+              rowsMax="4"
             />
-            <input
-              type="number"
-              value={price}
-              placeholder="Price"
+            <TextField
+              required
+              id="price"
+              label="Price"
               name="price"
-              required="required"
+              value={price}
+              type="number"
               onChange={this.onChange}
             />
           </div>
@@ -143,7 +140,7 @@ class AdminImage extends React.Component {
                   {error.message}
                 </Errors>
               : <div />}
-            <Button onClick={this.onFormSubmit} width="auto">
+            <Button  raised color="primary" onClick={this.onFormSubmit} width="auto">
               Send
             </Button>
           </WrapActions>

@@ -9,6 +9,7 @@ import {
   Admin,
   AdminLogin,
   AdminImageGallery,
+  AdminTabs,
 } from '../components';
 import { login, loadImages, addProduct } from '../actions/AdminActions';
 
@@ -36,11 +37,15 @@ const AdminContainer = ({
   }
   if (admin.isAdmin && admin.token && admin.images.thumbnails) {
     content = (
-      <AdminImageGallery
-        admin={admin}
-        onImageSelect={onImageSelect}
-        hasErrors={error}
-      />
+      <AdminTabs>
+        [<AdminImageGallery
+          admin={admin}
+          onImageSelect={onImageSelect}
+          hasErrors={error}
+          index="1"
+        />
+        ]
+      </AdminTabs>
     );
   }
 

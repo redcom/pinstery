@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import Button from 'material-ui/Button';
+
 import {
   defaultFontSize,
   defaultPrimaryColor,
   defaultLineHeight,
 } from '../styles/vars';
 
-const Button = styled.button`
+const ButtonStyled = styled(Button)`
   font-size: ${props => props.fontSize || defaultFontSize};
   border: ${props => props.border || `2px solid ${defaultPrimaryColor}`};
   background: transparent;
@@ -16,4 +18,4 @@ const Button = styled.button`
   line-height: ${defaultLineHeight};
 `;
 
-export default Button;
+export default ButtonStyled;
