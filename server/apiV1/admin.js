@@ -138,7 +138,6 @@ const getAdminImages = (req, res) => {
   })();
 };
 
-
 export const authCallback = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'admin' });
   const token = req.body.token;

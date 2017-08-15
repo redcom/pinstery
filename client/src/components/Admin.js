@@ -24,7 +24,7 @@ class AdminComponent extends React.PureComponent {
           </Button>}
         {error &&
           <Errors>
-            {' '} {error.message} {' '}
+            {error.message}
           </Errors>}
       </div>
     );

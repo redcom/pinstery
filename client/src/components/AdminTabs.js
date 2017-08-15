@@ -23,7 +23,7 @@ class AdminTabs extends Component {
   };
 
   render() {
-    const {classes, children} = this.props;
+    const { classes, children } = this.props;
 
     return (
       <div className={classes.root}>
@@ -41,11 +41,10 @@ class AdminTabs extends Component {
             <Tab label="Categories" />
           </Tabs>
         </AppBar>
-        {
-          React.Children.map(children, (child, index) => {
-            return index === this.state.index && child;
-          })
-        }
+        {React.Children.map(
+          children,
+          (child, index) => index === this.state.index && child,
+        )}
       </div>
     );
   }

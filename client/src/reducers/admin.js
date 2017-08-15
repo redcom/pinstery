@@ -21,6 +21,10 @@ const initialState = {
 const admin = (state: AdminType = initialState, action: Object) => {
   switch (action.type) {
     case ADMIN_LOGIN:
+      localStorage.setItem(
+        'auth',
+        JSON.stringify({ isAdmin, token: action.token }),
+      );
       return {
         ...state,
         isAdmin: true,
@@ -46,7 +50,7 @@ const admin = (state: AdminType = initialState, action: Object) => {
       }
       return { ...state, publishProducts };
     case ADMIN_GET_CATEGORIES:
-      return { ...state, categories: action.categories};
+      return { ...state, categories: action.categories };
     default:
       return state;
   }

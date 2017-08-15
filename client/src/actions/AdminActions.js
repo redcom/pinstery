@@ -48,6 +48,8 @@ export const login = ({
   password: string,
 }): Function => async dispatch => {
   try {
+    const credentaials = JSON.parse(localStorage.getItem('auth'));
+    if (credentials.isAdmin && credentials.token &&)
     const loginResponse = await apiLogin({ email, password })();
     return dispatch({
       type: ADMIN_LOGIN,
