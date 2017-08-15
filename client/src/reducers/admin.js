@@ -23,7 +23,7 @@ const admin = (state: AdminType = initialState, action: Object) => {
     case ADMIN_LOGIN:
       localStorage.setItem(
         'auth',
-        JSON.stringify({ isAdmin, token: action.token }),
+        JSON.stringify({ isAdmin: true, token: action.token }),
       );
       return {
         ...state,
@@ -52,7 +52,16 @@ const admin = (state: AdminType = initialState, action: Object) => {
     case ADMIN_GET_CATEGORIES:
       return { ...state, categories: action.categories };
     default:
-      return state;
+      const credentials = JSON.parse(localStorage.getItem('auth'));
+      if (credentials && credentials.isAdmin && credentials.token) {
+        console.log("LocalStorage:: init session")
+      return {
+        ...state,
+        ...credentials,
+      };
+      } else {
+        return state;
+      }
   }
 };
 

@@ -1,6 +1,11 @@
 // @flow
 
-import { apiLogin, apiLoadImages, apiAddProduct, apiLoadCategories } from '../helpers/adminApi';
+import {
+  apiLogin,
+  apiLoadImages,
+  apiAddProduct,
+  apiLoadCategories,
+} from '../helpers/adminApi';
 import {
   ADMIN_LOGIN,
   ADMIN_LOGIN_FAILED,
@@ -48,13 +53,20 @@ export const login = ({
   password: string,
 }): Function => async dispatch => {
   try {
-    const credentaials = JSON.parse(localStorage.getItem('auth'));
-    if (credentials.isAdmin && credentials.token &&)
-    const loginResponse = await apiLogin({ email, password })();
-    return dispatch({
-      type: ADMIN_LOGIN,
-      ...loginResponse,
-    });
+    const credentials = JSON.parse(localStorage.getItem('auth'));
+    if (credentials && credentials.isAdmin && credentials.token) {
+      console.log("LocalStorage")
+      return dispatch({
+        type: ADMIN_LOGIN,
+        ...credentials,
+      });
+    } else {
+      const loginResponse = await apiLogin({ email, password })();
+      return dispatch({
+        type: ADMIN_LOGIN,
+        ...loginResponse,
+      });
+    }
   } catch (error) {
     return dispatch(adminLoginFailed(error));
   }
