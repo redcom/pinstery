@@ -1,5 +1,5 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
@@ -13,7 +13,12 @@ const styleSheet = createStyleSheet(theme => ({
   },
 }));
 
+type Props = {
+  classes: Object,
+};
+
 class AdminTabs extends Component {
+  props: Props;
   state = {
     index: 0,
   };
@@ -49,9 +54,5 @@ class AdminTabs extends Component {
     );
   }
 }
-
-AdminTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styleSheet)(AdminTabs);

@@ -1,11 +1,11 @@
 import axios from 'axios-es6';
 import { azureConfig } from '../../config';
 
-const getCategories = (req, res) => {
+const getAdminCategories = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'categories' });
-  newItemsRef.once('value', snapshot => {
+  storage.once('value', snapshot => {
     const categories = snapshot.val();
-    console.log(categories, 'categs');
+    // console.log(categories, 'categs');
     if (categories) {
       res.json(categories);
     } else {

@@ -54,14 +54,13 @@ const admin = (state: AdminType = initialState, action: Object) => {
     default:
       const credentials = JSON.parse(localStorage.getItem('auth'));
       if (credentials && credentials.isAdmin && credentials.token) {
-        console.log("LocalStorage:: init session")
-      return {
-        ...state,
-        ...credentials,
-      };
-      } else {
-        return state;
+        return {
+          ...state,
+          ...credentials,
+        };
       }
+        return state;
+
   }
 };
 

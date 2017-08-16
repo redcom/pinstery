@@ -29,8 +29,7 @@ const AdminContainer = ({
     window.open(admin.url, 'Auth', 'top=100,left=100,width=700,height=500');
   };
   const onImageSelect = product => dispatch(addProduct(product));
-  const onEditCategory = category =>
-    dispatch(category => console.log(category));
+  const onEditCategory = category => dispatch(category => console.log(category));
   // const onEditCategory = category => dispatch(onEditCategory(category))
 
   let content = null;

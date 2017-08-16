@@ -55,18 +55,16 @@ export const login = ({
   try {
     const credentials = JSON.parse(localStorage.getItem('auth'));
     if (credentials && credentials.isAdmin && credentials.token) {
-      console.log("LocalStorage")
       return dispatch({
         type: ADMIN_LOGIN,
         ...credentials,
       });
-    } else {
+    }
       const loginResponse = await apiLogin({ email, password })();
       return dispatch({
         type: ADMIN_LOGIN,
         ...loginResponse,
       });
-    }
   } catch (error) {
     return dispatch(adminLoginFailed(error));
   }
