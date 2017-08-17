@@ -5,7 +5,7 @@ import { Wrapper, Title } from '../components';
 const Statement = styled.p`text-decoration: underline;`;
 
 const Container = () =>
-  (<Wrapper>
+  <Wrapper>
     <Title>About</Title>
     <div>
       <p>
@@ -30,6 +30,6 @@ const Container = () =>
       <p>We can make it possible for you to express yourself creatively.</p>
       <Statement>Make a statement!</Statement>
     </div>
-  </Wrapper>);
+  </Wrapper>;
 
 export default Container;

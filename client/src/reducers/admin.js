@@ -59,8 +59,7 @@ const admin = (state: AdminType = initialState, action: Object) => {
           ...credentials,
         };
       }
-        return state;
-
+      return state;
   }
 };
 

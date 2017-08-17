@@ -27,7 +27,7 @@ const Img = styled.img.attrs({
 const Copy = styled.p`display: block;`;
 
 const Footer = () =>
-  (<FooterBox>
+  <FooterBox>
     <Link to={'/'}>
       <Img src={require('../assets/instagram.png')} alt="pinstery_instagram" />
     </Link>
@@ -38,6 +38,6 @@ const Footer = () =>
       <Img src={require('../assets/facebook.png')} alt="pinstery_facebook" />
     </Link>
     <Copy>&copy; Pinstery.com</Copy>
-  </FooterBox>);
+  </FooterBox>;
 
 export default Footer;

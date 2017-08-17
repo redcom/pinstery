@@ -1,5 +1,5 @@
 // @flow
-/* eslint-disable import/no-dynamic-require*/
+/* eslint-disable import/no-dynamic-require */
 
 import type { ShopItemType } from '../store/CommonStoreTypes';
 import React from 'react';
@@ -128,7 +128,7 @@ const ShopItem = ({
   isNew,
   discount = 0,
 }: ExtendedShopItem) =>
-  (<ShopItemBox>
+  <ShopItemBox>
     <Image image={require(`../assets/items/${image}`)}>
       {renderSpecialItem({ isNew, discount })}
       <ViewDetailBox>
@@ -139,6 +139,6 @@ const ShopItem = ({
       {description} item#{id}
     </Description>
     {renderPriceInformation({ price, discount })}
-  </ShopItemBox>);
+  </ShopItemBox>;
 
 export default ShopItem;

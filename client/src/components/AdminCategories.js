@@ -11,9 +11,7 @@ type ExtendedAdminCategories = AdminType & {
   hasErrors: Object,
   onEditCategory: Function,
 };
-const WrapperFlexRow = WrapperFlex.extend`
-  flex-direction: row;
-`;
+const WrapperFlexRow = WrapperFlex.extend`flex-direction: row;`;
 const BoxFormAddCategories = styled.div`
   min-height: 250px;
   flex: 1;
@@ -27,45 +25,48 @@ const BoxCategoriesList = styled.div`
 `;
 const CategoriesList = ({ categories = [] }) => {
   if (!categories.length) return null;
-  const elems = categories.map((cat) => (<Chip
-      label={cat.label}
-      key={cat.key}
-      onRequestDelete={() => null}
-    />));
-  return <div>{elems}</div>;
+  const elems = categories.map(cat =>
+    <Chip label={cat.label} key={cat.key} onRequestDelete={() => null} />,
+  );
+  return (
+    <div>
+      {elems}
+    </div>
+  );
 };
 
 const TextFieldWide = styled(TextField)`
   width: 80%;
 `;
 const FormAddCategory = ({ onAddCategory }) => {
-  const onKeyDown = (e) => {
+  const onKeyDown = e => {
     // send event on enter
     if (e.keyCode === 13) {
       onAddCategory(e.target.value);
     }
   };
-   return (<TextFieldWide
+  return (
+    <TextFieldWide
       label="Category"
       margin="normal"
       required
       onKeyDown={onKeyDown}
-    />);
-  };
-
+    />
+  );
+};
 
 class AdminCategories extends React.Component {
   props: ExtendedAdminCategories;
   state: {
-    isSubmited: false
-  }
+    isSubmited: false,
+  };
 
-  onAddCategory = (category) => {
+  onAddCategory = category => {
     this.props.onEditCategory({
       category,
       action: 'add',
     });
-  }
+  };
 
   render() {
     const { onEditCategory, admin } = this.props;

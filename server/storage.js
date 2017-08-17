@@ -15,7 +15,7 @@ const storage = () => ({ bucket }) => {
 
   return {
     get: id => bucket[id],
-    /* put updates value at a single location*/
+    /* put updates value at a single location */
     put: items => {
       const updates = {};
       updates[`/${bucket}/${buckets[0]}`] = items;

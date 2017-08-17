@@ -60,11 +60,11 @@ export const login = ({
         ...credentials,
       });
     }
-      const loginResponse = await apiLogin({ email, password })();
-      return dispatch({
-        type: ADMIN_LOGIN,
-        ...loginResponse,
-      });
+    const loginResponse = await apiLogin({ email, password })();
+    return dispatch({
+      type: ADMIN_LOGIN,
+      ...loginResponse,
+    });
   } catch (error) {
     return dispatch(adminLoginFailed(error));
   }

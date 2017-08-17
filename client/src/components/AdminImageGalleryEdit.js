@@ -25,15 +25,15 @@ const AdminImageGalleryEdit = ({
   onImageSelect,
   hasErrors,
 }: ExtendedAdminImageGalleryEdit) =>
-  (<AdminImageGalleryLine>
+  <AdminImageGalleryLine>
     {admin.publishProducts.map(image =>
-      (<AdminImage
+      <AdminImage
         image={image}
         onSubmit={onImageSelect}
         key={image.id}
         hasErrors={hasErrors}
         isPublished
-      />),
+      />,
     )}
-  </AdminImageGalleryLine>);
+  </AdminImageGalleryLine>;
 export default AdminImageGalleryEdit;
