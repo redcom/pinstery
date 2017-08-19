@@ -3,13 +3,12 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import styled from 'styled-components';
 import Tabs, { Tab } from 'material-ui/Tabs';
+
 type Props = {
   children: Object,
 };
 
-const Wrapper = styled.div`
-  width: 100%;
-`;
+const Wrapper = styled.div`width: 100%;`;
 
 class AdminTabs extends Component {
   props: Props;
