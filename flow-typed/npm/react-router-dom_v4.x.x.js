@@ -1,5 +1,5 @@
-// flow-typed signature: 526619dd78c68b696ab6c1171d585334
-// flow-typed version: 8ab7b85670/react-router-dom_v4.x.x/flow_>=v0.38.x
+// flow-typed signature: 826a8ff5b5f83a8eb95d0709e3f9bb0d
+// flow-typed version: 19506e57e6/react-router-dom_v4.x.x/flow_>=v0.38.x <=v0.52.x
 
 declare module 'react-router-dom' {
   declare export class BrowserRouter extends React$Component {
@@ -80,7 +80,7 @@ declare module 'react-router-dom' {
   }
 
   declare export type Match = {
-    params: Object,
+    params: { [key: string]: ?string },
     isExact: boolean,
     path: string,
     url: string,
