@@ -17,12 +17,12 @@ export const apiAddProduct = product => async () => {
   }
 };
 
-export const apiLoadCategories = ({ email, token }) => async () => {
+export const apiCategories = ({ category, action: categoryAction }) => async () => {
   try {
     const response = await axios.post(`${API_URL}/admin`, {
-      email,
-      token,
-      action: 'getCategories',
+      category,
+      categoryAction,
+      action: 'categories',
     });
     if (response.status !== 200) {
       throw new Error('Can get categories');

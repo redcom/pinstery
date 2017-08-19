@@ -7,6 +7,7 @@ import { defaultSpaceInBetween } from '../styles/vars';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 
+import type { ErrorsType } from '../store/CommonStoreTypes';
 type Props = {
   onSubmit: Function,
   hasErrors: ErrorsType,
@@ -84,7 +85,7 @@ class AdminImage extends React.Component {
       <Li>
         <div>
           <Img
-            src={image.thumbnails[0].large.url}
+            src={`#${image.thumbnails[0].large.url}`}
             alt="img"
             title={image.name}
           />

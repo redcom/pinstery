@@ -4,13 +4,15 @@ import {
   apiLogin,
   apiLoadImages,
   apiAddProduct,
-  apiLoadCategories,
+  apiCategories,
 } from '../helpers/adminApi';
 import {
   ADMIN_LOGIN,
   ADMIN_LOGIN_FAILED,
   ADMIN_GET_IMAGES,
   ADMIN_GET_IMAGES_FAILED,
+  ADMIN_UPDATE_CATEGORIES,
+  ADMIN_UPDATE_CATEGORIES_FAILED,
   ADMIN_GET_CATEGORIES,
   ADMIN_GET_CATEGORIES_FAILED,
   ADMIN_ADD_PRODUCT,
@@ -19,6 +21,10 @@ import {
 
 export const adminGetImageFailed = (error: ErrorsType): Object => ({
   type: ADMIN_GET_IMAGES_FAILED,
+  error,
+});
+export const adminUpdateCategoriesFailed = (error: ErrorsType): Object => ({
+  type: ADMIN_UPDATE_CATEGORIES_FAILED,
   error,
 });
 export const adminGetCategoriesFailed = (error: ErrorsType): Object => ({
@@ -45,6 +51,7 @@ export const addProduct = (product: Object): Function => async dispatch => {
     return dispatch(adminAddProductFailed(error));
   }
 };
+
 export const login = ({
   email,
   password,
@@ -88,20 +95,26 @@ export const loadImages = ({
   }
 };
 
-export const loadCategories = ({
-  email,
-  token,
-}: {
-  email: string,
-  token: string,
-}): Function => async dispatch => {
+export const loadCategories = (): Function => async dispatch => {
   try {
-    const categories = await apiLoadCategories({ email, token })();
+    const categories = await apiCategories({ action: 'load' })();
     return dispatch({
       type: ADMIN_GET_CATEGORIES,
       categories,
     });
   } catch (error) {
     return dispatch(adminGetCategoriesFailed(error));
+  }
+};
+export const editCategory = ({category, action}: {category: string, action: string }): Function =>
+  async dispatch => {
+  try {
+    const categories = await apiCategories({ category , action })();
+    return dispatch({
+      type: ADMIN_UPDATE_CATEGORIES,
+      categories,
+    });
+  } catch (error) {
+    return dispatch(adminUpdateCategoriesFailed(error));
   }
 };

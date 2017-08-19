@@ -3,6 +3,7 @@
 import type { State, ErrorsType } from '../store/CommonStoreTypes';
 import React from 'react';
 import { connect } from 'react-redux';
+import {isEmpty} from 'ramda';
 import {
   WrapperFlex,
   Title,
@@ -13,7 +14,13 @@ import {
   AdminCategories,
   AdminTabs,
 } from '../components';
-import { login, loadImages, addProduct } from '../actions/AdminActions';
+import {
+  login,
+  loadImages,
+  addProduct,
+  editCategory,
+  loadCategories,
+} from '../actions/AdminActions';
 
 const AdminContainer = ({
   error = null,
@@ -24,14 +31,13 @@ const AdminContainer = ({
   admin: Object,
   dispatch: Function,
 }) => {
+
   const onLogin = action => dispatch(login(action));
   const onAuth = () => {
     window.open(admin.url, 'Auth', 'top=100,left=100,width=700,height=500');
   };
   const onImageSelect = product => dispatch(addProduct(product));
-  const onEditCategory = category =>
-    dispatch(category => console.log(category));
-  // const onEditCategory = category => dispatch(onEditCategory(category))
+  const onEditCategory = ({category, action}) => dispatch(editCategory({category, action}));
 
   let content = null;
   if (!admin.isAdmin) {
@@ -40,6 +46,7 @@ const AdminContainer = ({
   if (admin.isAdmin && !admin.token) {
     content = <Admin admin={admin} onAdminAuth={onAuth} hasErrors={error} />;
   }
+
   if (admin.isAdmin && admin.token && admin.images.thumbnails) {
     content = (
       <AdminTabs>
@@ -60,6 +67,7 @@ const AdminContainer = ({
             key={'AdminTabCategories'}
             admin={admin}
             onEditCategory={onEditCategory}
+            hasErrors={error}
           />,
         ]}
       </AdminTabs>
@@ -68,6 +76,9 @@ const AdminContainer = ({
 
   if (!content) {
     dispatch(loadImages(admin));
+  }
+  if (isEmpty(admin.categories)) {
+    dispatch(loadCategories());
   }
 
   return (

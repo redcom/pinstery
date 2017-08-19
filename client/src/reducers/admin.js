@@ -5,6 +5,7 @@ import {
   ADMIN_LOGIN,
   ADMIN_GET_IMAGES,
   ADMIN_GET_CATEGORIES,
+  ADMIN_UPDATE_CATEGORIES,
   ADMIN_ADD_PRODUCT,
 } from '../constants/ActionTypes';
 
@@ -15,7 +16,7 @@ const initialState = {
   token: null,
   publishProducts: [],
   images: {},
-  categories: [],
+  categories: {},
 };
 
 const admin = (state: AdminType = initialState, action: Object) => {
@@ -50,6 +51,8 @@ const admin = (state: AdminType = initialState, action: Object) => {
       }
       return { ...state, publishProducts };
     case ADMIN_GET_CATEGORIES:
+      return { ...state, categories: action.categories };
+    case ADMIN_UPDATE_CATEGORIES:
       return { ...state, categories: action.categories };
     default:
       const credentials = JSON.parse(localStorage.getItem('auth'));

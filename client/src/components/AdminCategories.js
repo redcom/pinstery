@@ -1,14 +1,14 @@
 // @flow
 
-import type { AdminType } from '../store/CommonStoreTypes';
+import type { AdminType, ErrorsType } from '../store/CommonStoreTypes';
 import React from 'react';
 import Chip from 'material-ui/Chip';
-import { WrapperFlex } from '../components';
+import { WrapperFlex, Errors } from '../components';
 import TextField from 'material-ui/TextField';
 import styled from 'styled-components';
 
 type ExtendedAdminCategories = AdminType & {
-  hasErrors: Object,
+  hasErrors: ErrorsType,
   onEditCategory: Function,
 };
 const WrapperFlexRow = WrapperFlex.extend`flex-direction: row;`;
@@ -23,15 +23,25 @@ const BoxCategoriesList = styled.div`
   flex: 1;
   min-height: 250px;
 `;
-const CategoriesList = ({ categories = [] }) => {
-  if (!categories.length) return null;
-  const elems = categories.map(cat =>
-    <Chip label={cat.label} key={cat.key} onRequestDelete={() => null} />,
+const CategoriesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > div {
+    padding: 2px 2px;
+    margin: 5px 5px;
+  }
+`;
+const CategoriesList = ({ categories = {} }) => {
+  const categs = Object.values(categories);
+  if (!categs.length) return null;
+  const elems = categs.map(cat =>
+    <Chip label={cat.category} key={cat.id} onRequestDelete={() => null} />,
   );
   return (
-    <div>
+    <CategoriesWrapper>
       {elems}
-    </div>
+    </CategoriesWrapper>
   );
 };
 
@@ -69,7 +79,7 @@ class AdminCategories extends React.Component {
   };
 
   render() {
-    const { onEditCategory, admin } = this.props;
+    const { admin, hasErrors: { error } } = this.props;
     return (
       <WrapperFlexRow>
         <BoxCategoriesList>
@@ -77,6 +87,7 @@ class AdminCategories extends React.Component {
         </BoxCategoriesList>
         <BoxFormAddCategories>
           <FormAddCategory onAddCategory={this.onAddCategory} />
+          {error ? <Errors>{error.message}</Errors> : <div />}
         </BoxFormAddCategories>
       </WrapperFlexRow>
     );
