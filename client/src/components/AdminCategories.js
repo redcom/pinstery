@@ -32,11 +32,18 @@ const CategoriesWrapper = styled.div`
     margin: 5px 5px;
   }
 `;
-const CategoriesList = ({ categories = {} }) => {
-  const categs = Object.values(categories);
+const CategoriesList = ({ categories = {}, onDeleteItem }) => {
+  const deleteItem = id => e => {
+    onDeleteItem(id);
+  };
+  const categs = Object.values(categories || []);
   if (!categs.length) return null;
   const elems = categs.map(cat =>
-    <Chip label={cat.category} key={cat.id} onRequestDelete={() => null} />,
+    <Chip
+      label={cat.category}
+      key={cat.id}
+      onRequestDelete={deleteItem({ id: cat.id })}
+    />,
   );
   return (
     <CategoriesWrapper>
@@ -77,13 +84,22 @@ class AdminCategories extends React.Component {
       action: 'add',
     });
   };
+  onDeleteCategory = category => {
+    this.props.onEditCategory({
+      category,
+      action: 'delete',
+    });
+  };
 
   render() {
     const { admin, hasErrors: { error } } = this.props;
     return (
       <WrapperFlexRow>
         <BoxCategoriesList>
-          <CategoriesList categories={admin.categories} />
+          <CategoriesList
+            categories={admin.categories}
+            onDeleteItem={this.onDeleteCategory}
+          />
         </BoxCategoriesList>
         <BoxFormAddCategories>
           <FormAddCategory onAddCategory={this.onAddCategory} />

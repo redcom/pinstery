@@ -1,7 +1,23 @@
 import axios from 'axios-es6';
 import { azureConfig } from '../../config';
-import { addCategory, getCategories } from './admin/categories';
+import { addCategory, deleteCategory, getCategories } from './admin/categories';
+import { getProducts } from './admin/products';
 
+const adminProducts = (req, res) => {
+  const storage = req.app.get('storage')({ bucket: 'products' });
+  const { product, productAction } = req.body;
+
+  switch (productAction) {
+    // case 'add':
+    //   return addCategory(req, res);
+    // case 'delete':
+    //   return deleteCategory(req, res);
+    case 'load':
+      return getProducts(req, res);
+    default:
+      res.sendStatus(200).end('administer categories');
+  }
+};
 const adminCategories = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'categories' });
   const { category, categoryAction } = req.body;
@@ -9,6 +25,8 @@ const adminCategories = (req, res) => {
   switch (categoryAction) {
     case 'add':
       return addCategory(req, res);
+    case 'delete':
+      return deleteCategory(req, res);
     case 'load':
       return getCategories(req, res);
     default:
@@ -186,6 +204,9 @@ export const admin = (req, res) => {
       break;
     case 'getImages':
       getAdminImages(req, res);
+      break;
+    case 'products':
+      adminProducts(req, res);
       break;
     case 'addProduct':
       addProduct(req, res);

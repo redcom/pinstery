@@ -20,6 +20,7 @@ import {
   addProduct,
   editCategory,
   loadCategories,
+  loadPublishedProducts,
 } from '../actions/AdminActions';
 
 const AdminContainer = ({
@@ -79,6 +80,9 @@ const AdminContainer = ({
   }
   if (isEmpty(admin.categories)) {
     dispatch(loadCategories());
+  }
+  if (isEmpty(admin.publishedProducts)) {
+    dispatch(loadPublishedProducts());
   }
 
   return (

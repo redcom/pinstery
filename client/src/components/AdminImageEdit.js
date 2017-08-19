@@ -58,6 +58,26 @@ class AdminImage extends React.Component {
     price: '',
   };
 
+  componentDidMount() {
+    const {
+      image: {
+        title = '',
+        description = '',
+        category = '',
+        size = '',
+        price = '',
+      },
+    } = this.props;
+
+    this.setState({
+      title,
+      description,
+      category,
+      size,
+      price,
+    });
+  }
+
   onChange = evt => {
     const name = evt.target.name;
     this.setState({
@@ -75,12 +95,12 @@ class AdminImage extends React.Component {
       price,
       size,
       category,
-      url: image.thumbnails[0].large.url,
+      url: image.url,
       id: image.id,
     });
   };
 
-  showCategoriesOption(categories = {}) {
+  showCategoriesOption(categories = {}, defaultValue) {
     const options = map(
       ({ category, id }) =>
         <option value={category} key={id}>
@@ -90,7 +110,7 @@ class AdminImage extends React.Component {
     );
 
     return (
-      <select name="category" onChange={this.onChange}>
+      <select name="category" onChange={this.onChange} value={defaultValue}>
         <option value="">Select Category</option>
         {options}
       </select>
@@ -98,20 +118,22 @@ class AdminImage extends React.Component {
   }
 
   render() {
-    const { title, description, price } = this.state;
+    const {
+      title = '',
+      description = '',
+      category = '',
+      size = '',
+      price = '',
+    } = this.state;
     const { hasErrors: { error }, image, isPublished, categories } = this.props;
     return (
       <Li>
         <div>
-          <Img
-            src={`#${image.thumbnails[0].large.url}`}
-            alt="img"
-            title={image.name}
-          />
+          <Img src={`${image.url}`} alt="img" title={image.name} />
         </div>
         <div className="category">
-          {this.showCategoriesOption(categories)}
-          <select name="size" onChange={this.onChange}>
+          {this.showCategoriesOption(categories, category)}
+          <select name="size" onChange={this.onChange} value={size}>
             <option value="">Select Size</option>
             <option value="cat1">Size 1</option>
           </select>

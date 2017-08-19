@@ -17,6 +17,22 @@ export const apiAddProduct = product => async () => {
   }
 };
 
+export const apiProducts = ({ product, action: productAction }) => async () => {
+  try {
+    const response = await axios.post(`${API_URL}/admin`, {
+      product,
+      productAction,
+      action: 'products',
+    });
+    if (response.status !== 200) {
+      throw new Error('Can get categories');
+    }
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const apiCategories = ({
   category,
   action: categoryAction,
@@ -35,6 +51,7 @@ export const apiCategories = ({
     throw error;
   }
 };
+
 export const apiLoadImages = ({ email, token }) => async () => {
   try {
     const response = await axios.post(`${API_URL}/admin`, {

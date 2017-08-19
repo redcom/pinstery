@@ -5,6 +5,7 @@ import {
   ADMIN_LOGIN,
   ADMIN_GET_IMAGES,
   ADMIN_GET_CATEGORIES,
+  ADMIN_GET_PUBLISHED_PRODUCTS,
   ADMIN_UPDATE_CATEGORIES,
   ADMIN_ADD_PRODUCT,
 } from '../constants/ActionTypes';
@@ -14,7 +15,7 @@ const initialState = {
   isAuth: false,
   url: '',
   token: null,
-  publishProducts: [],
+  publishedProducts: {},
   images: {},
   categories: {},
 };
@@ -35,6 +36,8 @@ const admin = (state: AdminType = initialState, action: Object) => {
       };
     case ADMIN_GET_IMAGES:
       return { ...state, images: action.images };
+    case ADMIN_GET_PUBLISHED_PRODUCTS:
+      return { ...state, publishedProducts: action.publishedProducts };
     case ADMIN_ADD_PRODUCT:
       let publishProducts = [];
       if (state.publishProducts.length) {

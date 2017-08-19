@@ -5,7 +5,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { defaultSpaceInBetween } from '../styles/vars';
-import { AdminImage } from '../components';
+import { AdminImageEdit } from '../components';
+import { values } from 'ramda';
 
 const AdminImageGalleryLine = styled.ul`
   display: flex;
@@ -26,10 +27,11 @@ const AdminImageGalleryEdit = ({
   hasErrors,
 }: ExtendedAdminImageGalleryEdit) =>
   <AdminImageGalleryLine>
-    {admin.publishProducts.map(image =>
-      <AdminImage
+    {values(admin.publishedProducts).map(image =>
+      <AdminImageEdit
         image={image}
         onSubmit={onImageSelect}
+        categories={admin.categories}
         key={image.id}
         hasErrors={hasErrors}
         isPublished

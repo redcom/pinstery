@@ -28,4 +28,5 @@ export { default as AdminImageGallery } from './AdminImageGallery';
 export { default as AdminImageGalleryEdit } from './AdminImageGalleryEdit';
 export { default as AdminCategories } from './AdminCategories';
 export { default as AdminImage } from './AdminImage';
+export { default as AdminImageEdit } from './AdminImageEdit';
 export { default as AdminTabs } from './AdminTabs';

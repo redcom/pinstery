@@ -5,6 +5,7 @@ import {
   apiLoadImages,
   apiAddProduct,
   apiCategories,
+  apiProducts,
 } from '../helpers/adminApi';
 import {
   ADMIN_LOGIN,
@@ -13,12 +14,18 @@ import {
   ADMIN_GET_IMAGES_FAILED,
   ADMIN_UPDATE_CATEGORIES,
   ADMIN_UPDATE_CATEGORIES_FAILED,
+  ADMIN_GET_PUBLISHED_PRODUCTS,
+  ADMIN_GET_PUBLISHED_PRODUCTS_FAILED,
   ADMIN_GET_CATEGORIES,
   ADMIN_GET_CATEGORIES_FAILED,
   ADMIN_ADD_PRODUCT,
   ADMIN_ADD_PRODUCT_FAILED,
 } from '../constants/ActionTypes';
 
+export const adminGetPublishedProductsFailed = (error: ErrorsType): Object => ({
+  type: ADMIN_GET_PUBLISHED_PRODUCTS_FAILED,
+  error,
+});
 export const adminGetImageFailed = (error: ErrorsType): Object => ({
   type: ADMIN_GET_IMAGES_FAILED,
   error,
@@ -95,6 +102,17 @@ export const loadImages = ({
   }
 };
 
+export const loadPublishedProducts = (): Function => async dispatch => {
+  try {
+    const publishedProducts = await apiProducts({ action: 'load' })();
+    return dispatch({
+      type: ADMIN_GET_PUBLISHED_PRODUCTS,
+      publishedProducts,
+    });
+  } catch (error) {
+    return dispatch(adminGetPublishedProductsFailed(error));
+  }
+};
 export const loadCategories = (): Function => async dispatch => {
   try {
     const categories = await apiCategories({ action: 'load' })();
