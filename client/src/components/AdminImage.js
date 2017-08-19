@@ -8,6 +8,7 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 
 import type { ErrorsType } from '../store/CommonStoreTypes';
+
 type Props = {
   onSubmit: Function,
   hasErrors: ErrorsType,

@@ -17,7 +17,10 @@ export const apiAddProduct = product => async () => {
   }
 };
 
-export const apiCategories = ({ category, action: categoryAction }) => async () => {
+export const apiCategories = ({
+  category,
+  action: categoryAction,
+}) => async () => {
   try {
     const response = await axios.post(`${API_URL}/admin`, {
       category,

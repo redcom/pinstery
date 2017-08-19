@@ -3,7 +3,7 @@
 import type { State, ErrorsType } from '../store/CommonStoreTypes';
 import React from 'react';
 import { connect } from 'react-redux';
-import {isEmpty} from 'ramda';
+import { isEmpty } from 'ramda';
 import {
   WrapperFlex,
   Title,
@@ -31,13 +31,13 @@ const AdminContainer = ({
   admin: Object,
   dispatch: Function,
 }) => {
-
   const onLogin = action => dispatch(login(action));
   const onAuth = () => {
     window.open(admin.url, 'Auth', 'top=100,left=100,width=700,height=500');
   };
   const onImageSelect = product => dispatch(addProduct(product));
-  const onEditCategory = ({category, action}) => dispatch(editCategory({category, action}));
+  const onEditCategory = ({ category, action }) =>
+    dispatch(editCategory({ category, action }));
 
   let content = null;
   if (!admin.isAdmin) {

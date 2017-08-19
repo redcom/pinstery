@@ -106,10 +106,15 @@ export const loadCategories = (): Function => async dispatch => {
     return dispatch(adminGetCategoriesFailed(error));
   }
 };
-export const editCategory = ({category, action}: {category: string, action: string }): Function =>
-  async dispatch => {
+export const editCategory = ({
+  category,
+  action,
+}: {
+  category: string,
+  action: string,
+}): Function => async dispatch => {
   try {
-    const categories = await apiCategories({ category , action })();
+    const categories = await apiCategories({ category, action })();
     return dispatch({
       type: ADMIN_UPDATE_CATEGORIES,
       categories,

@@ -87,7 +87,11 @@ class AdminCategories extends React.Component {
         </BoxCategoriesList>
         <BoxFormAddCategories>
           <FormAddCategory onAddCategory={this.onAddCategory} />
-          {error ? <Errors>{error.message}</Errors> : <div />}
+          {error
+            ? <Errors>
+                {error.message}
+              </Errors>
+            : <div />}
         </BoxFormAddCategories>
       </WrapperFlexRow>
     );

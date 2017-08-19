@@ -9,15 +9,16 @@ export const getCategories = (req, res) => {
 export const addCategory = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'categories' });
   const { category } = req.body;
-  const items = [{
-    category,
-    publishDate: Date.now(),
-    id: `category-${Date.now()}`,
-  }];
+  const items = [
+    {
+      category,
+      publishDate: Date.now(),
+      id: `category-${Date.now()}`,
+    },
+  ];
 
-      const newItemRef = storage.post(items);
-      newItemRef.once('value', snapshot => {
-        res.json(snapshot.val());
+  const newItemRef = storage.post(items);
+  newItemRef.once('value', snapshot => {
+    res.json(snapshot.val());
   });
 };
-
