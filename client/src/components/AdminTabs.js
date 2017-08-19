@@ -1,21 +1,15 @@
 // @flow
 import React, { Component } from 'react';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
+import styled from 'styled-components';
 import Tabs, { Tab } from 'material-ui/Tabs';
-
-const styleSheet = createStyleSheet(theme => ({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
 type Props = {
-  classes: Object,
+  children: Object,
 };
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
 
 class AdminTabs extends Component {
   props: Props;
@@ -28,13 +22,13 @@ class AdminTabs extends Component {
   };
 
   render() {
-    const { classes, children } = this.props;
+    const { children } = this.props;
 
     return (
-      <div className={classes.root}>
+      <Wrapper>
         <AppBar position="static" color="default">
           <Tabs
-            index={this.state.index}
+            value={this.state.index}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
@@ -50,9 +44,9 @@ class AdminTabs extends Component {
           children,
           (child, index) => index === this.state.index && child,
         )}
-      </div>
+      </Wrapper>
     );
   }
 }
 
-export default withStyles(styleSheet)(AdminTabs);
+export default AdminTabs;
