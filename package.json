@@ -21,6 +21,7 @@
     "node": "7.2.1"
   },
   "dependencies": {
+    "adal-node": "^0.1.22",
     "axios-es6": "^0.11.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",

@@ -2,6 +2,7 @@ import axios from 'axios-es6';
 import { azureConfig } from '../../config';
 import { addCategory, deleteCategory, getCategories } from './admin/categories';
 import { getProducts } from './admin/products';
+import { login } from './admin/login'
 
 const adminProducts = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'products' });
@@ -107,44 +108,6 @@ const getToken = token =>
     return images ? token : null;
   })();
 
-const login = (req, res) => {
-  const storage = req.app.get('storage')({ bucket: 'admin' });
-  const { email, password } = req.body;
-  storage.getAll().once('value', s => {
-    const admins = s.val();
-    if (admins) {
-      const admin = Object.values(admins)[0];
-      const itemExists = admin.email === email && admin.password === password;
-      if (itemExists) {
-        (async () => {
-          const token = await getToken(admin.token);
-          res.json({
-            email,
-            token,
-            url: getAuthUrl(),
-          });
-        })();
-      } else {
-        res.sendStatus(403).end('Login with email and password');
-      }
-    } else {
-      const existingItemRef = storage.findById({});
-      existingItemRef.once('value', snapshot => {
-        const existingItems = snapshot.val();
-        if (!existingItems || !existingItems.length) {
-          const newItemRef = storage.put({ email, password });
-          newItemRef.once('value', snapshot => {
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.json({
-              email: snapshot.val().email,
-              url: getAuthUrl(),
-            });
-          });
-        }
-      });
-    }
-  });
-};
 
 const getAdminImages = (req, res) => {
   (async () => {
