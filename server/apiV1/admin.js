@@ -2,7 +2,7 @@ import axios from 'axios-es6';
 import { azureConfig } from '../../config';
 import { addCategory, deleteCategory, getCategories } from './admin/categories';
 import { getProducts } from './admin/products';
-import { login } from './admin/login'
+import { login } from './admin/login';
 
 const adminProducts = (req, res) => {
   const storage = req.app.get('storage')({ bucket: 'products' });
@@ -107,7 +107,6 @@ const getToken = token =>
     const images = await getImages(token);
     return images ? token : null;
   })();
-
 
 const getAdminImages = (req, res) => {
   (async () => {
